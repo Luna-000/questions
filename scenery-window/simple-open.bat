@@ -1,16 +1,9 @@
 @echo off
-setlocal
-pushd "%~dp0" 2>nul
-if errorlevel 1 (
-  echo bad folder: %~dp0
-  pause
-  exit /b 1
-)
+pushd "%~dp0"
 if not exist "index.html" (
-  echo index.html missing in %CD%
-  dir /b
+  echo index.html missing
+  echo Run this bat inside the scenery-window folder
   pause
   exit /b 1
 )
-start "" "%CD%\index.html"
-popd
+start "" "index.html"
