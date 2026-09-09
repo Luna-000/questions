@@ -1,23 +1,34 @@
 $ErrorActionPreference = "Stop"
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
-$here = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Path }
-Set-Location $here
+$here = $null
+try {
+  if ($PSScriptRoot) { $here = $PSScriptRoot }
+  elseif ($MyInvocation.MyCommand.Path) { $here = Split-Path -Parent $MyInvocation.MyCommand.Path }
+} catch { }
+if (-not $here) { $here = (Get-Location).Path }
+
+try { Set-Location -LiteralPath $here } catch {
+  Write-Host "フォルダに入れません: $here"
+  throw
+}
+
+try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 
 Write-Host ""
 Write-Host "  絵画ビューアを起動します..." -ForegroundColor Cyan
+Write-Host "  $here"
 Write-Host ""
 
 # --- ensure images ---
 $sceneDir = Join-Path $here "scenes"
 New-Item -ItemType Directory -Force -Path $sceneDir | Out-Null
-$jpgCount = @(Get-ChildItem $sceneDir -File -Include *.jpg,*.png -ErrorAction SilentlyContinue).Count
+$jpgCount = @(Get-ChildItem -Path $sceneDir -File | Where-Object { $_.Extension -match '\.(jpg|jpeg|png)$' }).Count
 if ($jpgCount -lt 5) {
   Write-Host "  画像が少ないので取得します（初回は数分かかります）" -ForegroundColor Yellow
   $dl = Join-Path $here "download-favorites.ps1"
   if (-not (Test-Path $dl)) { throw "download-favorites.ps1 が見つかりません: $dl" }
   & $dl
-  $jpgCount = @(Get-ChildItem $sceneDir -File -Include *.jpg,*.png).Count
+  $jpgCount = @(Get-ChildItem -Path $sceneDir -File | Where-Object { $_.Extension -match '\.(jpg|jpeg|png)$' }).Count
   if ($jpgCount -lt 1) { throw "画像の取得に失敗しました。" }
 }
 
