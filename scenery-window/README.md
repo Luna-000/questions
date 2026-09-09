@@ -1,32 +1,32 @@
 # scenery-window
 
-PC作業中に、サブモニターへ実在の絵画を流すビューア。
+PC作業中に絵画を流すビューア。
 
-## 起動
+## いちばん簡単な開き方（Windows）
 
-```bash
-bash download-favorites.sh   # 初回だけ：美術館スキャンを取得
-```
+1. このフォルダ `scenery-window` を開く  
+2. **`開く.bat`**（または `open.bat`）をダブルクリック
 
-Windows ならサブモニターへ:
+初回だけ画像を自動取得してから、ブラウザで開きます。  
+サブモニターがあればそこに、なければメイン画面に出ます。
+
+PowerShell からやる場合:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File open-second-screen.ps1
+cd パス\scenery-window
+powershell -ExecutionPolicy Bypass -File .\open.ps1
 ```
-
-または `index.html` をブラウザで開く。
 
 ## 操作
 
 - **F** 全画面
-- **0** すべて / **1–** 画家を選ぶ
-- **← →** 前後の絵
+- **I** 解説の固定
+- **0–** 画家
+- **← →** 次の絵
 - **スペース** 一時停止
 
-## 収録（パブリックドメイン）
+## 収録
 
 ミレー、ハンマースホイ、ゴッホ、ムンク『窓際の少女』、ルーセル、ルソー、ポレーノフ、タウロウ、フリードリヒ、ウーデ、ロワゾー。
 
-「ウッテバルデグルント」はフリッツ・フォン・ウーデとして入れてある。「ソスロンカネルラヴァレ」は名前が特定できず未収録。
-
-画像は Wikimedia Commons / Google Art Project などの美術館スキャン（多くは 2560–3840px 幅）。
+画像は Wikimedia Commons などのパブリックドメイン美術館スキャン。
