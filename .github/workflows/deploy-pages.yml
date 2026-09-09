@@ -31,6 +31,8 @@ jobs:
           cp scenery-window/index.html scenery-window/app.css scenery-window/app.js _site/
           cp scenery-window/gallery.html _site/gallery.html
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
