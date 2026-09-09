@@ -11,3 +11,7 @@
 ## 追加の仕方
 
 `questions/` に番号付きの Markdown を足して、この表に1行足す。
+
+## 関連
+
+- [scenery-window](scenery-window/) — サブモニター用の絵画ビューア（好きな画家のパブリックドメイン作品）
