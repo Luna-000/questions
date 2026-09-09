@@ -232,6 +232,7 @@ let index = 0;
 let usingA = true;
 let paused = false;
 let notePinned = false;
+let chromeHidden = true;
 let timer = 0;
 let hideUiTimer = 0;
 
@@ -261,8 +262,8 @@ function setNote() {
     noteBody.textContent = "";
     return;
   }
-  noteMeta.textContent = `${cat}  ${index + 1} / ${queue.length}　　${work.year}`;
-  noteTitle.textContent = `${work.artist}『${work.title}』`;
+  noteMeta.textContent = `${work.artist}　${work.year}　${index + 1}/${queue.length}`;
+  noteTitle.textContent = `『${work.title}』`;
   noteBody.textContent = work.note;
 }
 
@@ -320,9 +321,30 @@ function togglePause() {
 }
 
 function toggleNotePin() {
+  if (chromeHidden) {
+    chromeHidden = false;
+    document.body.classList.remove("chrome-hidden");
+  }
   notePinned = !notePinned;
   document.body.classList.toggle("show-note", notePinned);
-  if (notePinned) revealUi(true);
+  if (notePinned) {
+    document.body.classList.remove("show-ui");
+  } else {
+    revealUi();
+  }
+}
+
+function toggleChrome() {
+  chromeHidden = !chromeHidden;
+  document.body.classList.toggle("chrome-hidden", chromeHidden);
+  if (chromeHidden) {
+    notePinned = false;
+    document.body.classList.remove("show-note", "show-ui");
+    document.body.classList.add("idle");
+    clearTimeout(hideUiTimer);
+  } else {
+    revealUi(true);
+  }
 }
 
 async function goFullscreen() {
@@ -336,10 +358,11 @@ async function goFullscreen() {
 }
 
 function revealUi(keepLonger = false) {
+  if (chromeHidden) return;
   document.body.classList.add("show-ui");
   document.body.classList.remove("idle");
   clearTimeout(hideUiTimer);
-  const ms = notePinned || keepLonger ? 12000 : 7000;
+  const ms = keepLonger ? 10000 : 4500;
   hideUiTimer = setTimeout(() => {
     document.body.classList.remove("show-ui");
     if (!notePinned) document.body.classList.add("idle");
@@ -351,25 +374,35 @@ buttons.forEach((btn) => {
 });
 
 document.addEventListener("mousemove", () => revealUi());
-document.addEventListener("click", () => revealUi());
+document.addEventListener("click", () => {
+  if (chromeHidden) return;
+  revealUi();
+});
 
 document.addEventListener("keydown", (event) => {
-  revealUi(event.key === "i" || event.key === "I");
-  if (event.key === "f" || event.key === "F") goFullscreen();
-  if (event.key === "Escape" && document.fullscreenElement) document.exitFullscreen();
-  if (event.key === " ") {
+  const key = event.key;
+  if (key === "h" || key === "H") {
+    toggleChrome();
+    return;
+  }
+  if (key === "i" || key === "I") {
+    toggleNotePin();
+    return;
+  }
+  if (!chromeHidden) revealUi(key === " ");
+  if (key === "f" || key === "F") goFullscreen();
+  if (key === "Escape" && document.fullscreenElement) document.exitFullscreen();
+  if (key === " ") {
     event.preventDefault();
     togglePause();
   }
-  if (event.key === "i" || event.key === "I") toggleNotePin();
-  if (event.key === "ArrowRight") showPainting(index + 1);
-  if (event.key === "ArrowLeft") showPainting(index - 1);
-  if (/^[0-9]$/.test(event.key)) {
-    const n = Number(event.key);
+  if (key === "ArrowRight") showPainting(index + 1);
+  if (key === "ArrowLeft") showPainting(index - 1);
+  if (/^[0-9]$/.test(key)) {
+    const n = Number(key);
     if (n < CATEGORIES.length) setCategory(CATEGORIES[n].id);
   }
 });
 
 setCategory("all");
-revealUi();
 setTimeout(goFullscreen, 400);

@@ -10,7 +10,8 @@ html, body, #stage {
   font-family: "Yu Gothic UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
 }
 
-body.idle { cursor: none; }
+body.idle,
+body.chrome-hidden { cursor: none; }
 
 .layer {
   position: absolute;
@@ -27,18 +28,25 @@ body.idle { cursor: none; }
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
-  transition: opacity 0.45s ease;
+  transition: opacity 0.35s ease;
   z-index: 5;
   pointer-events: none;
 }
 
-body.show-ui #hint,
-body.show-ui #dock,
-body.show-ui #note,
-body.show-note #note { opacity: 1; }
+/* マウス時は操作ガイドと画家ボタンだけ。解説は I のときだけ */
+body.show-ui:not(.chrome-hidden) #hint,
+body.show-ui:not(.chrome-hidden) #dock { opacity: 1; }
 
-body.show-note #note,
-body.show-ui #dock { pointer-events: auto; }
+body.show-note:not(.chrome-hidden) #note { opacity: 1; }
+
+body.show-ui:not(.chrome-hidden) #dock,
+body.show-note:not(.chrome-hidden) #note { pointer-events: auto; }
+
+/* 解説表示中は画家ボタンを隠して重なりを防ぐ */
+body.show-note:not(.chrome-hidden) #dock {
+  opacity: 0;
+  pointer-events: none;
+}
 
 #hint {
   top: 22px;
@@ -54,13 +62,13 @@ body.show-ui #dock { pointer-events: auto; }
 }
 
 #note {
-  bottom: 78px;
+  bottom: 28px;
   width: min(680px, 92vw);
-  max-height: 28vh;
+  max-height: 32vh;
   overflow: auto;
   padding: 12px 16px 10px;
   border-radius: 12px;
-  background: rgba(8, 9, 11, 0.78);
+  background: rgba(8, 9, 11, 0.82);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.1);
   text-shadow: 0 1px 6px rgba(0,0,0,0.55);
@@ -68,7 +76,7 @@ body.show-ui #dock { pointer-events: auto; }
 
 #note-meta {
   font-size: 11px;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.14em;
   color: rgba(255,255,255,0.55);
   margin-bottom: 6px;
 }
@@ -76,7 +84,7 @@ body.show-ui #dock { pointer-events: auto; }
 #note-title {
   font-size: 16px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   line-height: 1.45;
   margin-bottom: 8px;
 }
