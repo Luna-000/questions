@@ -371,7 +371,5 @@ document.addEventListener("keydown", (event) => {
 });
 
 setCategory("all");
-revealUi(true);
-document.body.classList.add("show-note");
-notePinned = true;
+revealUi();
 setTimeout(goFullscreen, 400);

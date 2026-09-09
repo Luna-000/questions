@@ -14,7 +14,7 @@ body.idle { cursor: none; }
 
 .layer {
   position: absolute;
-  inset: 4% 4% 18% 4%;
+  inset: 0;
   background: center / contain no-repeat;
   opacity: 0;
   transition: opacity 2.2s ease;
@@ -54,11 +54,13 @@ body.show-ui #dock { pointer-events: auto; }
 }
 
 #note {
-  bottom: 84px;
-  width: min(720px, 92vw);
-  padding: 16px 20px 14px;
-  border-radius: 14px;
-  background: rgba(8, 9, 11, 0.72);
+  bottom: 78px;
+  width: min(680px, 92vw);
+  max-height: 28vh;
+  overflow: auto;
+  padding: 12px 16px 10px;
+  border-radius: 12px;
+  background: rgba(8, 9, 11, 0.78);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.1);
   text-shadow: 0 1px 6px rgba(0,0,0,0.55);
