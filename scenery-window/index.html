@@ -10,14 +10,18 @@
   <div id="stage">
     <div class="layer" id="layer-a"></div>
     <div class="layer" id="layer-b"></div>
-    <div id="vignette"></div>
     <div id="hint">
       <span>F 全画面</span>
       <span>数字 画家</span>
       <span>← → 次の絵</span>
+      <span>I 解説</span>
       <span>スペース 一時停止</span>
     </div>
-    <div id="caption"></div>
+    <aside id="note" aria-live="polite">
+      <div id="note-meta"></div>
+      <h2 id="note-title"></h2>
+      <p id="note-body"></p>
+    </aside>
     <nav id="dock" aria-label="画家"></nav>
   </div>
   <script src="app.js"></script>
