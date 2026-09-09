@@ -2,12 +2,16 @@
 
 ## 開き方（これだけ）
 
-1. このフォルダを開く  
-2. **`index.html`** をダブルクリック  
+ブラウザで次のURLを開いてください:
 
-インターネット接続が必要です。ブラウザが開いて絵が出ます。
+**https://htmlpreview.github.io/?https://github.com/Luna-000/questions/blob/cursor/favorite-paintings-8aa5/scenery-window/gallery.html**
 
-`open.bat` でも同じです。
+ネット接続が必要です（絵は Wikimedia から読み込みます）。
+
+> 以前の jsDelivr のURLは、HTMLを「テキスト」として返すため、ソースコードだけが見えていました。上のURLはページとして表示されます。
+
+単体ファイル版: `gallery.html`（CSS/JS 込み）  
+分割版: `index.html` + `app.css` + `app.js`
 
 ## 操作
 

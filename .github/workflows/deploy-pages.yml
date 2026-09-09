@@ -1,0 +1,38 @@
+name: Deploy gallery to GitHub Pages
+on:
+  push:
+    branches: [cursor/favorite-paintings-8aa5, main]
+    paths:
+      - 'scenery-window/**'
+      - 'docs/**'
+      - '.github/workflows/deploy-pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Prepare site
+        run: |
+          mkdir -p _site
+          cp scenery-window/index.html scenery-window/app.css scenery-window/app.js _site/
+          cp scenery-window/gallery.html _site/gallery.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
