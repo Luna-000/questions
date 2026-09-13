@@ -210,7 +210,7 @@
     document.title = `${DATA.brand.portal} · 入店`;
     return `
       <div class="login">
-        <form class="login-card" data-action="login">
+        <form class="login-card" data-action="login" novalidate>
           <div class="moon" aria-hidden="true"></div>
           <p class="brand-en">${esc(DATA.brand.nameEn)}</p>
           <h1>${esc(DATA.brand.name)}</h1>
@@ -459,7 +459,7 @@
         <p><a class="back" href="#/pops">POPにもどる</a></p>
         <div class="grid grid-2">
           <div class="pop-frame">
-            <iframe class="pop-preview ${isStory ? "story" : ""}" title="${esc(item.name)}" src="${esc(item.file)}"></iframe>
+            <img class="pop-preview ${isStory ? "story" : ""}" alt="${esc(item.name)}" src="${esc(item.file)}" />
           </div>
           <article class="card">
             <p class="kicker">${esc(item.size)} · ${esc(item.use)}</p>
@@ -780,6 +780,10 @@
   function onLogin(form) {
     const storeId = String(form.storeId.value || "").trim().toUpperCase();
     const password = String(form.password.value || "");
+    if (!storeId || !password) {
+      render("店番と合言葉の両方を入れてください。");
+      return;
+    }
     if (storeId === DATA.demo.storeId && password === DATA.demo.password) {
       saveJSON(KEY.session, {
         storeId: DATA.demo.storeId,

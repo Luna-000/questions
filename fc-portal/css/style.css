@@ -632,6 +632,8 @@ h3,
 .pop-preview {
   width: min(100%, 520px);
   aspect-ratio: 1 / 1.35;
+  height: auto;
+  object-fit: contain;
   border: 0;
   background: #fff;
   border-radius: 4px;
