@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 594" role="img">
+  <title>&#31179;&#12398;&#34588;&#33419;&#12501;&#12455;&#12473; A2</title>
+  <defs>
+    <linearGradient id="night" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b2430"/>
+      <stop offset="1" stop-color="#2b2218"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="38%" cy="32%" r="55%">
+      <stop offset="0" stop-color="#f7ecd0"/>
+      <stop offset="1" stop-color="#c9a45a"/>
+    </radialGradient>
+  </defs>
+  <rect width="420" height="594" fill="url(#night)"/>
+  <circle cx="318" cy="118" r="72" fill="url(#moon)"/>
+  <circle cx="348" cy="104" r="58" fill="#1b2430"/>
+  <text x="36" y="72" fill="#e8d5a3" font-family="serif" font-size="16" letter-spacing="6">TSUKIMI SARYO</text>
+  <text x="34" y="210" fill="#f6efe3" font-family="serif" font-size="28">&#31179;&#12398;</text>
+  <text x="30" y="292" fill="#f6efe3" font-family="serif" font-size="64">&#34588;&#33419;&#12501;&#12455;&#12473;</text>
+  <rect x="34" y="328" width="86" height="3" fill="#b08a3c"/>
+  <text x="34" y="390" fill="#f3eadc" font-family="serif" font-size="30">&#34588;&#33419;&#12411;&#12358;&#12376;&#33590;&#12521;&#12486;</text>
+  <text x="36" y="432" fill="#d8cbb6" font-family="sans-serif" font-size="18">HOT / ICE  520&#20870;</text>
+  <text x="36" y="468" fill="#d8cbb6" font-family="sans-serif" font-size="16">&#33419;&#12398;&#29976;&#12356;&#12392;&#12371;&#12429;&#12384;&#12369;&#12434;&#12289;&#12411;&#12358;&#12376;&#33590;&#12398;&#28953;&#29006;&#12391;&#20999;&#12427;&#12290;</text>
+  <text x="36" y="540" fill="#e8d5a3" font-family="serif" font-size="22">&#26376;&#35211;&#33590;&#23534;</text>
+  <text x="36" y="566" fill="#8a7b6c" font-family="sans-serif" font-size="14">9.16 - 10.20  &#24215;&#38957;&#12399;&#12371;&#12428;1&#26522;</text>
+</svg>
