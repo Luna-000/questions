@@ -77,6 +77,33 @@
 
 電波を出していない端末、端末を持たない人は拾えない。店の外の通行人の電波が漏れ込むこともあるので、受信強度で店内相当に切る。
 
+## ホスト名で iPhone / Android だけ拾うか
+
+店の Wi-Fi に繋がっている端末の名前から、`iPhone`・`Android`・`Phone` だけ残す、というやり方。ノートPC（`DESKTOP-`、`MacBook`）やプリンタ、スピーカーを落とせるので、生の接続台数より人に近い。だいたい、にはなるが、人数そのものにはならない。
+
+前提が二つある。**繋がった端末しか見えない**ことと、**名前の文字列が機種を表すとは限らない**こと。ゲスト Wi-Fi に入らない客はゼロ。フリー Wi-Fi があっても接続率は低いことが多い。
+
+iPhone は名前が残りやすい。初期名は「〜の iPhone」。プライベート Wi-Fi アドレスが Fixed（WPA2 以上のデフォルト）だと、DHCP のホスト名は個人名を消してただの `iPhone` になる、という報告がある。これでも `iPhone` フィルタには引っかかる。Rotating だとホスト名を出さないことがある。設定の名前を「太郎」だけに変えると、`iPhone` も `Phone` も無い。iPad は `iPad` なので `Phone` では落ちる。
+
+Android はここが穴になる。Android 8 以降、公式に `net.hostname` を空にし、DHCP クライアントはホスト名を送らない。ルータの一覧が無名、というのが今の標準に近い。古い端末は `android-xxxxxxxx` を出す。一部メーカは `HUAWEI_P9`、`Xiaomi-15`、`AQUOS`、`Pixel-8` のような機種名を出す。`Android` も `Phone` も含まれない。日本のメイン利用 OS は iPhone 49.0%、Android 50.8%（MMD、2026年2月）なので、文字列だけで拾うと Android 側の半分近くが消える。
+
+| 出やすい名前 | フィルタ `iPhone|Android|Phone` |
+|---|---|
+| `TaroのiPhone` / `iPhone` | 拾う |
+| `android-a1b2c3` | 拾う（古い端末） |
+| 名前なし（Android 8 以降の標準） | 落とす |
+| `Pixel-8` / `AQUOS` / `Galaxy-S24` | 落とす |
+| `MacBook-Pro` / `DESKTOP-XXXX` | 落とす（意図どおり） |
+| 会社 iPhone と私用 iPhone | 2台拾う |
+
+2台持ちは名前を見ても1人にならない。両方とも `iPhone` なら2人に見える。
+
+名前より強いのは、DHCP のパラメータ要求リストなどから OS を推定する方法。ホスト名が空でも iOS / Android らしい、と分かることがある。NAC やフィンガープリント製品が使う類で、文字列一致より漏れは少ない。それでも「接続したスマホの台数」であり、店内の人数ではない。
+
+ホスト名には「太郎の iPhone」のように個人名が残ることがある。人数の整数だけ残すより、識別に近い。残すならすぐ捨てるか、集計だけにする。
+
+RFC 8117 は、公衆 Wi-Fi でホスト名が漏れる現状を有害としている。
+
 ## 2台持ちは2人になるか
 
 素朴なユニーク端末カウントなら、その通り2人になる。デュアル SIM の1台は電波を出す本体が一つなので、だいたい1台。2台持ちは本体が二つある。
@@ -140,5 +167,9 @@ Google マップの「混雑する時間帯」と「現在の混雑状況」は�
 - [スマートフォンの法人契約比率は13.5％に拡大](https://www.m2ri.jp/release/detail.html?id=728)（ＭＭ総研、2026-07-24）
 - [Troubleshooting Meraki and MAC Address Randomization](https://documentation.meraki.com/Platform_Management/Dashboard_Administration/Troubleshooting_and_Support/Troubleshooting/Meraki_and_MAC_Address_Randomization)（Cisco Meraki）
 - [Use private Wi-Fi addresses on Apple devices](https://support.apple.com/en-us/102509)（Apple）
+- [Security enhancements（Android 8: DHCP がホスト名を送らない）](https://source.android.com/docs/security/enhancements)（Android Open Source Project）
+- [RFC 8117: Current Hostname Practice Considered Harmful](https://www.rfc-editor.org/rfc/rfc8117)（IETF、2017）
+- [2026年2月スマートフォンOSシェア調査](https://mmdlabo.jp/investigation/detail_2527.html)（MMD研究所）
+- [How Cato uses DHCP to identify devices](https://knowledge.catonetworks.com/docs/ja/how-cato-uses-dhcp-to-identify-devices)（Cato Networks。DHCP option 12 / 55 / 60）
 - [Indoor Crowd Estimation Scheme Using the Number of Wi-Fi Probe Requests under MAC Address Randomization](https://doi.org/10.1587/transinf.2020edp7228)（IEICE、2021）
 - [Overhead fisheye cameras for indoor monitoring: challenges and recent progress](https://www.frontiersin.org/journals/imaging/articles/10.3389/fimag.2024.1387543/full)（Frontiers in Imaging、2024）
