@@ -6,7 +6,7 @@
 
 映像から人の形を見つけ、人数や通過数に落とす技術は実用段階にある。入口の頭上カメラなら来店・退店を数えやすく、店内のエリア人数やレジ待ちも取れる。ただし棚や人で隠れると漏れ、防犯カメラ1台で店全体の正確な在店人数を出すのは難しい。顔が識別できる映像は個人情報になり得るので、他人のカメラを覗く用途は対象外。
 
-店内を全部映さなくても測れる。入口だけ数える方法と、スマホが出す Wi-Fi / Bluetooth の電波から端末数を数え、人数に換算する方法がある。端末数は人数そのものではなく、2台持ちは素朴に数えると2人になる。接続中の名前から `iPhone` だけ残すのは PC を落とすには使えるが、今の Android は名前を出さないことが多い。実務では「この店・この時間帯は端末何台で何人か」を学習してならす。個人の2台を1人に紐づける処理ではない。
+店内を全部映さなくても測れる。入口だけ数える方法と、スマホが出す Wi-Fi / Bluetooth の電波から端末数を数え、人数に換算する方法がある。端末数は人数そのものではなく、2台持ちは素朴に数えると2人になる。接続中の名前から `iPhone` だけ残すのは PC を落とすには使えるが、今の Android は名前を出さないことが多い。名前の重複は、今の IPv4 リース（または MAC）で分ければ端末としては足りる。別人とは限らない。実務では「この店・この時間帯は端末何台で何人か」を学習してならす。個人の2台を1人に紐づける処理ではない。
 
 ## 何が測れるか
 
@@ -98,6 +98,19 @@ Android はここが穴になる。Android 8 以降、公式に `net.hostname` �
 
 2台持ちは名前を見ても1人にならない。両方とも `iPhone` なら2人に見える。
 
+名前が被っても IP が違えば別、という照合は、**今つながっている端末**を数えるキーとしては正しい。DHCP は同じサブネットで、同時に同じ IPv4 を二人に貸さない。ルータのクライアント一覧はもともと MAC・IP・ホスト名の組なので、ユニークにする軸は名前ではなく、今の IPv4 リース（または MAC）である。名前でユニークにすると、みんな `iPhone` になって過少になる。
+
+ただし IP が違うのは別デバイスであって、別人とは限らない。会社携帯と私用は IP が二つ付くので、名前照合のときと同じく2人に見える。逆に、ある瞬間の IPv4 リース数は接続中の台数の近似になる。
+
+ずれるところは次のとおり。
+
+- **時間をまたぐと再利用される**: 誰かが切ったあとのアドレスを次の客がもらう。長い時間のユニーク IP 数は、同時接続数より小さくも大きくもなり得る。
+- **切り直すと別 IP になることがある**: 同じ人が Captive Portal をやり直す、リース切れ、プライベート MAC が変わると新規クライアントに見える。
+- **IPv6 を混ぜない**: 1台がリンクローカル、SLAAC、一時アドレスを同時に持つ。IPv6 アドレスをユニークに数えると水増しする。IPv4 と IPv6 を足すのも二重。
+- **今つながっている人だけ**: IP を足しても、店の Wi-Fi に入っていない客はゼロのまま。
+
+実務は「今の IPv4 リースを1行1台」と見る。名前はスマホらしいかのフィルタ、IP は重複排除、人数への変換は別係数、が役割分担になる。
+
 名前より強いのは、DHCP のパラメータ要求リストなどから OS を推定する方法。ホスト名が空でも iOS / Android らしい、と分かることがある。NAC やフィンガープリント製品が使う類で、文字列一致より漏れは少ない。それでも「接続したスマホの台数」であり、店内の人数ではない。
 
 ホスト名には「太郎の iPhone」のように個人名が残ることがある。人数の整数だけ残すより、識別に近い。残すならすぐ捨てるか、集計だけにする。
@@ -169,6 +182,7 @@ Google マップの「混雑する時間帯」と「現在の混雑状況」は�
 - [Use private Wi-Fi addresses on Apple devices](https://support.apple.com/en-us/102509)（Apple）
 - [Security enhancements（Android 8: DHCP がホスト名を送らない）](https://source.android.com/docs/security/enhancements)（Android Open Source Project）
 - [RFC 8117: Current Hostname Practice Considered Harmful](https://www.rfc-editor.org/rfc/rfc8117)（IETF、2017）
+- [RFC 8981: Temporary Address Extensions for Stateless Address Autoconfiguration in IPv6](https://www.rfc-editor.org/rfc/rfc8981)（IETF、2021。1台が複数の一時 IPv6 アドレスを持つ）
 - [2026年2月スマートフォンOSシェア調査](https://mmdlabo.jp/investigation/detail_2527.html)（MMD研究所）
 - [How Cato uses DHCP to identify devices](https://knowledge.catonetworks.com/docs/ja/how-cato-uses-dhcp-to-identify-devices)（Cato Networks。DHCP option 12 / 55 / 60）
 - [Indoor Crowd Estimation Scheme Using the Number of Wi-Fi Probe Requests under MAC Address Randomization](https://doi.org/10.1587/transinf.2020edp7228)（IEICE、2021）
