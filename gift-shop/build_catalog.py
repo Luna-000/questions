@@ -30,6 +30,7 @@ MD = ROOT / "products.md"
 OUT = ROOT / "catalog.pdf"
 FONT_PATH = "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc"
 INK = HexColor("#1a2226")
+WELCOME = HexColor("#111111")
 RULE = HexColor("#4a5c64")
 FRAME = HexColor("#243034")
 PAPER_TOP = (0.34, 0.42, 0.47)
@@ -244,14 +245,22 @@ def build():
     )
     width = A4[0] - 32 * mm
     title = ParagraphStyle("title", fontName="JP", fontSize=26, leading=34, textColor=INK, alignment=TA_LEFT, spaceAfter=6)
-    note = ParagraphStyle("note", fontName="JP", fontSize=14, leading=22, textColor=INK, spaceAfter=8)
+    note = ParagraphStyle("note", fontName="JP", fontSize=16, leading=26, textColor=WELCOME, spaceAfter=2)
     idx = ParagraphStyle("idx", fontName="JP", fontSize=15, leading=22, textColor=INK)
     head = ParagraphStyle("head", fontName="JP", fontSize=20, leading=28, textColor=INK, spaceBefore=2, spaceAfter=4)
     body = ParagraphStyle("body", fontName="JP", fontSize=14, leading=22, textColor=INK, spaceAfter=4)
 
     story = []
     story.append(Paragraph("商品台帳", title))
-    story.append(Paragraph("★は確定ですいちゃん用の商品。", note))
+    for line in (
+        "当店へようこそいらっしゃいました",
+        "欲しい商品の番号を教えてください。",
+        "※2つなどのセット物でもバラ依頼受け付けます。",
+        "★は確定ですいちゃん用です。",
+        "ほか、お好きなものをお好きなだけお選びください。",
+    ):
+        story.append(Paragraph(line, note))
+    story.append(Spacer(1, 4 * mm))
     for p in products:
         mark = "★" if p["star"] else "　"
         story.append(Paragraph(f"{mark}{p['number']}　{p['name']}", idx))
