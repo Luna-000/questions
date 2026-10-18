@@ -11,3 +11,7 @@
 ## 追加の仕方
 
 `questions/` に番号付きの Markdown を足して、この表に1行足す。
+
+## 商品
+
+開店前の商品台帳は [gift-shop/products.md](gift-shop/products.md)。番号と説明を確定してから PDF にします。
