@@ -19,7 +19,6 @@ from reportlab.platypus import (
     Paragraph,
     Spacer,
     Image,
-    CondPageBreak,
     Table,
     TableStyle,
     HRFlowable,
@@ -167,26 +166,41 @@ def build():
         story.append(Paragraph(f"{mark}{p['number']}　{p['name']}", idx))
     story.append(Spacer(1, 6 * mm))
 
+    frame_h = A4[1] - 28 * mm
+
+    def packed(flowables):
+        total = 0
+        for flow in flowables:
+            _, h = flow.wrap(width, frame_h)
+            total += h + getattr(flow, "spaceBefore", 0) + getattr(flow, "spaceAfter", 0)
+        return total
+
     for p in products:
-        block = []
         label = f"★{p['number']}" if p["star"] else p["number"]
-        block.append(HRFlowable(width="100%", thickness=0.4, color=RULE, spaceBefore=2, spaceAfter=6))
-        block.append(Paragraph(f"{label}　{p['name']}", head))
-        if p["star"]:
-            block.append(Paragraph("あげる相手が決まっている", ParagraphStyle("star", parent=small, textColor=STAR)))
-        block.append(Paragraph(p["desc"], body))
-        for line in p["notes"]:
-            block.append(Paragraph(line, small))
-        story.append(KeepTogether(block))
-        story.append(CondPageBreak(40 * mm))
         paths = [ROOT / "images" / f"{n}.jpg" for n in p["images"]]
         missing = [str(path) for path in paths if not path.exists()]
         if missing:
             raise SystemExit("missing images: " + ", ".join(missing))
         n = len(paths)
-        height = 95 * mm if n == 1 else 78 * mm if n == 2 else 62 * mm
-        story.append(image_row(paths, width, height))
-        story.append(Paragraph("画像 " + "、".join(p["images"]), caption))
+        text = [
+            HRFlowable(width="100%", thickness=0.4, color=RULE, spaceBefore=2, spaceAfter=6),
+            Paragraph(f"{label}　{p['name']}", head),
+        ]
+        if p["star"]:
+            text.append(Paragraph("あげる相手が決まっている", ParagraphStyle("star", parent=small, textColor=STAR)))
+        text.append(Paragraph(p["desc"], body))
+        for line in p["notes"]:
+            text.append(Paragraph(line, small))
+        caption_p = Paragraph("画像 " + "、".join(p["images"]), caption)
+        text_h = packed(text)
+        cap_h = packed([caption_p])
+        room = frame_h - text_h - cap_h - 4 * mm
+        preferred = 95 * mm if n == 1 else 78 * mm if n == 2 else 62 * mm
+        image_h = min(preferred, max(36 * mm, room))
+        block = text + [image_row(paths, width, image_h), caption_p]
+        if packed(block) > frame_h:
+            raise SystemExit(f"{label} does not fit on one page")
+        story.append(KeepTogether(block))
 
     doc.build(story, onFirstPage=paint_page, onLaterPages=paint_page)
     print(f"wrote {OUT} ({OUT.stat().st_size} bytes, {len(products)} products)")
