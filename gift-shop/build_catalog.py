@@ -131,6 +131,9 @@ def load_sections(text: str):
             if line.startswith("**商品説明**"):
                 desc = line.removeprefix("**商品説明**").strip()
                 continue
+            if desc and not line.startswith("- "):
+                desc = f"{desc}\n{line}"
+                continue
             if line.startswith("- 画像:"):
                 images = re.findall(r"\d{2}", line)
                 continue
@@ -274,7 +277,7 @@ def build():
             HRFlowable(width="100%", thickness=0.4, color=RULE, spaceBefore=2, spaceAfter=6),
             Paragraph(f"{label}　{p['name']}", head),
         ]
-        text.append(Paragraph(p["desc"], body))
+        text.append(Paragraph(p["desc"].replace("\n", "<br/>"), body))
         room = frame_h - packed(text) - 4 * mm
         preferred = 95 * mm if n == 1 else 78 * mm if n == 2 else 62 * mm
         image_h = min(preferred, max(36 * mm, room))
