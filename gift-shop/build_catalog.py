@@ -242,13 +242,13 @@ def build():
         author="ギフトショップ",
     )
     width = A4[0] - 32 * mm
-    title = ParagraphStyle("title", fontName="JP", fontSize=18, leading=24, textColor=INK, alignment=TA_LEFT, spaceAfter=4)
-    note = ParagraphStyle("note", fontName="JP", fontSize=9, leading=13, textColor=MUTED, spaceAfter=8)
-    idx = ParagraphStyle("idx", fontName="JP", fontSize=9, leading=13, textColor=INK)
-    head = ParagraphStyle("head", fontName="JP", fontSize=14, leading=18, textColor=INK, spaceBefore=2, spaceAfter=2)
-    body = ParagraphStyle("body", fontName="JP", fontSize=10.5, leading=16, textColor=INK, spaceAfter=4)
-    small = ParagraphStyle("small", fontName="JP", fontSize=8.5, leading=12, textColor=MUTED, spaceAfter=1)
-    caption = ParagraphStyle("caption", fontName="JP", fontSize=8, leading=11, textColor=MUTED, spaceBefore=2, spaceAfter=6)
+    title = ParagraphStyle("title", fontName="JP", fontSize=26, leading=34, textColor=INK, alignment=TA_LEFT, spaceAfter=6)
+    note = ParagraphStyle("note", fontName="JP", fontSize=14, leading=22, textColor=INK, spaceAfter=8)
+    idx = ParagraphStyle("idx", fontName="JP", fontSize=15, leading=22, textColor=INK)
+    head = ParagraphStyle("head", fontName="JP", fontSize=20, leading=28, textColor=INK, spaceBefore=2, spaceAfter=4)
+    body = ParagraphStyle("body", fontName="JP", fontSize=14, leading=22, textColor=INK, spaceAfter=4)
+    small = ParagraphStyle("small", fontName="JP", fontSize=14, leading=22, textColor=INK, spaceAfter=2)
+    caption = ParagraphStyle("caption", fontName="JP", fontSize=12, leading=16, textColor=INK, spaceBefore=3, spaceAfter=8)
 
     story = []
     story.append(Paragraph("商品台帳", title))
