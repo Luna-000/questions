@@ -32,10 +32,10 @@ OUT = ROOT / "catalog.pdf"
 FONT_PATH = "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc"
 INK = HexColor("#1f1a14")
 MUTED = HexColor("#5c5146")
-RULE = HexColor("#b7c3c9")
+RULE = HexColor("#5c6c74")
 STAR = HexColor("#8a3b32")
-PAPER = HexColor("#dfe7ec")
-SNOW = HexColor("#f4f8fa")
+PAPER = HexColor("#8f9fa8")
+SNOW = HexColor("#c5d0d6")
 
 
 def paint_page(canvas, doc):
