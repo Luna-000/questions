@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """商品台帳 Markdown から、番号・説明・写真の PDF を作る。"""
 
+import random
 import re
 from io import BytesIO
 from pathlib import Path
@@ -31,8 +32,22 @@ OUT = ROOT / "catalog.pdf"
 FONT_PATH = "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc"
 INK = HexColor("#1f1a14")
 MUTED = HexColor("#5c5146")
-RULE = HexColor("#c9b79a")
+RULE = HexColor("#b7c3c9")
 STAR = HexColor("#8a3b32")
+PAPER = HexColor("#dfe7ec")
+SNOW = HexColor("#f4f8fa")
+
+
+def paint_page(canvas, doc):
+    canvas.saveState()
+    w, h = A4
+    canvas.setFillColor(PAPER)
+    canvas.rect(0, 0, w, h, fill=1, stroke=0)
+    rng = random.Random(18)
+    canvas.setFillColor(SNOW)
+    for _ in range(70):
+        canvas.circle(rng.uniform(0, w), rng.uniform(0, h), rng.uniform(0.35, 1.35), fill=1, stroke=0)
+    canvas.restoreState()
 
 
 def load_sections(text: str):
@@ -173,7 +188,7 @@ def build():
         story.append(image_row(paths, width, height))
         story.append(Paragraph("画像 " + "、".join(p["images"]), caption))
 
-    doc.build(story)
+    doc.build(story, onFirstPage=paint_page, onLaterPages=paint_page)
     print(f"wrote {OUT} ({OUT.stat().st_size} bytes, {len(products)} products)")
 
 
