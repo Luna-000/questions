@@ -193,7 +193,7 @@ def build():
 
     story = []
     story.append(Paragraph("商品台帳", title))
-    story.append(Paragraph("★は、あげる相手が決まっている商品。番号は 01 から。", note))
+    story.append(Paragraph("★は確定ですいちゃん用の商品。番号は 01 から。", note))
     for p in products:
         mark = "★" if p["star"] else "　"
         story.append(Paragraph(f"{mark}{p['number']}　{p['name']}", idx))
