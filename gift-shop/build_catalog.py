@@ -35,6 +35,7 @@ RULE = HexColor("#5c6c74")
 STAR = HexColor("#8a3b32")
 PAPER = HexColor("#8f9fa8")
 SNOW = HexColor("#c5d0d6")
+FRAME = HexColor("#2c353a")
 
 
 def paint_page(canvas, doc):
@@ -105,26 +106,58 @@ def jpeg_bytes(path: Path, max_edge: int) -> BytesIO:
     return buf
 
 
+def framed_image(path, box_w, box_h):
+    pad = 1.1 * mm
+    stroke = 1.8
+    im = PILImage.open(path)
+    w, h = im.size
+    scale = min((box_w - 2 * pad - stroke) / w, (box_h - 2 * pad - stroke) / h)
+    img = Image(jpeg_bytes(path, 1400), width=w * scale, height=h * scale)
+    table = Table(
+        [[img]],
+        colWidths=[img.drawWidth + 2 * pad + stroke],
+        rowHeights=[img.drawHeight + 2 * pad + stroke],
+    )
+    table.setStyle(
+        TableStyle(
+            [
+                ("BOX", (0, 0), (-1, -1), stroke, FRAME),
+                ("LEFTPADDING", (0, 0), (-1, -1), pad),
+                ("RIGHTPADDING", (0, 0), (-1, -1), pad),
+                ("TOPPADDING", (0, 0), (-1, -1), pad),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), pad),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+            ]
+        )
+    )
+    table.hAlign = "CENTER"
+    return table
+
+
 def image_row(paths, max_width, max_height):
-    gap = 3 * mm
+    gap = 3.5 * mm
     n = len(paths)
     cell_w = (max_width - gap * (n - 1)) / n
-    flows = []
-    for path in paths:
-        buf = jpeg_bytes(path, 1400)
-        im = PILImage.open(path)
-        w, h = im.size
-        scale = min(cell_w / w, max_height / h)
-        flows.append(Image(buf, width=w * scale, height=h * scale))
+    frames = [framed_image(path, cell_w, max_height) for path in paths]
     if n == 1:
-        return flows[0]
-    table = Table([flows], colWidths=[cell_w] * n, hAlign="LEFT")
+        return frames[0]
+    row = []
+    cols = []
+    for i, frame in enumerate(frames):
+        row.append(frame)
+        cols.append(cell_w)
+        if i != n - 1:
+            row.append("")
+            cols.append(gap)
+    table = Table([row], colWidths=cols, hAlign="CENTER")
     table.setStyle(
         TableStyle(
             [
                 ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
                 ("LEFTPADDING", (0, 0), (-1, -1), 0),
-                ("RIGHTPADDING", (0, 0), (-1, -1), gap),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
                 ("TOPPADDING", (0, 0), (-1, -1), 0),
                 ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
             ]
