@@ -7,7 +7,7 @@ from io import BytesIO
 from pathlib import Path
 
 from PIL import Image as PILImage
-from reportlab.lib.colors import HexColor
+from reportlab.lib.colors import Color, HexColor
 from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
@@ -29,24 +29,83 @@ ROOT = Path(__file__).resolve().parent
 MD = ROOT / "products.md"
 OUT = ROOT / "catalog.pdf"
 FONT_PATH = "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc"
-INK = HexColor("#1f1a14")
-MUTED = HexColor("#5c5146")
-RULE = HexColor("#5c6c74")
-STAR = HexColor("#8a3b32")
-PAPER = HexColor("#8f9fa8")
-SNOW = HexColor("#c5d0d6")
-FRAME = HexColor("#2c353a")
+INK = HexColor("#1a2226")
+MUTED = HexColor("#3e4c53")
+RULE = HexColor("#4a5c64")
+STAR = HexColor("#8d3d42")
+FRAME = HexColor("#243034")
+PAPER_TOP = (0.34, 0.42, 0.47)
+PAPER_MID = (0.48, 0.56, 0.60)
+PAPER_BOTTOM = (0.30, 0.38, 0.43)
+
+
+def mix(a, b, t):
+    return Color(
+        a[0] + (b[0] - a[0]) * t,
+        a[1] + (b[1] - a[1]) * t,
+        a[2] + (b[2] - a[2]) * t,
+    )
+
+
+def soft_disc(canvas, cx, cy, radius, rgb, alpha):
+    steps = 16
+    for i in range(steps, 0, -1):
+        t = i / steps
+        canvas.setFillColor(Color(rgb[0], rgb[1], rgb[2], alpha=alpha * t * t))
+        canvas.circle(cx, cy, radius * (0.35 + 0.65 * t), stroke=0, fill=1)
+
+
+def corner_marks(canvas, x, y, w, h, arm, color):
+    canvas.setStrokeColor(color)
+    canvas.setLineWidth(0.7)
+    canvas.setLineCap(1)
+    for cx, cy, sx, sy in (
+        (x, y + h, 1, -1),
+        (x + w, y + h, -1, -1),
+        (x, y, 1, 1),
+        (x + w, y, -1, 1),
+    ):
+        canvas.line(cx, cy, cx + sx * arm, cy)
+        canvas.line(cx, cy, cx, cy + sy * arm)
 
 
 def paint_page(canvas, doc):
     canvas.saveState()
     w, h = A4
-    canvas.setFillColor(PAPER)
-    canvas.rect(0, 0, w, h, fill=1, stroke=0)
+    bands = 110
+    band_h = h / bands
+    for i in range(bands):
+        t = i / (bands - 1)
+        if t < 0.62:
+            color = mix(PAPER_TOP, PAPER_MID, t / 0.62)
+        else:
+            color = mix(PAPER_MID, PAPER_BOTTOM, (t - 0.62) / 0.38)
+        canvas.setFillColor(color)
+        canvas.rect(0, h - (i + 1) * band_h, w, band_h + 0.6, stroke=0, fill=1)
+
+    soft_disc(canvas, w * 0.78, h * 0.90, 70 * mm, (0.62, 0.70, 0.74), 0.42)
+    soft_disc(canvas, w * 0.08, h * 0.12, 58 * mm, (0.22, 0.29, 0.33), 0.45)
+    soft_disc(canvas, w * 0.96, h * 0.42, 36 * mm, (0.58, 0.66, 0.70), 0.22)
+
     rng = random.Random(18)
-    canvas.setFillColor(SNOW)
-    for _ in range(70):
-        canvas.circle(rng.uniform(0, w), rng.uniform(0, h), rng.uniform(0.35, 1.35), fill=1, stroke=0)
+    for _ in range(22):
+        x = rng.uniform(0, w)
+        y = rng.uniform(0, h)
+        if min(x, y, w - x, h - y) > 12 * mm:
+            continue
+        radius = rng.uniform(0.7, 1.8)
+        canvas.setFillColor(Color(0.84, 0.89, 0.91, alpha=0.45))
+        canvas.circle(x, y, radius, stroke=0, fill=1)
+
+    inset = 7.5 * mm
+    canvas.setStrokeColor(HexColor("#d7e1e6"))
+    canvas.setLineWidth(0.8)
+    canvas.rect(inset, inset, w - 2 * inset, h - 2 * inset, stroke=1, fill=0)
+    canvas.setStrokeColor(HexColor("#3e4c54"))
+    canvas.setLineWidth(0.35)
+    inner = 9.2 * mm
+    canvas.rect(inner, inner, w - 2 * inner, h - 2 * inner, stroke=1, fill=0)
+    corner_marks(canvas, inner, inner, w - 2 * inner, h - 2 * inner, 4.2 * mm, HexColor("#d7e1e6"))
     canvas.restoreState()
 
 
