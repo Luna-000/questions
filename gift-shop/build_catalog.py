@@ -32,7 +32,6 @@ FONT_PATH = "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc"
 INK = HexColor("#1a2226")
 MUTED = HexColor("#3e4c53")
 RULE = HexColor("#4a5c64")
-STAR = HexColor("#8d3d42")
 FRAME = HexColor("#243034")
 PAPER_TOP = (0.34, 0.42, 0.47)
 PAPER_MID = (0.48, 0.56, 0.60)
@@ -247,8 +246,6 @@ def build():
     idx = ParagraphStyle("idx", fontName="JP", fontSize=15, leading=22, textColor=INK)
     head = ParagraphStyle("head", fontName="JP", fontSize=20, leading=28, textColor=INK, spaceBefore=2, spaceAfter=4)
     body = ParagraphStyle("body", fontName="JP", fontSize=14, leading=22, textColor=INK, spaceAfter=4)
-    small = ParagraphStyle("small", fontName="JP", fontSize=14, leading=22, textColor=INK, spaceAfter=2)
-    caption = ParagraphStyle("caption", fontName="JP", fontSize=12, leading=16, textColor=INK, spaceBefore=3, spaceAfter=8)
 
     story = []
     story.append(Paragraph("商品台帳", title))
@@ -278,18 +275,11 @@ def build():
             HRFlowable(width="100%", thickness=0.4, color=RULE, spaceBefore=2, spaceAfter=6),
             Paragraph(f"{label}　{p['name']}", head),
         ]
-        if p["star"]:
-            text.append(Paragraph("あげる相手が決まっている", ParagraphStyle("star", parent=small, textColor=STAR)))
         text.append(Paragraph(p["desc"], body))
-        for line in p["notes"]:
-            text.append(Paragraph(line, small))
-        caption_p = Paragraph("画像 " + "、".join(p["images"]), caption)
-        text_h = packed(text)
-        cap_h = packed([caption_p])
-        room = frame_h - text_h - cap_h - 4 * mm
+        room = frame_h - packed(text) - 4 * mm
         preferred = 95 * mm if n == 1 else 78 * mm if n == 2 else 62 * mm
         image_h = min(preferred, max(36 * mm, room))
-        block = text + [image_row(paths, width, image_h), caption_p]
+        block = text + [image_row(paths, width, image_h)]
         if packed(block) > frame_h:
             raise SystemExit(f"{label} does not fit on one page")
         story.append(KeepTogether(block))
