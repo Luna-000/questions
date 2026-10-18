@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """商品台帳 Markdown から、番号・説明・写真の PDF を作る。"""
 
-import random
 import re
 from io import BytesIO
 from pathlib import Path
@@ -29,82 +28,79 @@ ROOT = Path(__file__).resolve().parent
 MD = ROOT / "products.md"
 OUT = ROOT / "catalog.pdf"
 FONT_PATH = "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc"
-INK = HexColor("#1a2226")
-MUTED = HexColor("#3e4c53")
-RULE = HexColor("#4a5c64")
-FRAME = HexColor("#243034")
-PAPER_TOP = (0.34, 0.42, 0.47)
-PAPER_MID = (0.48, 0.56, 0.60)
-PAPER_BOTTOM = (0.30, 0.38, 0.43)
+INK = HexColor("#f6f1e6")
+RULE = HexColor("#e4d0ae")
+FRAME = HexColor("#f0e2c8")
+GLAZE = HexColor("#12357f")
+GLAZE_DEEP = HexColor("#0c2868")
+TILE_A = HexColor("#1b4ea8")
+TILE_B = HexColor("#245db8")
+BAR = HexColor("#184496")
+GOLD = HexColor("#c6a36e")
 
 
-def mix(a, b, t):
-    return Color(
-        a[0] + (b[0] - a[0]) * t,
-        a[1] + (b[1] - a[1]) * t,
-        a[2] + (b[2] - a[2]) * t,
-    )
-
-
-def soft_disc(canvas, cx, cy, radius, rgb, alpha):
-    steps = 16
-    for i in range(steps, 0, -1):
-        t = i / steps
-        canvas.setFillColor(Color(rgb[0], rgb[1], rgb[2], alpha=alpha * t * t))
-        canvas.circle(cx, cy, radius * (0.35 + 0.65 * t), stroke=0, fill=1)
-
-
-def corner_marks(canvas, x, y, w, h, arm, color):
-    canvas.setStrokeColor(color)
+def lantern(canvas, cx, cy, s, fill):
+    k = s * 0.55
+    path = canvas.beginPath()
+    path.moveTo(cx, cy + s)
+    path.curveTo(cx + s * 0.7, cy + s, cx + k * 1.05, cy + s * 0.55, cx + k, cy + k)
+    path.curveTo(cx + s * 0.55, cy + k * 1.05, cx + s, cy + s * 0.7, cx + s, cy)
+    path.curveTo(cx + s, cy - s * 0.7, cx + s * 0.55, cy - k * 1.05, cx + k, cy - k)
+    path.curveTo(cx + k * 1.05, cy - s * 0.55, cx + s * 0.7, cy - s, cx, cy - s)
+    path.curveTo(cx - s * 0.7, cy - s, cx - k * 1.05, cy - s * 0.55, cx - k, cy - k)
+    path.curveTo(cx - s * 0.55, cy - k * 1.05, cx - s, cy - s * 0.7, cx - s, cy)
+    path.curveTo(cx - s, cy + s * 0.7, cx - s * 0.55, cy + k * 1.05, cx - k, cy + k)
+    path.curveTo(cx - k * 1.05, cy + s * 0.55, cx - s * 0.7, cy + s, cx, cy + s)
+    canvas.setFillColor(fill)
+    canvas.setStrokeColor(GOLD)
     canvas.setLineWidth(0.7)
-    canvas.setLineCap(1)
-    for cx, cy, sx, sy in (
-        (x, y + h, 1, -1),
-        (x + w, y + h, -1, -1),
-        (x, y, 1, 1),
-        (x + w, y, -1, 1),
-    ):
-        canvas.line(cx, cy, cx + sx * arm, cy)
-        canvas.line(cx, cy, cx, cy + sy * arm)
+    canvas.drawPath(path, fill=1, stroke=1)
 
 
 def paint_page(canvas, doc):
     canvas.saveState()
     w, h = A4
-    bands = 110
-    band_h = h / bands
-    for i in range(bands):
-        t = i / (bands - 1)
-        if t < 0.62:
-            color = mix(PAPER_TOP, PAPER_MID, t / 0.62)
+    canvas.setFillColor(GLAZE)
+    canvas.rect(0, 0, w, h, fill=1, stroke=0)
+    canvas.setFillColor(Color(0.10, 0.22, 0.48, alpha=0.35))
+    canvas.rect(0, 0, w, h * 0.22, fill=1, stroke=0)
+    canvas.rect(0, h * 0.78, w, h * 0.22, fill=1, stroke=0)
+
+    pitch = 32 * mm
+    bar_w = 9 * mm
+    x = -pitch * 0.15
+    col = 0
+    while x < w + pitch:
+        if col % 3 == 2:
+            canvas.setFillColor(BAR)
+            canvas.rect(x, 0, bar_w, h, fill=1, stroke=0)
+            canvas.setStrokeColor(GOLD)
+            canvas.setLineWidth(0.45)
+            canvas.line(x, 0, x, h)
+            canvas.line(x + bar_w, 0, x + bar_w, h)
+            y = 0
+            while y < h:
+                canvas.line(x, y, x + bar_w, y)
+                y += pitch * 0.42
+            x += bar_w + 4 * mm
         else:
-            color = mix(PAPER_MID, PAPER_BOTTOM, (t - 0.62) / 0.38)
-        canvas.setFillColor(color)
-        canvas.rect(0, h - (i + 1) * band_h, w, band_h + 0.6, stroke=0, fill=1)
+            y = pitch * 0.42
+            row = 0
+            while y < h + pitch:
+                lantern(canvas, x + pitch * 0.48, y, pitch * 0.42, TILE_A if (row + col) % 2 == 0 else TILE_B)
+                y += pitch
+                row += 1
+            x += pitch
+        col += 1
 
-    soft_disc(canvas, w * 0.78, h * 0.90, 70 * mm, (0.62, 0.70, 0.74), 0.42)
-    soft_disc(canvas, w * 0.08, h * 0.12, 58 * mm, (0.22, 0.29, 0.33), 0.45)
-    soft_disc(canvas, w * 0.96, h * 0.42, 36 * mm, (0.58, 0.66, 0.70), 0.22)
-
-    rng = random.Random(18)
-    for _ in range(22):
-        x = rng.uniform(0, w)
-        y = rng.uniform(0, h)
-        if min(x, y, w - x, h - y) > 12 * mm:
-            continue
-        radius = rng.uniform(0.7, 1.8)
-        canvas.setFillColor(Color(0.84, 0.89, 0.91, alpha=0.45))
-        canvas.circle(x, y, radius, stroke=0, fill=1)
-
-    inset = 7.5 * mm
-    canvas.setStrokeColor(HexColor("#d7e1e6"))
-    canvas.setLineWidth(0.8)
+    inset = 7.2 * mm
+    canvas.setStrokeColor(GOLD)
+    canvas.setLineWidth(1.1)
     canvas.rect(inset, inset, w - 2 * inset, h - 2 * inset, stroke=1, fill=0)
-    canvas.setStrokeColor(HexColor("#3e4c54"))
-    canvas.setLineWidth(0.35)
-    inner = 9.2 * mm
+    canvas.setStrokeColor(GLAZE_DEEP)
+    canvas.setLineWidth(0.4)
+    inner = 8.6 * mm
     canvas.rect(inner, inner, w - 2 * inner, h - 2 * inner, stroke=1, fill=0)
-    corner_marks(canvas, inner, inner, w - 2 * inner, h - 2 * inner, 4.2 * mm, HexColor("#d7e1e6"))
     canvas.restoreState()
 
 
