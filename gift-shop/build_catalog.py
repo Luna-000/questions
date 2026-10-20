@@ -257,6 +257,7 @@ def build():
         "ご所望の品の番号をお申し付けください。",
         "※2つなどのセット物でもバラ依頼受け付けます。",
         "★は確定ですいちゃん用です。",
+        "返品・辞退については店主と要相談。",
         "ほか、お心にかなう品をご随意にお選びください。",
     ):
         story.append(Paragraph(line, note))
@@ -294,6 +295,14 @@ def build():
         if packed(block) > frame_h:
             raise SystemExit(f"{label} does not fit on one page")
         story.append(KeepTogether(block))
+
+    closing = [
+        HRFlowable(width="100%", thickness=0.4, color=RULE, spaceBefore=8, spaceAfter=8),
+        Paragraph("店主より", head),
+        Paragraph("良いものを見つけるたびに仕入れた結果、在庫過多となりました。", body),
+        Paragraph("初回のお客様につきましては遠慮なくご所望ください。", body),
+    ]
+    story.append(KeepTogether(closing))
 
     doc.build(story, onFirstPage=paint_page, onLaterPages=paint_page)
     print(f"wrote {OUT} ({OUT.stat().st_size} bytes, {len(products)} products)")
