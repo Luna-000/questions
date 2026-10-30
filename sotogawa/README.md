@@ -4,6 +4,12 @@
 
 PC のブラウザでも、Android や iPhone のブラウザでも同じページが開きます。通信が入る場所なら、特別なインストールは要りません。
 
+## 公開アドレス
+
+ブラウザでそのまま開くアドレスです。ダウンロードは要りません。
+
+https://htmlpreview.github.io/?https://github.com/Luna-000/questions/blob/cursor/sotogawa-pages-d480/index.html
+
 ## 開き方
 
 `index.html` をブラウザで開くか、このフォルダを静的サイトとして配信します。
