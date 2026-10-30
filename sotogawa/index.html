@@ -43,9 +43,11 @@
       <section class="controls" aria-label="絞り込み">
         <label class="search">
           <span>店名・場所・キーワード</span>
-          <input id="q" type="search" enterkeyhint="search" placeholder="葉山、古民家、紅茶、渓谷" autocomplete="off">
+          <input id="q" type="search" enterkeyhint="search" placeholder="葉山、静か、パフェ、古民家" autocomplete="off">
         </label>
-        <div class="scroller" id="moods" role="group" aria-label="気分"></div>
+        <div class="scroller" id="moods" role="group" aria-label="場所の気分"></div>
+        <p class="filter-label" id="visit-label">過ごし方</p>
+        <div class="scroller" id="visits" role="group" aria-labelledby="visit-label"></div>
         <div class="scroller" id="prefs" role="group" aria-label="都県"></div>
         <div class="scroller" id="flags" role="group" aria-label="行き方"></div>
         <div class="resultbar">
@@ -70,6 +72,7 @@
         <h2>この手帳について</h2>
         <p>ソトガワは、東京・神奈川・千葉・埼玉・茨城・栃木・群馬で、景色か建物か世界観が、いつもの用事の延長ではないカフェを自分で調べるための案内です。点数も順位もありません。26軒だけを、出どころが辿れる範囲で載せています。</p>
         <p>営業時間は2026年10月30日時点の公開情報です。変わるので、出かける前に各店のリンクを開いてください。「公式の時間」「案内の目安」「当日確認」のどれかを、店のページに書いてあります。</p>
+        <p>過ごし方は、その店の公開文に様子が書いてあるものだけ付けています。席の幅は測っていません。ラウンジ、テラス、屋根のない席と読める店を「席広め」にしています。静けさや長居も、そう書かれている店だけです。</p>
         <p>しおりはこの端末のブラウザにだけ残ります。PCでも、Android や iPhone のブラウザでも同じページが開きます。ホーム画面に追加すると、アプリのように起動できます。</p>
         <p>位置の検索には国土地理院の住所検索を使いました。地図タイルは OpenStreetMap の著作物です。</p>
       </footer>
