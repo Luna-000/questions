@@ -1,6 +1,6 @@
 {
-  "name": "ソトガワ",
-  "short_name": "ソトガワ",
+  "name": "ちょっとソト",
+  "short_name": "ちょっとソト",
   "description": "関東1都6県で、日常の外側にあるカフェを調べる手帳。",
   "start_url": "./index.html",
   "scope": "./",
