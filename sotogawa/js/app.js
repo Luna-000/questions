@@ -287,6 +287,7 @@ function card(cafe) {
         <p class="kicker">${esc(mood.label)} · ${esc(cafe.prefecture)} · ${esc(cafe.locality)}</p>
         <h2>${esc(cafe.name)}</h2>
         <p class="lead">${esc(cafe.lead)}</p>
+        ${recommendations(cafe)[0] ? `<p class="pick">おすすめ ${esc(recommendations(cafe)[0])}</p>` : ""}
         <div class="tags">${tags.map((tag) => `<span class="tagchip">${esc(tag)}</span>`).join("")}</div>
       </a>
       ${heartButton(cafe)}
@@ -325,8 +326,8 @@ function renderControls() {
   if (q.value !== state.q) q.value = state.q;
   const placeholders = {
     cafe: "吉祥寺、ケーキ、谷中、静かに",
-    izakaya: "神楽坂、蔵、蕎麦、伊香保",
-    bar: "銀座、カクテル、夜景、静かに",
+    izakaya: "立川、焼き鳥、海鮮、川越",
+    bar: "吉祥寺、ワイン、横浜、カクテル",
   };
   q.placeholder = placeholders[state.kind] || placeholders.cafe;
   const pool = kindPlaces();
@@ -389,6 +390,18 @@ function destroyDetailMap() {
   }
 }
 
+function recommendations(cafe) {
+  if (cafe.picks?.length) return cafe.picks;
+  if (!cafe.signature) return [];
+  return cafe.signature.split("、").map((item) => item.trim()).filter(Boolean);
+}
+
+function recommendFact(cafe) {
+  const items = recommendations(cafe);
+  if (!items.length) return "";
+  return fact("おすすめ", `<ul class="picks">${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul><span class="fine">店の公開文に名前があるもの</span>`);
+}
+
 function fact(term, html) {
   if (!html) return "";
   return `<div><dt>${esc(term)}</dt><dd>${html}</dd></div>`;
@@ -435,7 +448,7 @@ function renderDetail() {
           ${fact("行き方", esc(cafe.access))}
           ${fact("電話", phone)}
           ${fact("車", esc(cafe.parking))}
-          ${fact("席で", esc(cafe.signature))}
+          ${recommendFact(cafe)}
         </dl>
         ${notes}
         <div class="actions">

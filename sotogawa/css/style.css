@@ -255,6 +255,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.35; }
 }
 .card-link h2 { margin: 0.2rem 0 0.35rem; font-size: 1.28rem; text-wrap: balance; }
 .lead { margin: 0; }
+.pick { margin: 0.35rem 0 0; color: var(--seal); font-size: 0.92rem; }
 .tags { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
 .tagchip {
   font-size: 0.75rem;
@@ -366,6 +367,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.35; }
 }
 .facts dt { color: var(--muted); }
 .facts dd { margin: 0; }
+.picks { margin: 0; padding-left: 1.1rem; }
+.picks li { margin: 0.1rem 0; }
 .facts a.map-open {
   display: inline-flex;
   align-items: center;
