@@ -5,6 +5,7 @@ const MAP_KEY = "sotogawa.map";
 const state = {
   view: "browse",
   id: null,
+  kind: "cafe",
   q: "",
   pref: "all",
   moods: new Set(),
@@ -36,6 +37,19 @@ function esc(value) {
 
 function moodOf(id) {
   return MOODS.find((mood) => mood.id === id) || MOODS[0];
+}
+
+function kindOf(place) {
+  return KINDS.find((kind) => kind.id === (place?.kind || "cafe")) || KINDS[0];
+}
+
+function kindPlaces() {
+  return CAFES.filter((place) => kindOf(place).id === state.kind);
+}
+
+function savedInKind() {
+  const ids = new Set(kindPlaces().map((place) => place.id));
+  return loadShiori().filter((id) => ids.has(id));
 }
 
 function loadShiori() {
@@ -78,9 +92,10 @@ function tokyoDate() {
     hash ^= key.charCodeAt(i);
     hash = Math.imul(hash, 16777619);
   }
+  const pool = kindPlaces();
   const [year, month, day] = key.split("-");
   return {
-    cafe: CAFES[(hash >>> 0) % CAFES.length],
+    cafe: pool[(hash >>> 0) % pool.length],
     label: `${year}年${Number(month)}月${Number(day)}日`,
   };
 }
@@ -95,6 +110,7 @@ function readHash() {
     return;
   }
   const params = new URLSearchParams(query);
+  state.kind = KINDS.some((kind) => kind.id === params.get("kind")) ? params.get("kind") : "cafe";
   state.q = params.get("q") || "";
   state.pref = PREFS.includes(params.get("pref")) ? params.get("pref") : "all";
   state.moods = new Set((params.get("mood") || "").split(",").filter((id) => MOODS.some((mood) => mood.id === id)));
@@ -114,6 +130,7 @@ function readHash() {
 
 function listHash(view) {
   const params = new URLSearchParams();
+  if (state.kind !== "cafe") params.set("kind", state.kind);
   if (state.q) params.set("q", state.q);
   if (state.pref !== "all") params.set("pref", state.pref);
   if (state.moods.size) params.set("mood", [...state.moods].join(","));
@@ -185,13 +202,14 @@ function goBack() {
 
 function haystack(cafe) {
   return [
-    cafe.name, cafe.kana, cafe.prefecture, cafe.locality, cafe.address,
+    cafe.name, cafe.kana, kindOf(cafe).label, cafe.prefecture, cafe.locality, cafe.address,
     cafe.lead, cafe.story, cafe.signature, cafe.access, cafe.hours,
     ...cafe.moods.map((id) => moodOf(id).label),
   ].join(" ").toLowerCase().replace(/\s+/g, "");
 }
 
 function matches(cafe) {
+  if (kindOf(cafe).id !== state.kind) return false;
   if (state.view === "shiori" && !isSaved(cafe.id)) return false;
   if (state.pref !== "all" && cafe.prefecture !== state.pref) return false;
   const selected = [...state.moods];
@@ -279,7 +297,8 @@ function card(cafe) {
 function renderToday() {
   const el = $("#today");
   if (state.view === "shiori") {
-    el.innerHTML = `<p class="today-kicker">しおり</p><strong>この端末だけに残る、行きたい店。</strong><span>アカウントはない。ブラウザのデータを消すと、一緒に消える。</span>`;
+    const label = kindOf({ kind: state.kind }).label;
+    el.innerHTML = `<p class="today-kicker">しおり · ${esc(label)}</p><strong>この端末だけに残る、行きたい店。</strong><span>今開いている種類だけを出す。アカウントはない。</span>`;
     return;
   }
   const today = tokyoDate();
@@ -290,19 +309,42 @@ function renderToday() {
     </a>`;
 }
 
+function renderKinds() {
+  const buttons = (withCount) => KINDS.map((kind) => {
+    const on = state.kind === kind.id;
+    const n = CAFES.filter((place) => kindOf(place).id === kind.id).length;
+    const count = withCount ? `<span>${n}</span>` : "";
+    return `<button type="button" role="tab" data-kind="${kind.id}" aria-selected="${on}">${esc(kind.label)}${count}</button>`;
+  }).join("");
+  $("#kinds").innerHTML = buttons(true);
+  $("#tab-kinds").innerHTML = buttons(false);
+}
+
 function renderControls() {
   const q = $("#q");
   if (q.value !== state.q) q.value = state.q;
-  const moodButtons = (group) => MOODS.filter((mood) => mood.group === group).map((mood) => {
+  const placeholders = {
+    cafe: "葉山、静か、パフェ、古民家",
+    izakaya: "神楽坂、蔵、蕎麦、伊香保",
+    bar: "銀座、カクテル、夜景、静かに",
+  };
+  q.placeholder = placeholders[state.kind] || placeholders.cafe;
+  const pool = kindPlaces();
+  const moodButtons = (group) => MOODS.filter((mood) => mood.group === group && (pool.some((cafe) => cafe.moods.includes(mood.id)) || state.moods.has(mood.id))).map((mood) => {
     const on = state.moods.has(mood.id);
     return `<button type="button" class="chip" data-mood="${mood.id}" aria-pressed="${on}"><span class="dot" data-mood="${mood.id}"></span>${esc(mood.label)}</button>`;
   }).join("");
-  $("#moods").innerHTML = moodButtons("scene");
-  $("#visits").innerHTML = moodButtons("visit");
-  const counts = Object.fromEntries(PREFS.map((pref) => [pref, CAFES.filter((cafe) => cafe.prefecture === pref).length]));
+  const sceneHtml = moodButtons("scene");
+  const visitHtml = moodButtons("visit");
+  $("#moods").innerHTML = sceneHtml;
+  $("#moods").hidden = !sceneHtml;
+  $("#visits").innerHTML = visitHtml;
+  $("#visits").hidden = !visitHtml;
+  $("#visit-label").hidden = !visitHtml;
+  const counts = Object.fromEntries(PREFS.map((pref) => [pref, pool.filter((cafe) => cafe.prefecture === pref).length]));
   $("#prefs").innerHTML = [`all`, ...PREFS].map((pref) => {
     const on = state.pref === pref;
-    const label = pref === "all" ? `すべて ${CAFES.length}` : `${pref} ${counts[pref]}`;
+    const label = pref === "all" ? `すべて ${pool.length}` : `${pref} ${counts[pref]}`;
     return `<button type="button" class="chip" data-pref="${esc(pref)}" aria-pressed="${on}">${esc(label)}</button>`;
   }).join("");
   const flags = [
@@ -314,8 +356,10 @@ function renderControls() {
   $("#flags").innerHTML = flags.map(([key, label, on]) =>
     `<button type="button" class="chip" data-flag="${key}" aria-pressed="${on}">${label}</button>`).join("");
   const list = visibleCafes();
+  const kindLabel = kindOf({ kind: state.kind }).label;
   const scope = state.view === "shiori" ? "しおり" : "手帳";
-  $("#count").textContent = `${scope} ${state.view === "shiori" ? loadShiori().length : CAFES.length} 軒のうち ${list.length} 軒`;
+  const total = state.view === "shiori" ? savedInKind().length : pool.length;
+  $("#count").textContent = `${scope}の${kindLabel} ${total} 軒のうち ${list.length} 軒`;
   $("#sort").value = state.sort;
   $("#reset").hidden = !filtersActive();
   $("#map-toggle").setAttribute("aria-pressed", String(state.mapOpen));
@@ -327,9 +371,10 @@ function renderList() {
   const list = visibleCafes();
   const root = $("#list");
   if (!list.length) {
-    const noun = state.view === "shiori" && !loadShiori().length
-      ? "しおりは、まだ空です。店のカードの栞を押すと、ここに残ります。"
-      : "この条件に合う店は、手帳にありません。";
+    const kindLabel = kindOf({ kind: state.kind }).label;
+    const noun = state.view === "shiori" && !savedInKind().length
+      ? `この種類のしおりは、まだ空です。${kindLabel}のカードの栞を押すと、ここに残ります。`
+      : `この条件に合う${kindLabel}は、手帳にありません。`;
     root.innerHTML = `<div class="empty"><p>${noun}</p>${filtersActive() ? '<button class="textbtn" type="button" id="clear-empty">条件をクリア</button>' : ""}</div>`;
     $("#clear-empty")?.addEventListener("click", clearFilters);
     return;
@@ -361,18 +406,20 @@ function renderDetail() {
   }
   const mood = moodOf(cafe.moods[0]);
   const moodLabels = cafe.moods.map((id) => moodOf(id).label).join(" · ");
+  const checked = (cafe.checked || "2026-10-30").split("-");
+  const checkedLabel = `${checked[0]}年${Number(checked[1])}月${Number(checked[2])}日`;
   const saved = isSaved(cafe.id);
   const phone = cafe.phone ? `<a href="tel:${esc(cafe.phone)}">${esc(cafe.phone)}</a>` : "";
   const links = cafe.links.map((link, index) =>
     `<a class="${index === 0 ? "" : "ghost"}" href="${esc(link.href)}" target="_blank" rel="noopener noreferrer">${esc(link.label)}</a>`).join("");
   const notes = cafe.notes.length ? `<ul class="notes">${cafe.notes.map((note) => `<li>${esc(note)}</li>`).join("")}</ul>` : "";
-  const nearby = CAFES.filter((item) => item.id !== cafe.id && (item.prefecture === cafe.prefecture || item.moods.some((id) => cafe.moods.includes(id))))
+  const nearby = CAFES.filter((item) => item.id !== cafe.id && kindOf(item).id === kindOf(cafe).id && (item.prefecture === cafe.prefecture || item.moods.some((id) => cafe.moods.includes(id))))
     .sort((a, b) => (a.prefecture === cafe.prefecture ? 0 : 1) - (b.prefecture === cafe.prefecture ? 0 : 1))
     .slice(0, 3);
   root.innerHTML = `
     <button class="back" type="button" id="back">一覧へ戻る</button>
     <header class="hero" data-mood="${esc(mood.id)}">
-      <p class="kicker">${esc(moodLabels)} · ${esc(cafe.prefecture)}</p>
+      <p class="kicker">${esc(kindOf(cafe).label)} · ${esc(moodLabels)} · ${esc(cafe.prefecture)}</p>
       <h2 tabindex="-1">${esc(cafe.name)}</h2>
       <p class="kana">${esc(cafe.kana)}</p>
       <p class="lead">${esc(cafe.lead)}</p>
@@ -397,7 +444,7 @@ function renderDetail() {
           <button class="action ghost" type="button" id="save" aria-pressed="${saved}">${saved ? "しおりから外す" : "しおりに入れる"}</button>
         </div>
         <div class="links">${links}</div>
-        <p class="source">情報の出どころ：<a href="${esc(cafe.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(cafe.sourceLabel)}</a><br>2026年10月30日に公開情報を確認。営業は変わります。</p>
+        <p class="source">情報の出どころ：<a href="${esc(cafe.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(cafe.sourceLabel)}</a><br>${esc(checkedLabel)}に公開情報を確認。営業は変わります。</p>
       </div>
       <div>
         <div id="detail-map" role="region" aria-label="${esc(cafe.name)}の位置"></div>
@@ -554,13 +601,15 @@ function renderBrowse() {
   renderList();
   updateNav();
   if (state.mapOpen) ensureMap();
-  document.title = state.view === "shiori" ? "しおり — ソトガワ" : "ソトガワ — 関東の非日常カフェ";
+  const kindLabel = kindOf({ kind: state.kind }).label;
+  document.title = state.view === "shiori" ? `しおり — ソトガワ` : `ソトガワ — 関東の${kindLabel}`;
 }
 
 function render() {
   const route = `${state.view}:${state.id || ""}`;
   const routeChanged = route !== lastRoute;
   lastRoute = route;
+  renderKinds();
   const browsing = state.view !== "detail";
   $("#browse").hidden = !browsing;
   $("#detail").hidden = browsing;
@@ -646,6 +695,17 @@ function bind() {
     $("#map-toggle").textContent = state.mapOpen ? "地図を閉じる" : "地図を開く";
     if (state.mapOpen) requestAnimationFrame(() => ensureMap());
   });
+  for (const root of [$("#kinds"), $("#tab-kinds")]) {
+    root.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-kind]");
+      if (!button) return;
+      state.kind = button.getAttribute("data-kind");
+      state.view = "browse";
+      state.id = null;
+      writeHash("replace");
+      render();
+    });
+  }
   $("#list").addEventListener("click", onListClick);
   document.addEventListener("click", (event) => {
     const link = event.target.closest("a[href]");
