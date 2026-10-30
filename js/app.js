@@ -346,7 +346,7 @@ function renderDetail() {
   if (!cafe) {
     root.innerHTML = `<p>この店は手帳にありません。</p><button class="back" type="button" id="back">一覧へ戻る</button>`;
     $("#back").addEventListener("click", goBack);
-    document.title = "見つからない店 — ちょっとソト";
+    document.title = "見つからない店 — ソトガワ";
     return;
   }
   const mood = moodOf(cafe.moods[0]);
@@ -405,7 +405,7 @@ function renderDetail() {
     updateShioriCount();
   });
   root.querySelector("h2").focus();
-  document.title = `${cafe.name} — ちょっとソト`;
+  document.title = `${cafe.name} — ソトガワ`;
   requestAnimationFrame(() => initDetailMap(cafe));
 }
 
@@ -544,7 +544,7 @@ function renderBrowse() {
   renderList();
   updateNav();
   if (state.mapOpen) ensureMap();
-  document.title = state.view === "shiori" ? "しおり — ちょっとソト" : "ちょっとソト — 関東の非日常カフェ";
+  document.title = state.view === "shiori" ? "しおり — ソトガワ" : "ソトガワ — 関東の非日常カフェ";
 }
 
 function render() {
