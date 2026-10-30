@@ -366,6 +366,15 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.35; }
 }
 .facts dt { color: var(--muted); }
 .facts dd { margin: 0; }
+.facts a.map-open {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--seal);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
 
 .actions, .links {
   display: flex;
