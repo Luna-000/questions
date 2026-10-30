@@ -194,7 +194,11 @@ function haystack(cafe) {
 function matches(cafe) {
   if (state.view === "shiori" && !isSaved(cafe.id)) return false;
   if (state.pref !== "all" && cafe.prefecture !== state.pref) return false;
-  if (state.moods.size && !cafe.moods.some((id) => state.moods.has(id))) return false;
+  const selected = [...state.moods];
+  const scene = selected.filter((id) => moodOf(id).group === "scene");
+  const visit = selected.filter((id) => moodOf(id).group === "visit");
+  if (scene.length && !scene.some((id) => cafe.moods.includes(id))) return false;
+  if (visit.some((id) => !cafe.moods.includes(id))) return false;
   if (state.train && !cafe.train) return false;
   if (state.car && !cafe.car) return false;
   if (state.reserve && cafe.reservation !== "required") return false;
@@ -254,6 +258,10 @@ function card(cafe) {
   if (cafe.seasonal) tags.push("季節で変わる");
   if (cafe.train && !cafe.car) tags.push("電車向き");
   if (cafe.car && !cafe.train) tags.push("車が確実");
+  cafe.moods.forEach((id) => {
+    const mood = moodOf(id);
+    if (mood.group === "visit" && mood.id !== "air") tags.push(mood.label);
+  });
   return `<li>
     <article class="card">
       <div class="bandline" data-mood="${esc(mood.id)}"></div>
@@ -285,10 +293,12 @@ function renderToday() {
 function renderControls() {
   const q = $("#q");
   if (q.value !== state.q) q.value = state.q;
-  $("#moods").innerHTML = MOODS.map((mood) => {
+  const moodButtons = (group) => MOODS.filter((mood) => mood.group === group).map((mood) => {
     const on = state.moods.has(mood.id);
     return `<button type="button" class="chip" data-mood="${mood.id}" aria-pressed="${on}"><span class="dot" data-mood="${mood.id}"></span>${esc(mood.label)}</button>`;
   }).join("");
+  $("#moods").innerHTML = moodButtons("scene");
+  $("#visits").innerHTML = moodButtons("visit");
   const counts = Object.fromEntries(PREFS.map((pref) => [pref, CAFES.filter((cafe) => cafe.prefecture === pref).length]));
   $("#prefs").innerHTML = [`all`, ...PREFS].map((pref) => {
     const on = state.pref === pref;
@@ -596,15 +606,17 @@ function bind() {
     renderList();
     if (state.mapOpen) ensureMap();
   });
-  $("#moods").addEventListener("click", (event) => {
-    const button = event.target.closest("[data-mood]");
-    if (!button) return;
-    const id = button.getAttribute("data-mood");
-    if (state.moods.has(id)) state.moods.delete(id);
-    else state.moods.add(id);
-    writeHash("replace");
-    renderBrowse();
-  });
+  for (const root of [$("#moods"), $("#visits")]) {
+    root.addEventListener("click", (event) => {
+      const button = event.target.closest("[data-mood]");
+      if (!button) return;
+      const id = button.getAttribute("data-mood");
+      if (state.moods.has(id)) state.moods.delete(id);
+      else state.moods.add(id);
+      writeHash("replace");
+      renderBrowse();
+    });
+  }
   $("#prefs").addEventListener("click", (event) => {
     const button = event.target.closest("[data-pref]");
     if (!button) return;
