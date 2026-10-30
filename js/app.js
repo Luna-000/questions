@@ -431,7 +431,7 @@ function renderDetail() {
           ${fact("時間", `${esc(cafe.hours)}<br><span class="fine">${esc(CONFIDENCE[cafe.confidence])}</span>`)}
           ${fact("休み", esc(cafe.closed))}
           ${fact("予約", cafe.reservation === "none" ? "指定なし。混む日は店に確認" : `${esc({ required: "必須", recommended: "できる", unavailable: "不可" }[cafe.reservation])}${cafe.reservationNote ? `<br>${esc(cafe.reservationNote)}` : ""}`)}
-          ${fact("住所", esc(cafe.address))}
+          ${fact("住所", `${esc(cafe.address)}<br><a class="map-open" href="${mapLink(cafe)}" target="_blank" rel="noopener noreferrer">Googleマップ</a>`)}
           ${fact("行き方", esc(cafe.access))}
           ${fact("電話", phone)}
           ${fact("車", esc(cafe.parking))}
@@ -439,7 +439,7 @@ function renderDetail() {
         </dl>
         ${notes}
         <div class="actions">
-          <a class="action" href="${mapLink(cafe)}" target="_blank" rel="noopener noreferrer">地図アプリで開く</a>
+          <a class="action" href="${mapLink(cafe)}" target="_blank" rel="noopener noreferrer">Googleマップで開く</a>
           <button class="action ghost" type="button" id="copy">住所をコピー</button>
           <button class="action ghost" type="button" id="save" aria-pressed="${saved}">${saved ? "しおりから外す" : "しおりに入れる"}</button>
         </div>
@@ -448,7 +448,7 @@ function renderDetail() {
       </div>
       <div>
         <div id="detail-map" role="region" aria-label="${esc(cafe.name)}の位置"></div>
-        <p class="map-note">${cafe.pinRough ? "このピンは町名までの位置です。番地は「地図アプリで開く」から。" : "ピンは国土地理院の住所検索。入口そのものとは限らない。"} タイル © OpenStreetMap</p>
+        <p class="map-note">${cafe.pinRough ? "このピンは町名までの位置です。番地は住所の Googleマップ から。" : "ピンは国土地理院の住所検索。入口そのものとは限らない。"} タイル © OpenStreetMap</p>
       </div>
     </div>
     <h3>近くの手帳</h3>
