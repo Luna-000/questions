@@ -1,7 +1,7 @@
 {
   "name": "ソトガワ",
   "short_name": "ソトガワ",
-  "description": "関東1都6県で、日常の外側にあるカフェ、居酒屋、バーを調べる手帳。",
+  "description": "関東1都6県で、ふだんのデートに使えるカフェ、居酒屋、バーを調べる手帳。",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

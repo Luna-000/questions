@@ -302,7 +302,7 @@ function renderToday() {
     return;
   }
   const today = tokyoDate();
-  el.innerHTML = `<p class="today-kicker">今日の外側 · ${esc(today.label)}（日本時間）</p>
+  el.innerHTML = `<p class="today-kicker">今日の一軒 · ${esc(today.label)}（日本時間）</p>
     <a href="#/c/${esc(today.cafe.id)}">
       <strong>${esc(today.cafe.name)}</strong>
       <span>${esc(today.cafe.lead)}</span>
@@ -324,7 +324,7 @@ function renderControls() {
   const q = $("#q");
   if (q.value !== state.q) q.value = state.q;
   const placeholders = {
-    cafe: "葉山、静か、パフェ、古民家",
+    cafe: "吉祥寺、ケーキ、谷中、静かに",
     izakaya: "神楽坂、蔵、蕎麦、伊香保",
     bar: "銀座、カクテル、夜景、静かに",
   };
