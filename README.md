@@ -4,12 +4,18 @@
 
 PC のブラウザでも、Android や iPhone のブラウザでも同じページが開きます。通信が入る場所なら、特別なインストールは要りません。
 
+## 公開アドレス
+
+ブラウザでそのまま開くアドレスです。ダウンロードは要りません。
+
+https://htmlpreview.github.io/?https://github.com/Luna-000/questions/blob/cursor/sotogawa-pages-d480/index.html
+
 ## 開き方
 
 `index.html` をブラウザで開くか、このフォルダを静的サイトとして配信します。
 
 ```bash
-python3 -m http.server 8765 --directory sotogawa
+python3 -m http.server 8765
 ```
 
 スマートフォンでは、そのアドレスを同じ Wi-Fi から開きます。ホーム画面に追加すると、アプリのように起動できます。

@@ -130,8 +130,27 @@ function listHash(view) {
 function writeHash(mode) {
   const next = listHash(state.view === "shiori" ? "shiori" : "browse");
   if (next === location.hash) return;
-  if (mode === "replace") history.replaceState(null, "", next);
-  else location.hash = next;
+  if (mode === "replace") {
+    try {
+      history.replaceState(null, "", next);
+      return;
+    } catch {
+      /* 別オリジンの base があると、相対ハッシュの replaceState は拒否される */
+    }
+  }
+  location.hash = next;
+}
+
+function appRoute(href) {
+  return href === "#/" || href.startsWith("#/?") || href.startsWith("#/shiori") || href.startsWith("#/c/");
+}
+
+function hashStaysHere(href) {
+  try {
+    return new URL(href, document.baseURI).origin === location.origin;
+  } catch {
+    return false;
+  }
 }
 
 function rememberReturn() {
@@ -616,6 +635,16 @@ function bind() {
     if (state.mapOpen) requestAnimationFrame(() => ensureMap());
   });
   $("#list").addEventListener("click", onListClick);
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("a[href]");
+    if (!link) return;
+    const href = link.getAttribute("href") || "";
+    if (!appRoute(href)) return;
+    if (href.startsWith("#/c/") && state.view !== "detail") rememberReturn();
+    if (hashStaysHere(href)) return;
+    event.preventDefault();
+    if (location.hash !== href) location.hash = href;
+  }, true);
   document.addEventListener("click", (event) => {
     const link = event.target.closest("a[href^='#/c/']");
     if (link && state.view !== "detail") rememberReturn();
