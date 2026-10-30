@@ -1,0 +1,19 @@
+{
+  "name": "ソトガワ",
+  "short_name": "ソトガワ",
+  "description": "関東1都6県で、日常の外側にあるカフェを調べる手帳。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3ecdf",
+  "theme_color": "#f3ecdf",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

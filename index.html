@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ソトガワ — 関東の非日常カフェ</title>
+  <meta name="description" content="関東1都6県で、日常の外側にあるカフェを調べる手帳。PCでも、Android や iPhone のブラウザでも使えます。">
+  <meta name="theme-color" content="#f3ecdf">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ソトガワ">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip" href="#list">一覧へ</a>
+  <div class="app">
+    <header class="mast">
+      <div class="brand">
+        <div class="seal" aria-hidden="true">外</div>
+        <div>
+          <p class="eyebrow">関東1都6県</p>
+          <h1><a href="#/">ソトガワ</a></h1>
+          <p class="tag">日常の外側にあるカフェを、調べるための手帳。</p>
+        </div>
+      </div>
+      <nav class="desktop-nav" aria-label="移動">
+        <a href="#/" data-nav="browse">探す</a>
+        <a href="#/shiori" data-nav="shiori">しおり <span class="count" data-shiori-count></span></a>
+      </nav>
+    </header>
+
+    <div id="browse">
+      <section class="today" id="today" aria-label="今日の一軒"></section>
+      <section class="controls" aria-label="絞り込み">
+        <label class="search">
+          <span>店名・場所・キーワード</span>
+          <input id="q" type="search" enterkeyhint="search" placeholder="葉山、古民家、紅茶、渓谷" autocomplete="off">
+        </label>
+        <div class="scroller" id="moods" role="group" aria-label="気分"></div>
+        <div class="scroller" id="prefs" role="group" aria-label="都県"></div>
+        <div class="scroller" id="flags" role="group" aria-label="行き方"></div>
+        <div class="resultbar">
+          <p id="count" aria-live="polite"></p>
+          <label>並び
+            <select id="sort">
+              <option value="guide">手帳の順</option>
+              <option value="kana">名前</option>
+              <option value="pref">都県</option>
+            </select>
+          </label>
+          <button class="textbtn" type="button" id="map-toggle" aria-pressed="false">地図を開く</button>
+          <button class="textbtn" type="button" id="reset" hidden>条件をクリア</button>
+        </div>
+      </section>
+      <div id="map-wrap" class="map-wrap" hidden>
+        <div id="map" role="region" aria-label="絞り込み中のカフェ"></div>
+        <p class="map-note">ピンは国土地理院の住所検索。番地まで取れない店は破線で、町の位置です。地図 © OpenStreetMap</p>
+      </div>
+      <div id="list"></div>
+      <footer class="about">
+        <h2>この手帳について</h2>
+        <p>ソトガワは、東京・神奈川・千葉・埼玉・茨城・栃木・群馬で、景色か建物か世界観が、いつもの用事の延長ではないカフェを自分で調べるための案内です。点数も順位もありません。26軒だけを、出どころが辿れる範囲で載せています。</p>
+        <p>営業時間は2026年10月30日時点の公開情報です。変わるので、出かける前に各店のリンクを開いてください。「公式の時間」「案内の目安」「当日確認」のどれかを、店のページに書いてあります。</p>
+        <p>しおりはこの端末のブラウザにだけ残ります。PCでも、Android や iPhone のブラウザでも同じページが開きます。ホーム画面に追加すると、アプリのように起動できます。</p>
+        <p>位置の検索には国土地理院の住所検索を使いました。地図タイルは OpenStreetMap の著作物です。</p>
+      </footer>
+    </div>
+
+    <article id="detail" class="detail" hidden></article>
+  </div>
+
+  <nav class="tabbar" aria-label="移動">
+    <a href="#/" data-nav="browse">探す</a>
+    <a href="#/shiori" data-nav="shiori">しおり <span class="count" data-shiori-count></span></a>
+  </nav>
+
+  <noscript>ソトガワは JavaScript で手帳をめくります。ブラウザの設定で有効にして、開き直してください。</noscript>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
