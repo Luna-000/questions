@@ -402,6 +402,19 @@ function recommendFact(cafe) {
   return fact("おすすめ", `<ul class="picks">${items.map((item) => `<li>${esc(item)}</li>`).join("")}</ul><span class="fine">店の公開文に名前があるもの</span>`);
 }
 
+function pinCaption(cafe) {
+  if (cafe.pinSource === "shop" && cafe.pinRough) {
+    return "このピンは店が公開している座標で、番地が途中までの位置です。入口は住所の Googleマップ から。";
+  }
+  if (cafe.pinSource === "shop") {
+    return "このピンは店が公開している座標。入口そのものとは限らない。";
+  }
+  if (cafe.pinRough) {
+    return "このピンは町名までの位置です。番地は住所の Googleマップ から。";
+  }
+  return "ピンは国土地理院の住所検索。入口そのものとは限らない。";
+}
+
 function fact(term, html) {
   if (!html) return "";
   return `<div><dt>${esc(term)}</dt><dd>${html}</dd></div>`;
@@ -461,7 +474,7 @@ function renderDetail() {
       </div>
       <div>
         <div id="detail-map" role="region" aria-label="${esc(cafe.name)}の位置"></div>
-        <p class="map-note">${cafe.pinRough ? "このピンは町名までの位置です。番地は住所の Googleマップ から。" : "ピンは国土地理院の住所検索。入口そのものとは限らない。"} タイル © OpenStreetMap</p>
+        <p class="map-note">${pinCaption(cafe)} タイル © OpenStreetMap</p>
       </div>
     </div>
     <h3>近くの手帳</h3>
