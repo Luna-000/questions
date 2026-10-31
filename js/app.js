@@ -94,9 +94,11 @@ function tokyoDate() {
   }
   const pool = kindPlaces();
   const [year, month, day] = key.split("-");
+  const label = `${year}年${Number(month)}月${Number(day)}日`;
+  if (!pool.length) return { cafe: null, label };
   return {
     cafe: pool[(hash >>> 0) % pool.length],
-    label: `${year}年${Number(month)}月${Number(day)}日`,
+    label,
   };
 }
 
@@ -303,6 +305,11 @@ function renderToday() {
     return;
   }
   const today = tokyoDate();
+  if (!today.cafe) {
+    const label = kindOf({ kind: state.kind }).label;
+    el.innerHTML = `<p class="today-kicker">今日の一軒 · ${esc(today.label)}（日本時間）</p><strong>この種類は、いま手帳にありません。</strong><span>内装のことが公開文に書いてある${esc(label)}は、今回は載せていません。</span>`;
+    return;
+  }
   el.innerHTML = `<p class="today-kicker">今日の一軒 · ${esc(today.label)}（日本時間）</p>
     <a href="#/c/${esc(today.cafe.id)}">
       <strong>${esc(today.cafe.name)}</strong>
