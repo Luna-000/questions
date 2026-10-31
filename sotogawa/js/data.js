@@ -2820,5 +2820,736 @@ const CAFES = [
     "lng": 139.655365,
     "mapsStars": 4.2,
     "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "akatsuka",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "季節料理 赤津加",
+    "kana": "キセツリョウリアカツカ",
+    "prefecture": "東京",
+    "locality": "秋葉原",
+    "moods": [
+      "retro",
+      "late",
+      "meal",
+      "air"
+    ],
+    "lead": "秋葉原。昭和29年から、3代目の店。",
+    "story": "公式は、昭和29年の開店から続き、3代目店主の寺谷光雄、創業当時の雰囲気を変えず、古き良き昭和の香りの残る店内、と書いている。秋葉原駅から徒歩3分。",
+    "address": "東京都千代田区外神田1-10-2",
+    "access": "秋葉原駅から徒歩3分。公式。",
+    "walk": "秋葉原駅から徒歩3分",
+    "hours": "平日 11:30〜14:00（13:30 ラストオーダー）と 17:00〜22:00（21:15 ラストオーダー）／土曜 17:00〜21:00（20:15 ラストオーダー）",
+    "closed": "日曜、祝日、第1・第3・第5土曜。12月のみ毎週土曜営業、とページ",
+    "phone": "03-3251-2585",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://akatsuka-j.jp/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "2日前まではフォーム。当日と前日は電話、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "二階のテーブルは宴会4名から、と公式。",
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。店名は赤津加 と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "季節料理 赤津加の公式サイト",
+    "sourceUrl": "https://akatsuka-j.jp/",
+    "lat": 35.698872,
+    "lng": 139.770615,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "ebisu",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "大衆居酒屋 恵比寿商店",
+    "kana": "タイシュウイザカヤエビスショウテン",
+    "prefecture": "東京",
+    "locality": "恵比寿",
+    "moods": [
+      "retro",
+      "late",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "恵比寿名物メデ鯛福焼売",
+      "名物メデ鯛飯"
+    ],
+    "lead": "恵比寿の地下。昔の写真と、紺の暖簾。",
+    "story": "公式は、ビール工場の町だった頃の恵比寿を壁一面の写真で見せ、紺の暖簾と赤提灯の下、掘りごたつの座敷、と書いている。株式会社恵比寿商店のこの住所の店。ページは、2026年11月1日にリニューアルオープン、10月19日からプレオープン、とも書いている。名物・おすすめに、恵比寿名物メデ鯛福焼売と名物メデ鯛飯がある。",
+    "address": "東京都渋谷区恵比寿西1-8-2 ウエストパレスビル B1F",
+    "access": "JR・日比谷線 恵比寿駅西口から徒歩3分。公式。",
+    "walk": "恵比寿駅西口から徒歩3分",
+    "hours": "月・土・日・祝の夜 15:00〜24:00（23:00 ラストオーダー）。火〜金の夜 16:00〜24:00（23:00 ラストオーダー）。ランチは11月から、火〜金 12:00〜14:00（14:00 ラストオーダー）。月曜のランチは休み",
+    "closed": "定休日はない、と公式。ページには10月25日のみ臨時休業ともある",
+    "phone": "03-6452-5448",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://ebisu-shoten.jp/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "金曜の夜と土曜は満席になりやすいので電話かネット予約、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "席は36。カウンター、テーブル、掘りごたつの座敷。支払いは現金・カード・QR、と店舗情報。",
+      "Googleマップの星4.3は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "大衆居酒屋 恵比寿商店の公式サイト",
+    "sourceUrl": "https://ebisu-shoten.jp/",
+    "lat": 35.647854,
+    "lng": 139.708435,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "showaken",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "浅草昭和軒",
+    "kana": "アサクサショウワケン",
+    "prefecture": "東京",
+    "locality": "浅草",
+    "moods": [
+      "retro",
+      "late",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "マッコリのやかん売り",
+      "ホルモン鍋コース"
+    ],
+    "lead": "浅草駅の北口から30秒。昭和の焼肉。",
+    "story": "公式は、居酒屋として焼肉を出し、店内は昭和の雰囲気が漂うレトロな内装、と書いている。名物・おすすめにマッコリのやかん売り、おすすめコースにホルモン鍋コースがある。東武線浅草駅北口から徒歩30秒。",
+    "address": "東京都台東区花川戸1-8-13",
+    "access": "東武線浅草駅北口から徒歩30秒。公式。",
+    "walk": "東武線浅草駅北口から徒歩30秒",
+    "hours": "17:00〜23:00（22:30 ラストオーダー）",
+    "closed": "不定休",
+    "phone": "03-3841-2628",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://asakusa-showaken.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "電話でも予約を受ける、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.6は、2026年10月31日に店名の横へ出ていた数字。店名は浅草 昭和軒 と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "浅草昭和軒の公式サイト。定休日は不定休",
+    "sourceUrl": "https://asakusa-showaken.com/",
+    "lat": 35.712715,
+    "lng": 139.798523,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "etsubo",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "古民家居酒屋 笑壺",
+    "kana": "コミンカイザカヤエツボ",
+    "prefecture": "埼玉",
+    "locality": "大宮",
+    "moods": [
+      "house",
+      "late",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "笑壺名物 大おにぎり"
+    ],
+    "lead": "大宮駅東口から2分。古民家の素材を寄せた店。",
+    "story": "公式は、外装や内装を新潟の古民家からの感銘で作り、古民家の素材を厳選して取り寄せた、と書いている。住所はつるやビルの1階。メニューに笑壺名物の大おにぎりがある。営業の書き方は 17:00〜29:00 で、日付をまたいで翌朝5時まで。定休は祝日。",
+    "address": "埼玉県さいたま市大宮区仲町1-33 つるやビル 1F",
+    "access": "JR各線 大宮駅東口より徒歩2分。公式。大宮駅から227m、ともある。",
+    "walk": "大宮駅東口から徒歩2分",
+    "hours": "17:00〜翌5:00。ページの書き方は 17:00〜29:00",
+    "closed": "祝日",
+    "phone": "048-871-5210",
+    "links": [
+      {
+        "label": "店舗概要",
+        "href": "https://omiya-etsubo.com/about/"
+      },
+      {
+        "label": "メニュー",
+        "href": "https://omiya-etsubo.com/menu/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "電話かウェブ、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの店名は、古民家居酒屋 笑壺 －ETSUBO－ 大宮東口店。番地は仲町1-33-3 つるや商店ビル、と出ていた。公式の住所は仲町1-33 つるやビル。",
+      "Googleマップの星4.7は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "古民家居酒屋 笑壺の店舗概要とメニュー",
+    "sourceUrl": "https://omiya-etsubo.com/about/",
+    "lat": 35.905384,
+    "lng": 139.626022,
+    "mapsStars": 4.7,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "tokimeki",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "高円寺 動悸",
+    "kana": "コウエンジトキメキ",
+    "prefecture": "東京",
+    "locality": "高円寺",
+    "moods": [
+      "late",
+      "meal",
+      "air"
+    ],
+    "lead": "高円寺。炉端と、木の手触り。",
+    "story": "公式は、読みを「ときめき」とし、扉を開けると炉端で鮮魚や野菜を焼き、心地よい木の手触りとこだわりの器、と書いている。同じビルの地下に Sake bar KoKoN もある。店は別。定休日はない、とある。",
+    "address": "東京都杉並区高円寺北2-21-1 リリーベル高円寺スクエアビル B1F",
+    "access": "JR高円寺駅北口より徒歩約3分。公式。",
+    "walk": "高円寺駅北口から徒歩約3分",
+    "hours": "月〜木 16:00〜23:00（食事22:00、飲み物22:30 ラストオーダー）／金 16:00〜24:00（食事23:00、飲み物23:30）／土 13:00〜24:00（食事23:00、飲み物23:30）／日・祝 13:00〜23:00（食事22:00、飲み物22:30）",
+    "closed": "定休日なし",
+    "phone": "050-5448-2999",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://koenji-tokimeki.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "ウェブ予約がある、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.8は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "高円寺 動悸の公式サイト",
+    "sourceUrl": "https://koenji-tokimeki.com/",
+    "lat": 35.70681,
+    "lng": 139.650146,
+    "mapsStars": 4.8,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "naminoya",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "波乃家 三代目",
+    "kana": "ナミノヤサンダイメ",
+    "prefecture": "東京",
+    "locality": "吉祥寺",
+    "moods": [
+      "late",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "ハツ（心臓）"
+    ],
+    "lead": "吉祥寺駅から2分。三代目の焼鳥。",
+    "story": "ページの題は波乃家 三代目。店舗表の店名は波之家 三代目。先代から受け継ぐ想いと50年のタレ、鳥は山梨県産の朝引き健味鳥、と書いている。こだわりの見出しにハツ（心臓）がある。吉祥寺駅から徒歩2分、106m、ともある。定休は不定休。",
+    "address": "東京都武蔵野市吉祥寺本町1-1-8 2F",
+    "access": "JR中央線・京王井の頭線 吉祥寺駅より徒歩2分。公式。",
+    "walk": "吉祥寺駅から徒歩2分",
+    "hours": "月〜金 16:00〜23:00／土・日・祝 14:00〜23:00",
+    "closed": "不定休",
+    "phone": "042-227-1017",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://naminoya-kichijoji.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "予約可、と店舗表。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "席は34。チャージは300円。全席喫煙可、と店舗表。",
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。店名は波之家 三代目、建物は塚田水産ビル2階、と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "波乃家 三代目の公式サイト。定休日は不定休",
+    "sourceUrl": "https://naminoya-kichijoji.com/",
+    "lat": 35.703987,
+    "lng": 139.579132,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "tsukiai",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "月逢",
+    "kana": "ツキアイ",
+    "prefecture": "東京",
+    "locality": "赤坂",
+    "moods": [
+      "late",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "大きなワンタン（なずな入り本格自家製）"
+    ],
+    "lead": "赤坂見附から3分。朝までのカラオケ居酒屋。",
+    "story": "店主の竹川静香は、私の居酒屋、白いソファーと両肘の付くカウンター、女性一人でも、と書いている。おすすめに名前があるのは、大きなワンタン（なずな入り本格自家製）。公式の場所は、赤坂みすじ通りのドン・キホーテ真向かいの5階。番地は公式にない。カラオケは無料、ともある。席の間隔が広い、とはある。テラスや屋根のない席とは書いていない。",
+    "address": "東京都港区赤坂3-15-1 赤坂コーストビル5F",
+    "access": "赤坂見附駅出口10と赤坂駅出口1から、どちらも徒歩約3分。公式。赤坂見附駅から240m、ともある。番地は、2026年10月31日のGoogleマップが赤坂3-15-1 赤坂コーストビル5階と出していた。",
+    "walk": "赤坂見附駅から徒歩約3分",
+    "hours": "営業時間の欄は 18:00〜翌5:30（金曜は翌朝7:00）。予約の電話の横は、平日 18:00〜翌3:00",
+    "closed": "土曜、日曜、祝日。休日の予約は10人から相談、と公式",
+    "phone": "03-6435-5512",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://tsuki-ai.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "電話は 03-6435-5512 と 090-5828-0281。当日直前も、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "営業時間の欄と、予約電話の横の時間が違う。出かける前に店で確認する。",
+      "Googleマップの星4.7は、2026年10月31日に店名の横へ出ていた数字。店名は月逢 と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "月逢の公式サイト。営業時間の欄と予約電話の横で終わりが違う",
+    "sourceUrl": "https://tsuki-ai.com/",
+    "lat": 35.67437,
+    "lng": 139.736893,
+    "pinRough": true,
+    "mapsStars": 4.7,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "bruder",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "Bar Bruder",
+    "kana": "バーブリューダー",
+    "prefecture": "東京",
+    "locality": "新宿三丁目",
+    "moods": [
+      "retro",
+      "night",
+      "late",
+      "air"
+    ],
+    "lead": "新宿三丁目から1分。アール・ヌーヴォーのバー。",
+    "story": "公式は、大人の社交場をイメージしたアール・ヌーヴォー調で、バーテンダー歴25年以上の店主、個室は明治の西洋をモチーフ、と書いている。新宿三丁目駅から徒歩約1分。フルーツ・リキュールのカクテルが人気、とある。一品の名前は書いていない。",
+    "address": "東京都新宿区新宿3-8-9 平生ビルディング4階",
+    "access": "地下鉄 新宿三丁目駅から徒歩約1分。JR新宿駅東口から徒歩約7分。新宿御苑前駅1番出口から徒歩約5分。公式。",
+    "walk": "新宿三丁目駅から徒歩約1分",
+    "hours": "営業時間のページは 15:00〜24:00（ラストイン）。店舗詳細は 15:00〜翌2:00（1:30 ラストオーダー）、日曜・祝日は 15:00〜24:00（23:30 ラストオーダー）",
+    "closed": "火曜、不定休あり。詳細は、最新を営業時間のページで見るよう書いている",
+    "phone": "03-6457-4949",
+    "links": [
+      {
+        "label": "営業時間",
+        "href": "https://bar-bruder.com/open/"
+      },
+      {
+        "label": "公式サイト",
+        "href": "https://bar-bruder.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "ウェブ予約がある、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "席は21。チャージは1人1,100円。個室は部屋ごとに2,200円、と公式。喫煙可。",
+      "Googleマップの星4.6は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "Bar Bruder の営業時間ページと店舗詳細。書いてある時間が違う",
+    "sourceUrl": "https://bar-bruder.com/open/",
+    "lat": 35.69067,
+    "lng": 139.706741,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "dresden",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "Barどれすでん",
+    "kana": "バードレスデン",
+    "prefecture": "東京",
+    "locality": "新宿",
+    "moods": [
+      "retro",
+      "night",
+      "late",
+      "air"
+    ],
+    "lead": "1951年創業。調度を移した新宿のバー。",
+    "story": "公式は、1951年の創業で、東口アルタ裏から2023年に今の場所へ移り、テーブルやカウンターなどの調度は全部移し、内装はほぼそのまま、と書いている。屋号は古都ドレスデンから。新宿三丁目駅A5出口から徒歩1分。",
+    "address": "東京都新宿区新宿3-30-11 新宿高野第二ビル B1F",
+    "access": "地下鉄丸ノ内線 新宿三丁目駅A5出口より徒歩1分。JR新宿駅東口より徒歩3分。公式。",
+    "walk": "新宿三丁目駅A5出口から徒歩1分",
+    "hours": "17:30〜23:30（23:00 ラストオーダー）",
+    "closed": "日曜、祝日",
+    "phone": "03-3354-7106",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://www.bardresden.jp/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "席は33。チャージは1,650円（席料330円、お通し2品1,320円）、と公式。",
+      "Googleマップの星4.3は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "Barどれすでんの公式サイト",
+    "sourceUrl": "https://www.bardresden.jp/",
+    "lat": 35.691292,
+    "lng": 139.703674,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "evita",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "BAR EVITA.",
+    "kana": "バーエビータ",
+    "prefecture": "東京",
+    "locality": "銀座",
+    "moods": [
+      "night",
+      "late",
+      "air"
+    ],
+    "lead": "銀座の9階。2004年から続くバー。",
+    "story": "公式は、銀座のビルの9階で、2004年のオープン以来、一人の一杯や接待、仕事上がりの一杯、と書いている。月曜から土曜は 18:00〜翌2:00。祝日は 18:00〜23:30。日曜が休み。駅からの分数は書いていない。",
+    "address": "東京都中央区銀座8-4-24 藤井ビル9F",
+    "access": "駅からの分数は、公式にない。地図で測ると、新橋駅から道のり約440m、徒歩約6分（分速80m）。",
+    "walk": "新橋駅から徒歩約6分",
+    "hours": "月〜土 18:00〜翌2:00／祝日 18:00〜23:30",
+    "closed": "日曜",
+    "phone": "03-3574-5571",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://www.evita-bar.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "公式に予約の入口がある。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.8は、2026年10月31日に店名の横へ出ていた数字。店名は銀座オーセンティックバー BAR EVITA. と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "BAR EVITA. の公式サイト",
+    "sourceUrl": "https://www.evita-bar.com/",
+    "lat": 35.669323,
+    "lng": 139.76004,
+    "mapsStars": 4.8,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "whiteoak",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "BAR WHITE OAK",
+    "kana": "バーホワイトオーク",
+    "prefecture": "東京",
+    "locality": "銀座",
+    "moods": [
+      "night",
+      "late",
+      "air"
+    ],
+    "picks": [
+      "季節のフルーツカクテル",
+      "オリジナルのビーフジャーキー",
+      "生チョコレート"
+    ],
+    "lead": "銀座・金春通り。ナラの止まり木、と書くバー。",
+    "story": "公式は、ホワイトオークをナラの木、ウイスキーやワインの熟成に使う木材とし、銀座に根付く1本の止まり木、と書いている。季節のフルーツカクテル、オリジナルのビーフジャーキー、生チョコレートに名前がある。本文と説明文で、営業の曜日が違う。",
+    "address": "東京都中央区銀座8-7-7 中央林ビル302",
+    "access": "説明文は、銀座駅徒歩6分、新橋駅徒歩6分。地図で測ると、新橋駅から道のり約460m、徒歩約6分（分速80m）。",
+    "walk": "銀座駅から徒歩6分",
+    "hours": "本文は火〜土 18:00〜翌3:00、日曜 16:00〜23:00。説明文は月〜金 18:00〜翌3:00、土曜 18:00〜翌2:00",
+    "closed": "本文は月曜。説明文は日曜と祝日",
+    "phone": "03-3572-6088",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://whiteoak.bar/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "説明文はカウンター7席、とも書いている。",
+      "Googleマップの星4.6は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "BAR WHITE OAK の公式サイト。本文と説明文で曜日が違う",
+    "sourceUrl": "https://whiteoak.bar/",
+    "lat": 35.66835,
+    "lng": 139.761185,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "ofen",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "Bar Ofen",
+    "kana": "バーオーフェン",
+    "prefecture": "神奈川",
+    "locality": "横浜",
+    "moods": [
+      "night",
+      "quiet",
+      "late",
+      "air"
+    ],
+    "lead": "横浜駅から5分。静かに佇む、と書くバー。",
+    "story": "公式は、横浜駅から徒歩5分、静かに佇む一軒家バー、2014年の創業、350種類以上のウイスキー、洗練された空間、と書いている。住所の欄は南幸ビル。店舗概要の表は、日曜から土曜まで 18:00〜翌2:00。年中無休、ノーチャージ、ともある。姉妹店のページも置いている。季節のフルーツカクテルは種類の話で、一品の名前はない。",
+    "address": "神奈川県横浜市西区南幸2-3-11 南幸ビル",
+    "access": "横浜駅から徒歩5分。公式。",
+    "walk": "横浜駅から徒歩5分",
+    "hours": "18:00〜翌2:00。店舗概要は日曜から土曜まで同じ",
+    "closed": "年中無休、と公式",
+    "phone": "045-534-9233",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://bar-ofen.com/"
+      },
+      {
+        "label": "店舗概要",
+        "href": "https://bar-ofen.com/about-us/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "予約は不可、と店舗概要。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "席は18。喫煙可、と店舗概要。",
+      "Googleマップの星4.3は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "Bar Ofen の公式サイトと店舗概要",
+    "sourceUrl": "https://bar-ofen.com/about-us/",
+    "lat": 35.462696,
+    "lng": 139.617828,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "taka",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "Bar 貴",
+    "kana": "バータカ",
+    "prefecture": "埼玉",
+    "locality": "南浦和",
+    "moods": [
+      "night",
+      "linger",
+      "late",
+      "air"
+    ],
+    "lead": "南浦和駅東口から4分。カウンター8席。",
+    "story": "公式は、カウンター8席、ゆとりがある居心地の良い空間、気付けば程良く時間が経っている、と書いている。南浦和駅東口から徒歩4分。席の数は8で、テラスや屋根のない席とは書いていない。",
+    "address": "埼玉県さいたま市南区南浦和2-28-1",
+    "access": "JR各線 南浦和駅東口から徒歩4分。公式。",
+    "walk": "南浦和駅東口から徒歩4分",
+    "hours": "18:00〜翌2:00（翌1:00 ラストオーダー）。ページの書き方は 18:00〜26:00（25:00 ラストオーダー）。日曜と祝日は 18:00〜24:00（23:00 ラストオーダー）",
+    "closed": "水曜",
+    "phone": "048-612-9042",
+    "links": [
+      {
+        "label": "アクセス",
+        "href": "https://www.bar-taka.jp/access.html"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.4は、2026年10月31日に店名の横へ出ていた数字。店名は Bar貴（バータカ） と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "Bar 貴のアクセスページ",
+    "sourceUrl": "https://www.bar-taka.jp/access.html",
+    "lat": 35.849545,
+    "lng": 139.671066,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "sakaba923",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "咲場923",
+    "kana": "サカバクニサン",
+    "prefecture": "東京",
+    "locality": "練馬",
+    "moods": [
+      "night",
+      "late"
+    ],
+    "picks": [
+      "樽生ビール"
+    ],
+    "lead": "練馬駅から2分。店主のニックネームが屋号。",
+    "story": "公式は、咲場923と書いてさかば くにさん、くにさんは店主のニックネーム、練馬駅徒歩2分のバー、と書いている。練馬で一番美味しい樽生ビール、と自分で書いている。完全禁煙（電子たばこも含む）。月曜が休みで、月に1〜2回は日曜と月曜の連休がある、ともある。",
+    "address": "東京都練馬区豊玉北5-15-12 花園ビル3F",
+    "access": "練馬駅から徒歩2分。公式。",
+    "walk": "練馬駅から徒歩2分",
+    "hours": "火〜土 17:00〜23:30／日・祝 16:00〜22:00。入店は閉店の30分前まで",
+    "closed": "月曜。月に1〜2回、日曜と月曜の連休",
+    "phone": "03-6914-9238",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://www.sakaba923.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "来店前に、予約のお願いを読むよう書いている。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "席料があると書いている。金額は、このページの本文にはなかった。",
+      "Googleマップの星4.8は、2026年10月31日に店名の横へ出ていた数字。店名は Bar 咲場 923（さかば くにさん） と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "咲場923の公式サイト。月曜以外の連休がある",
+    "sourceUrl": "https://www.sakaba923.com/",
+    "lat": 35.736652,
+    "lng": 139.655151,
+    "mapsStars": 4.8,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "kokon",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "Sake bar KoKoN",
+    "kana": "サケバーココン",
+    "prefecture": "東京",
+    "locality": "高円寺",
+    "moods": [
+      "night",
+      "linger",
+      "late",
+      "air"
+    ],
+    "lead": "高円寺駅北口から3分。12席の日本酒バー。",
+    "story": "公式は、隠れ家のような落ち着いた空間で、リラックスしながら日本酒を楽しむ、と書いている。席は12。個室はない。全席禁煙。同じビルの地下に、居酒屋の高円寺 動悸もある。店は別。木曜が休みで、月によって不定休がある。決まった一本の酒の名前は、このページにない。",
+    "address": "東京都杉並区高円寺北2-21-1 リリーベル高円寺スクエア B1F",
+    "access": "JR中央線・総武線 高円寺駅北口から徒歩3分。公式。",
+    "walk": "高円寺駅北口から徒歩3分",
+    "hours": "18:00〜24:00",
+    "closed": "木曜。月によって不定休。公式は Instagram か Google で見るよう書いている",
+    "phone": "03-6824-1516",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://sakebarkokon.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "週末は混むので予約を勧める、と公式。最大4人。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.9は、2026年10月31日に店名の横へ出ていた数字。店名は Sake Bar KoKoN と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "Sake bar KoKoN の公式サイト。不定休がある",
+    "sourceUrl": "https://sakebarkokon.com/",
+    "lat": 35.70681,
+    "lng": 139.650146,
+    "mapsStars": 4.9,
+    "mapsChecked": "2026-10-31"
   }
 ];
