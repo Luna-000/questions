@@ -1,4 +1,4 @@
-/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるものを選んでいる。営業時間は 2026-10-31 までに見た公開情報。出発前に各店で確認する。 */
+/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるもの。加えて、2026-10-31 に Googleマップの店名の横が 4.0 以上だった個人店。星はその日に見た数字。営業時間は同じ日までに見た公開情報。出発前に各店で確認する。 */
 const MOODS = [
   { id: "forest", label: "森", group: "scene" },
   { id: "water", label: "水辺", group: "scene" },
@@ -75,7 +75,9 @@ const CAFES = [
     "sourceLabel": "公式の案内ページ。店内の描写はタイムアウト東京の紹介（2025年）",
     "sourceUrl": "https://nanashian.co.jp/information/",
     "lat": 35.659779,
-    "lng": 139.738678
+    "lng": 139.738678,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "koguma",
@@ -114,7 +116,9 @@ const CAFES = [
     "sourceLabel": "Tokyo Tokyo の紹介（2025年10月時点、と記事にある）",
     "sourceUrl": "https://tokyotokyo.jp/ja/mediacollab/tabi-labo/",
     "lat": 35.720367,
-    "lng": 139.812195
+    "lng": 139.812195,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "chanoma",
@@ -155,7 +159,9 @@ const CAFES = [
     "sourceLabel": "nippon.com の記事",
     "sourceUrl": "https://www.nippon.com/ja/articles/-/1451",
     "lat": 35.732361,
-    "lng": 139.704163
+    "lng": 139.704163,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "shouan",
@@ -202,7 +208,9 @@ const CAFES = [
     "sourceLabel": "松庵文庫のニュース（2024年2月29日）",
     "sourceUrl": "https://shouanbunko.com/news/331/",
     "lat": 35.701466,
-    "lng": 139.595505
+    "lng": 139.595505,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "rengetsu",
@@ -240,7 +248,9 @@ const CAFES = [
     "sourceLabel": "Tokyo Tokyo の紹介（2025年10月時点、と記事にある）",
     "sourceUrl": "https://tokyotokyo.jp/ja/mediacollab/tabi-labo/",
     "lat": 35.577175,
-    "lng": 139.703827
+    "lng": 139.703827,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kuracafe",
@@ -284,7 +294,9 @@ const CAFES = [
     "sourceLabel": "川越商工会議所の Kura Cafe ページ",
     "sourceUrl": "https://www.kawagoe.or.jp/kuracafe/",
     "lat": 35.916283,
-    "lng": 139.48378
+    "lng": 139.48378,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "hagiso",
@@ -328,7 +340,9 @@ const CAFES = [
     "sourceLabel": "hagiso.com の施設ページ",
     "sourceUrl": "https://hagiso.com/hagiso/",
     "lat": 35.726372,
-    "lng": 139.766159
+    "lng": 139.766159,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kosoan",
@@ -369,7 +383,9 @@ const CAFES = [
     "sourceLabel": "ANA の旅行記事に掲載された店舗情報",
     "sourceUrl": "https://www.ana.co.jp/travelandlife/article/000340/2/",
     "lat": 35.610561,
-    "lng": 139.668472
+    "lng": 139.668472,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "nonbiriya",
@@ -408,7 +424,9 @@ const CAFES = [
     "sourceLabel": "るるぶ&more. の古民家カフェ記事",
     "sourceUrl": "https://rurubu.jp/andmore/article/15647",
     "lat": 35.724209,
-    "lng": 139.768967
+    "lng": 139.768967,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "musashino",
@@ -453,7 +471,9 @@ const CAFES = [
     "sourceLabel": "公式サイトの営業案内",
     "sourceUrl": "https://oishicoffee.com/",
     "lat": 35.701382,
-    "lng": 139.578644
+    "lng": 139.578644,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "chakichi",
@@ -493,7 +513,9 @@ const CAFES = [
     "sourceLabel": "茶フェちゃきちの店舗案内",
     "sourceUrl": "https://chakichi.jp/access/",
     "lat": 36.253761,
-    "lng": 138.863968
+    "lng": 138.863968,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "hachisanroku",
@@ -535,7 +557,9 @@ const CAFES = [
     "sourceLabel": "八三六の公式サイト",
     "sourceUrl": "https://www.hachisanroku-yanaka.com/",
     "lat": 35.727699,
-    "lng": 139.765244
+    "lng": 139.765244,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "nomark",
@@ -581,7 +605,9 @@ const CAFES = [
     "sourceLabel": "no mark.Cafe の公式サイト",
     "sourceUrl": "https://nomarkcafe.jp/",
     "lat": 35.682789,
-    "lng": 139.803757
+    "lng": 139.803757,
+    "mapsStars": 4.5,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "hamorebi",
@@ -621,7 +647,9 @@ const CAFES = [
     "sourceLabel": "葉もれ日の公式サイト",
     "sourceUrl": "http://hamorebi.tokyo/",
     "lat": 35.700516,
-    "lng": 139.785782
+    "lng": 139.785782,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "fukadaso",
@@ -661,7 +689,9 @@ const CAFES = [
     "sourceLabel": "アルトハウスの fukadaso cafe 案内",
     "sourceUrl": "https://althaus.jp/customer/fukadaso-cafe/",
     "lat": 35.678734,
-    "lng": 139.800095
+    "lng": 139.800095,
+    "mapsStars": 3.9,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kayaba",
@@ -711,7 +741,9 @@ const CAFES = [
     "sourceLabel": "カヤバ珈琲の公式Instagram。建物はさんたつ",
     "sourceUrl": "https://www.instagram.com/kayabacoffee/",
     "lat": 35.721161,
-    "lng": 139.770752
+    "lng": 139.770752,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "buriki",
@@ -757,7 +789,9 @@ const CAFES = [
     "sourceLabel": "ブリキボタンの公式案内",
     "sourceUrl": "https://burikibotan-cafe.foodre.jp/",
     "lat": 35.660149,
-    "lng": 139.667374
+    "lng": 139.667374,
+    "mapsStars": 3.9,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kokogura",
@@ -808,7 +842,9 @@ const CAFES = [
     "sourceUrl": "https://kokogura.jp/",
     "lat": 35.647655,
     "lng": 139.747101,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "senju-gen",
@@ -852,7 +888,9 @@ const CAFES = [
     "sourceLabel": "千寿宿 玄の公式サイト",
     "sourceUrl": "https://senjuyado-gen.com/",
     "lat": 35.750671,
-    "lng": 139.812241
+    "lng": 139.812241,
+    "mapsStars": 5,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kinoka",
@@ -892,7 +930,9 @@ const CAFES = [
     "sourceLabel": "Cafeきのかの公式サイト",
     "sourceUrl": "https://www.cafekinoka.com/",
     "lat": 35.882118,
-    "lng": 139.651428
+    "lng": 139.651428,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "takezo",
@@ -940,7 +980,9 @@ const CAFES = [
     "sourceLabel": "TsuKuRuBa竹蔵の公式サイト",
     "sourceUrl": "https://tsukurubatakezo.com/",
     "lat": 35.834534,
-    "lng": 139.742722
+    "lng": 139.742722,
+    "mapsStars": 4.5,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "naranoki",
@@ -982,7 +1024,9 @@ const CAFES = [
     "sourceLabel": "ならのきの公式サイト",
     "sourceUrl": "https://naranoki-kawaguchi.jimdofree.com/",
     "lat": 35.838333,
-    "lng": 139.721252
+    "lng": 139.721252,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kingyo",
@@ -1032,7 +1076,9 @@ const CAFES = [
     "sourceUrl": "https://kingyo-tei.jp/",
     "lat": 35.92141,
     "lng": 139.481171,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 3.6,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "chabudai",
@@ -1081,7 +1127,9 @@ const CAFES = [
     "sourceUrl": "https://chabudai-kawagoe.com/",
     "lat": 35.920551,
     "lng": 139.486145,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "torokko",
@@ -1131,7 +1179,9 @@ const CAFES = [
     "sourceUrl": "https://www.touho-yamawa.co.jp/truck/",
     "lat": 35.92355,
     "lng": 139.48262,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "nankirou",
@@ -1176,7 +1226,9 @@ const CAFES = [
     "sourceUrl": "https://www.kawagoe.com/kameyaeisen/nankirou.html",
     "lat": 35.9231,
     "lng": 139.482117,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 3.7,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "smiley",
@@ -1225,7 +1277,9 @@ const CAFES = [
     "sourceUrl": "https://www.city.kawagoe.saitama.jp/kurashi/nogyo/1003190/1003181/1003186.html",
     "lat": 35.928619,
     "lng": 139.515213,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "wawa",
@@ -1275,7 +1329,9 @@ const CAFES = [
     "sourceUrl": "https://wawa-cafe.jp/",
     "lat": 35.924648,
     "lng": 139.483246,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 3.6,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "okashi0467",
@@ -1316,7 +1372,9 @@ const CAFES = [
     "sourceLabel": "OKASHI0467 の公式サイト",
     "sourceUrl": "https://kamakura0467.com/pages/about0467",
     "lat": 35.31316,
-    "lng": 139.537735
+    "lng": 139.537735,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "egao",
@@ -1363,7 +1421,9 @@ const CAFES = [
     "sourceLabel": "EGAO の公式サイト",
     "sourceUrl": "https://www.cafe-restaurant-egao.jp/",
     "lat": 35.311401,
-    "lng": 139.546173
+    "lng": 139.546173,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "hanayashiki",
@@ -1406,7 +1466,9 @@ const CAFES = [
     "sourceUrl": "https://kominkacafe-beer-hanayashiki.com/",
     "lat": 35.487022,
     "lng": 139.471329,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kyuemon",
@@ -1446,7 +1508,9 @@ const CAFES = [
     "sourceLabel": "久右衛門邸のカフェ案内",
     "sourceUrl": "https://kyuemon.jp/cafe/",
     "lat": 35.434265,
-    "lng": 139.533905
+    "lng": 139.533905,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "mario",
@@ -1491,7 +1555,9 @@ const CAFES = [
     "sourceLabel": "カフェマリオの公式サイト",
     "sourceUrl": "https://cafe-mario.net/",
     "lat": 36.566986,
-    "lng": 139.878891
+    "lng": 139.878891,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "toukasou",
@@ -1530,7 +1596,9 @@ const CAFES = [
     "sourceLabel": "cafe 藤香想の公式サイト",
     "sourceUrl": "https://www.toukasou.com/",
     "lat": 35.735863,
-    "lng": 139.697388
+    "lng": 139.697388,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "amane",
@@ -1570,7 +1638,9 @@ const CAFES = [
     "sourceLabel": "雨音茶寮の公式サイト",
     "sourceUrl": "https://www.amanesaryo.com/about-us",
     "lat": 35.722153,
-    "lng": 139.762421
+    "lng": 139.762421,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "halekura",
@@ -1615,7 +1685,9 @@ const CAFES = [
     "sourceLabel": "Café 晴蔵の公式サイト",
     "sourceUrl": "https://cafehalekura.com/",
     "lat": 35.717339,
-    "lng": 139.796188
+    "lng": 139.796188,
+    "mapsStars": 4.5,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "hikidashi",
@@ -1655,7 +1727,9 @@ const CAFES = [
     "sourceLabel": "ヒキダシの公式サイト",
     "sourceUrl": "https://hikidasahi.my.canva.site/hp",
     "lat": 35.682941,
-    "lng": 139.804855
+    "lng": 139.804855,
+    "mapsStars": 3.7,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "wacha",
@@ -1693,7 +1767,9 @@ const CAFES = [
     "sourceLabel": "神楽坂 和茶の公式サイト",
     "sourceUrl": "https://wa-cha-tsukinomi.com/",
     "lat": 35.701759,
-    "lng": 139.73613
+    "lng": 139.73613,
+    "mapsStars": 4.8,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "sepia",
@@ -1737,7 +1813,9 @@ const CAFES = [
     "sourceLabel": "昭和レトロ喫茶セピアの公式サイト",
     "sourceUrl": "https://sepia-cafe.com/",
     "lat": 35.757912,
-    "lng": 139.875809
+    "lng": 139.875809,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "shitamachi",
@@ -1823,7 +1901,9 @@ const CAFES = [
     "sourceLabel": "カフェーパウリスタの公式店舗案内。店内はホテルの紹介記事",
     "sourceUrl": "https://www.paulista.co.jp/user_data/shop",
     "lat": 35.667988,
-    "lng": 139.761932
+    "lng": 139.761932,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "hatome",
@@ -1867,7 +1947,9 @@ const CAFES = [
     "sourceLabel": "hatome の公式サイト",
     "sourceUrl": "https://hatome-maruko.com/",
     "lat": 35.569641,
-    "lng": 139.685379
+    "lng": 139.685379,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kichi",
@@ -1905,7 +1987,9 @@ const CAFES = [
     "sourceLabel": "ギャラリー吉の公式サイト",
     "sourceUrl": "https://gallery-kichi.com/access",
     "lat": 35.703594,
-    "lng": 139.585297
+    "lng": 139.585297,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "hiuchian",
@@ -1949,7 +2033,9 @@ const CAFES = [
     "sourceUrl": "https://www.hiuchian.jp/",
     "lat": 35.790516,
     "lng": 139.273636,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "okimoto",
@@ -1993,7 +2079,9 @@ const CAFES = [
     "sourceUrl": "https://www.cafeokimoto.com/",
     "lat": 35.69865,
     "lng": 139.451599,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "sabouru",
@@ -2036,7 +2124,9 @@ const CAFES = [
     "sourceLabel": "千代田区の観光サイト",
     "sourceUrl": "https://visit-chiyoda.tokyo/app/spot/detail/482",
     "lat": 35.695465,
-    "lng": 139.758499
+    "lng": 139.758499,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "tricolore",
@@ -2083,7 +2173,9 @@ const CAFES = [
     "sourceUrl": "https://akiba-tolim.com/shop/trico/",
     "lat": 35.697826,
     "lng": 139.773346,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 3.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "makimaki",
@@ -2125,7 +2217,9 @@ const CAFES = [
     "sourceLabel": "薪まきカフェの公式サイト",
     "sourceUrl": "https://makimakicafe.com/",
     "lat": 35.656975,
-    "lng": 139.606339
+    "lng": 139.606339,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "tokisora",
@@ -2166,7 +2260,9 @@ const CAFES = [
     "sourceLabel": "ガーデンカフェ ときそらの公式サイト",
     "sourceUrl": "https://www.tokisora.net/",
     "lat": 35.629963,
-    "lng": 139.676285
+    "lng": 139.676285,
+    "mapsStars": 4.7,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "noie",
@@ -2210,7 +2306,9 @@ const CAFES = [
     "sourceLabel": "のいえの公式サイト",
     "sourceUrl": "https://noie.tokyo/",
     "lat": 35.703701,
-    "lng": 139.737091
+    "lng": 139.737091,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "hiranuma",
@@ -2257,7 +2355,9 @@ const CAFES = [
     "sourceUrl": "https://kominka-hiranuma.com/",
     "lat": 35.910126,
     "lng": 139.1465,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.5,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "yururi",
@@ -2303,7 +2403,9 @@ const CAFES = [
     "sourceUrl": "https://www.kyounogohan-yururicafe.com/cafe.html",
     "lat": 35.920006,
     "lng": 139.481918,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "yamaboushi",
@@ -2341,7 +2443,9 @@ const CAFES = [
     "sourceLabel": "古民家カフェやまぼうしの公式サイト",
     "sourceUrl": "https://cafe-yamaboushi.com/",
     "lat": 35.919369,
-    "lng": 139.415512
+    "lng": 139.415512,
+    "mapsStars": 4.9,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "morita",
@@ -2387,7 +2491,9 @@ const CAFES = [
     "sourceUrl": "https://xbe90.hp.peraichi.com/",
     "lat": 35.796089,
     "lng": 139.50824,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.8,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "iwasaki",
@@ -2428,7 +2534,9 @@ const CAFES = [
     "sourceLabel": "いわさ喜の公式サイト",
     "sourceUrl": "https://cafeiwasaki.wixsite.com/home",
     "lat": 35.951744,
-    "lng": 139.697937
+    "lng": 139.697937,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "chayabuko",
@@ -2468,7 +2576,9 @@ const CAFES = [
     "sourceLabel": "茶屋武甲の公式サイト",
     "sourceUrl": "https://chaya-buko.skomaru.com/",
     "lat": 35.985123,
-    "lng": 139.099686
+    "lng": 139.099686,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kankyo",
@@ -2517,7 +2627,9 @@ const CAFES = [
     "sourceUrl": "https://www.cafe-kankyo.com/kk_index.html",
     "lat": 36.139076,
     "lng": 139.459656,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "waniwa",
@@ -2558,7 +2670,9 @@ const CAFES = [
     "sourceLabel": "和庭cafe の公式サイト",
     "sourceUrl": "https://www.waniwa-cafe.com/",
     "lat": 36.188576,
-    "lng": 139.43605
+    "lng": 139.43605,
+    "mapsStars": 4.7,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "umon",
@@ -2605,7 +2719,9 @@ const CAFES = [
     "sourceUrl": "https://www.imokoi.com/company",
     "lat": 35.92202,
     "lng": 139.482559,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "umedaya",
@@ -2651,7 +2767,9 @@ const CAFES = [
     "sourceUrl": "https://www.umedatofu.com/",
     "lat": 36.094967,
     "lng": 139.10228,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "blanco",
@@ -2692,7 +2810,9 @@ const CAFES = [
     "sourceLabel": "紡ぎの家大島の公式サイト",
     "sourceUrl": "https://tumuginoie-ooshima.jimdofree.com/",
     "lat": 36.000488,
-    "lng": 139.60556
+    "lng": 139.60556,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "miyabi",
@@ -2733,7 +2853,9 @@ const CAFES = [
     "sourceLabel": "古民家カフェ雅の公式サイト",
     "sourceUrl": "https://www.kominkacafe-miyabi.com/",
     "lat": 35.563412,
-    "lng": 139.199219
+    "lng": 139.199219,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "sakakan",
@@ -2778,7 +2900,9 @@ const CAFES = [
     "sourceUrl": "https://sakakancafe.com/",
     "lat": 36.148487,
     "lng": 139.709763,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "yumeya",
@@ -2818,7 +2942,9 @@ const CAFES = [
     "sourceUrl": "https://nasuyume.com/about",
     "lat": 37.049603,
     "lng": 139.982803,
-    "pinRough": true
+    "pinRough": true,
+    "mapsStars": 4.3,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "vmg",
@@ -2864,7 +2990,9 @@ const CAFES = [
     "sourceLabel": "NIPPONIA佐原の VMG CAFE 案内",
     "sourceUrl": "https://www.nipponia-sawara.jp/cafe",
     "lat": 35.888771,
-    "lng": 140.497528
+    "lng": 140.497528,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "kamiya",
@@ -2913,7 +3041,9 @@ const CAFES = [
     "sourceLabel": "神谷バーの公式サイト",
     "sourceUrl": "http://www.kamiya-bar.com/",
     "lat": 35.710876,
-    "lng": 139.79747
+    "lng": 139.79747,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "mountain",
@@ -2955,7 +3085,9 @@ const CAFES = [
     "sourceLabel": "ぐるなびの店舗ページ。浅草においでよの時間とは違う",
     "sourceUrl": "https://gh5u300.gorp.jp/",
     "lat": 35.711426,
-    "lng": 139.793152
+    "lng": 139.793152,
+    "mapsStars": 3.9,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "royal",
@@ -3002,7 +3134,9 @@ const CAFES = [
     "sourceLabel": "食べログの店舗情報（時間の更新は 2026年10月19日）と浅草においでよ",
     "sourceUrl": "https://tabelog.com/tokyo/A1311/A131102/13008614/",
     "lat": 35.712742,
-    "lng": 139.794388
+    "lng": 139.794388,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
   },
   {
     "id": "tengoku",
@@ -3047,6 +3181,216 @@ const CAFES = [
     "sourceLabel": "食べログの店舗情報と、コーヒー豆研究所の記事（2026年10月4日）",
     "sourceUrl": "https://tabelog.com/tokyo/A1311/A131102/13025425/",
     "lat": 35.713078,
-    "lng": 139.794052
+    "lng": 139.794052,
+    "mapsStars": 3.7,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "akaishi",
+    "checked": "2026-10-31",
+    "name": "ロッジ赤石",
+    "kana": "ロッジアカイシ",
+    "prefecture": "東京",
+    "locality": "浅草",
+    "moods": [
+      "retro",
+      "morning",
+      "late",
+      "meal"
+    ],
+    "lead": "浅草の喫茶。Googleマップの星は4.2。",
+    "story": "浅草においでよは、食事の出来る喫茶店、と書いている。時間は二つの案内で違う。食べログは月曜が休みで、火〜日 9:00〜20:00。浅草においでよは月曜が休みで、平日 9:00〜26:00、日・祝 9:00〜25:00。Googleマップは2026年10月31日の土曜に、閉店20:00と出していた。",
+    "address": "東京都台東区浅草3-8-4",
+    "access": "つくばエクスプレス浅草駅から徒歩7分。銀座線と東武の浅草駅から徒歩10分。都営浅草線浅草駅から徒歩11分。",
+    "hours": "食べログは 火〜日 9:00〜20:00。浅草においでよは 平日 9:00〜26:00、日・祝 9:00〜25:00",
+    "closed": "月曜、と食べログも浅草においでよも書いている",
+    "phone": "03-3875-1688",
+    "links": [
+      {
+        "label": "浅草においでよ",
+        "href": "https://asakusanioideyo.com/56/1018/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "予約不可、と食べログ。",
+    "parking": "店の駐車場はない。徒歩2分以内にコインパーキング、と食べログ",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.2は、2026年10月31日に店名の横へ出ていた数字。",
+      "全席禁煙、と食べログ。席の数は席広めの印には使っていない。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "食べログの店舗情報と浅草においでよ。星はGoogleマップ",
+    "sourceUrl": "https://tabelog.com/tokyo/A1311/A131102/13058004/",
+    "lat": 35.717003,
+    "lng": 139.795044,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "hatou",
+    "checked": "2026-10-31",
+    "name": "茶亭 羽當",
+    "kana": "チャテイハトウ",
+    "prefecture": "東京",
+    "locality": "渋谷",
+    "moods": [
+      "retro",
+      "sweet",
+      "late",
+      "air"
+    ],
+    "lead": "渋谷の喫茶。カラフルなカップが棚にある、とGoogleマップ。星は4.1。",
+    "story": "Googleマップは、カラフルなコーヒーカップが棚に積まれた居心地のよいカフェで、コーヒーとケーキを出す、と書いている。時間は食べログが 11:00〜23:00、ラストオーダー 22:00。店の固定サイトは見当たらない。",
+    "address": "東京都渋谷区渋谷1-15-19 二葉ビル2F",
+    "access": "渋谷駅東口から徒歩3分。",
+    "hours": "11:00〜23:00（22:00 ラストオーダー）",
+    "closed": "食べログに毎週の定休日はない",
+    "phone": "03-3400-9088",
+    "links": [],
+    "reservation": "none",
+    "reservationNote": "予約不可、と食べログ。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。",
+      "支払いは現金のみ、と食べログ。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "guide",
+    "sourceLabel": "食べログの店舗情報。店内の一文はGoogleマップ",
+    "sourceUrl": "https://tabelog.com/tokyo/A1303/A130301/13001169/",
+    "lat": 35.660488,
+    "lng": 139.702469,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "bach",
+    "checked": "2026-10-31",
+    "name": "カフェ バッハ",
+    "kana": "カフェバッハ",
+    "prefecture": "東京",
+    "locality": "日本堤",
+    "moods": [
+      "retro",
+      "sweet",
+      "air"
+    ],
+    "lead": "日本堤。バッハの音楽が流れる、とGoogleマップ。星は4.4。",
+    "story": "公式の時間は 10:30〜18:30、ラストオーダー 18:15。定休日は毎週火曜と、第2・第4水曜。駐車場はない。Googleマップは、昔ながらの雰囲気でバッハの音楽が流れ、コーヒーやケーキを出す、と書いている。",
+    "address": "東京都台東区日本堤1-23-9",
+    "access": "日本堤。駅からの分数は公式の案内にない。",
+    "hours": "10:30〜18:30（18:15 ラストオーダー）",
+    "closed": "火曜、第2・第4水曜",
+    "phone": "03-3875-2669",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://bach-kaffee.co.jp/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "店の駐車場はない。近くの有料駐車場、と公式",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.4は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "カフェ バッハの公式サイト。店内の一文はGoogleマップ",
+    "sourceUrl": "https://bach-kaffee.co.jp/",
+    "lat": 35.726841,
+    "lng": 139.800385,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "ai",
+    "checked": "2026-10-31",
+    "name": "古民家カフェ あい",
+    "kana": "アイ",
+    "prefecture": "埼玉",
+    "locality": "南浦和",
+    "moods": [
+      "house"
+    ],
+    "lead": "南浦和の古民家カフェ。Googleマップの星は4.7。",
+    "story": "店名は古民家カフェ。時間は食べログが、木・金・土 10:00〜16:00、月・火・水・日が休み。駐車場は3台、予約はできる、とある。Googleマップは2026年10月31日に星4.7と出していた。店の固定サイトは見当たらない。",
+    "address": "埼玉県さいたま市南区文蔵4-8-6",
+    "access": "JR南浦和駅から徒歩約18分。",
+    "hours": "木・金・土 10:00〜16:00",
+    "closed": "月・火・水・日",
+    "phone": "048-861-6123",
+    "links": [],
+    "reservation": "recommended",
+    "reservationNote": "予約可、と食べログ。",
+    "parking": "3台、と食べログ",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.7は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": true,
+    "seasonal": false,
+    "confidence": "guide",
+    "sourceLabel": "食べログの店舗情報。星はGoogleマップ",
+    "sourceUrl": "https://tabelog.com/saitama/A1101/A110102/11060137/",
+    "lat": 35.839401,
+    "lng": 139.671249,
+    "mapsStars": 4.7,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "lion",
+    "checked": "2026-10-31",
+    "name": "名曲喫茶ライオン",
+    "kana": "メイキョクキッサライオン",
+    "prefecture": "東京",
+    "locality": "道玄坂",
+    "moods": [
+      "retro",
+      "quiet",
+      "air"
+    ],
+    "lead": "道玄坂の名曲喫茶。壁一面のスピーカー、とGoogleマップ。星は4.5。",
+    "story": "Googleマップは、壁一面のスピーカーからオーケストラが流れる、と書いている。るるぶは、1950年に再建した店で、店内の会話と撮影は禁止、時間は 13:00〜20:00、ラストオーダー 19:30、休みなし、と書いている。公式サイトを開いたとき、営業時間は載っていなかった。",
+    "address": "東京都渋谷区道玄坂2-19-13",
+    "access": "東京メトロ渋谷駅から徒歩5分。",
+    "hours": "13:00〜20:00（19:30 ラストオーダー）",
+    "closed": "るるぶは無休。年末年始などはページの注記どおり省略",
+    "phone": "03-3461-6858",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://lion.main.jp/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "なし、とるるぶ",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.5は、2026年10月31日に店名の横へ出ていた数字。",
+      "るるぶは、年末年始・お盆・ゴールデンウィーク・臨時休業を省略している、と注記がある。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "guide",
+    "sourceLabel": "るるぶの案内。店内の一文と星はGoogleマップ",
+    "sourceUrl": "https://rurubu.jp/andmore/spot/80071772",
+    "lat": 35.659344,
+    "lng": 139.69632,
+    "mapsStars": 4.5,
+    "mapsChecked": "2026-10-31"
   }
 ];

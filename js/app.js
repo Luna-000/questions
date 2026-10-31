@@ -13,6 +13,7 @@ const state = {
   car: false,
   reserve: false,
   seasonal: false,
+  stars: false,
   sort: "guide",
   mapOpen: false,
 };
@@ -120,6 +121,7 @@ function readHash() {
   state.car = params.get("car") === "1";
   state.reserve = params.get("reserve") === "1";
   state.seasonal = params.get("seasonal") === "1";
+  state.stars = params.get("stars") === "1";
   state.sort = ["guide", "kana", "pref"].includes(params.get("sort")) ? params.get("sort") : "guide";
   if (parts[0] === "shiori") {
     state.view = "shiori";
@@ -140,6 +142,7 @@ function listHash(view) {
   if (state.car) params.set("car", "1");
   if (state.reserve) params.set("reserve", "1");
   if (state.seasonal) params.set("seasonal", "1");
+  if (state.stars) params.set("stars", "1");
   if (state.sort !== "guide") params.set("sort", state.sort);
   const query = params.toString();
   const path = view === "shiori" ? "/shiori" : "/";
@@ -223,6 +226,7 @@ function matches(cafe) {
   if (state.car && !cafe.car) return false;
   if (state.reserve && cafe.reservation !== "required") return false;
   if (state.seasonal && !cafe.seasonal) return false;
+  if (state.stars && !(cafe.mapsStars >= 4)) return false;
   const q = state.q.toLowerCase().replace(/\s+/g, "");
   if (q && !haystack(cafe).includes(q)) return false;
   return true;
@@ -245,7 +249,7 @@ function visibleCafes() {
 }
 
 function filtersActive() {
-  return Boolean(state.q || state.pref !== "all" || state.moods.size || state.train || state.car || state.reserve || state.seasonal);
+  return Boolean(state.q || state.pref !== "all" || state.moods.size || state.train || state.car || state.reserve || state.seasonal || state.stars);
 }
 
 function clearFilters() {
@@ -256,6 +260,7 @@ function clearFilters() {
   state.car = false;
   state.reserve = false;
   state.seasonal = false;
+  state.stars = false;
   state.sort = "guide";
   writeHash("replace");
   renderBrowse();
@@ -289,6 +294,7 @@ function card(cafe) {
         <p class="kicker">${esc(mood.label)} · ${esc(cafe.prefecture)} · ${esc(cafe.locality)}</p>
         <h2>${esc(cafe.name)}</h2>
         <p class="lead">${esc(cafe.lead)}</p>
+        ${typeof cafe.mapsStars === "number" ? `<p class="stars">Googleマップ ★${esc(cafe.mapsStars.toFixed(1))}</p>` : ""}
         ${recommendations(cafe)[0] ? `<p class="pick">おすすめ ${esc(recommendations(cafe)[0])}</p>` : ""}
         <div class="tags">${tags.map((tag) => `<span class="tagchip">${esc(tag)}</span>`).join("")}</div>
       </a>
@@ -360,6 +366,7 @@ function renderControls() {
     ["car", "車が向く", state.car],
     ["reserve", "予約必須", state.reserve],
     ["seasonal", "季節で変わる", state.seasonal],
+    ["stars", "★4以上", state.stars],
   ];
   $("#flags").innerHTML = flags.map(([key, label, on]) =>
     `<button type="button" class="chip" data-flag="${key}" aria-pressed="${on}">${label}</button>`).join("");
@@ -401,6 +408,13 @@ function recommendations(cafe) {
   if (cafe.picks?.length) return cafe.picks;
   if (!cafe.signature) return [];
   return cafe.signature.split("、").map((item) => item.trim()).filter(Boolean);
+}
+
+function mapsFact(cafe) {
+  if (typeof cafe.mapsStars !== "number") return "";
+  const day = (cafe.mapsChecked || "2026-10-31").split("-");
+  const label = `${day[0]}年${Number(day[1])}月${Number(day[2])}日`;
+  return fact("Googleの星", `★${esc(cafe.mapsStars.toFixed(1))} / 5<br><span class="fine">${esc(label)}に、Googleマップの店名の横へ出ていた数字。件数はその画面に出ていなかった。手帳の点数ではない。</span>`);
 }
 
 function recommendFact(cafe) {
@@ -462,6 +476,7 @@ function renderDetail() {
       <div>
         <dl class="facts">
           ${fact("時間", `${esc(cafe.hours)}<br><span class="fine">${esc(CONFIDENCE[cafe.confidence])}</span>`)}
+          ${mapsFact(cafe)}
           ${fact("休み", esc(cafe.closed))}
           ${fact("予約", cafe.reservation === "none" ? "指定なし。混む日は店に確認" : `${esc({ required: "必須", recommended: "できる", unavailable: "不可" }[cafe.reservation])}${cafe.reservationNote ? `<br>${esc(cafe.reservationNote)}` : ""}`)}
           ${fact("住所", `${esc(cafe.address)}<br><a class="map-open" href="${mapLink(cafe)}" target="_blank" rel="noopener noreferrer">Googleマップ</a>`)}
