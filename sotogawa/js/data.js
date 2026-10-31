@@ -1,4 +1,4 @@
-/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるもの。加えて、2026-10-31 に Googleマップの店名の横が 4.0 以上だった個人店。星はその日に見た数字。営業時間は同じ日までに見た公開情報。出発前に各店で確認する。 */
+/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるもの。加えて、2026-10-31 に Googleマップの店名の横が 4.0 以上だった個人店。同じ日に閉業と出ていた店は入れていない。星はその日に見た数字。営業時間は同じ日までに見た公開情報。出発前に各店で確認する。 */
 const MOODS = [
   { id: "forest", label: "森", group: "scene" },
   { id: "water", label: "水辺", group: "scene" },
@@ -1643,53 +1643,6 @@ const CAFES = [
     "mapsChecked": "2026-10-31"
   },
   {
-    "id": "halekura",
-    "checked": "2026-10-31",
-    "name": "Café 晴蔵",
-    "kana": "カフェハレクラ",
-    "prefecture": "東京",
-    "locality": "浅草",
-    "moods": [
-      "house",
-      "sweet",
-      "morning",
-      "linger",
-      "air"
-    ],
-    "picks": [
-      "フレンチトースト",
-      "サイフォンコーヒー"
-    ],
-    "lead": "観音裏の日本家屋。吹き抜けの2階に18席。",
-    "story": "公式は、古い日本家屋を直し、入ると木の温かみと吹き抜けがある、と書いている。メインの席は2階で18席。朝7時からモーニングがあり、バケットのフレンチトーストと、サイフォンのコーヒーを出している。",
-    "address": "東京都台東区浅草3-34-2",
-    "access": "つくばエクスプレス浅草駅から徒歩8分。",
-    "hours": "7:00〜16:00",
-    "closed": "木曜",
-    "phone": "03-6802-3223",
-    "links": [
-      {
-        "label": "公式サイト",
-        "href": "https://cafehalekura.com/"
-      }
-    ],
-    "reservation": "recommended",
-    "reservationNote": "可能な範囲で電話予約を受ける、と公式。",
-    "parking": "店の駐車場はない。周辺の有料駐車場、と案内",
-    "signature": "",
-    "notes": [],
-    "train": true,
-    "car": false,
-    "seasonal": false,
-    "confidence": "official",
-    "sourceLabel": "Café 晴蔵の公式サイト",
-    "sourceUrl": "https://cafehalekura.com/",
-    "lat": 35.717339,
-    "lng": 139.796188,
-    "mapsStars": 4.5,
-    "mapsChecked": "2026-10-31"
-  },
-  {
     "id": "hikidashi",
     "checked": "2026-10-31",
     "name": "ヒキダシ",
@@ -2357,54 +2310,6 @@ const CAFES = [
     "lng": 139.1465,
     "pinRough": true,
     "mapsStars": 4.5,
-    "mapsChecked": "2026-10-31"
-  },
-  {
-    "id": "yururi",
-    "checked": "2026-10-31",
-    "name": "きょうのごはん ゆるりCafe",
-    "kana": "ユルリカフェ",
-    "prefecture": "埼玉",
-    "locality": "川越",
-    "moods": [
-      "house",
-      "sweet",
-      "air"
-    ],
-    "picks": [
-      "ジェナーコ",
-      "レアチーズケーキ"
-    ],
-    "lead": "連雀町。古民家を直したカフェで、自家製のきなこアイス。",
-    "story": "公式は、蓮馨寺から歩いてすぐ、小江戸川越の古民家をリノベーションしたカフェ、と書いている。15時からのカフェタイムに、自家製のきなこアイスクリームと、季節のケーキ。ジェナーコは京都丹波の黒豆ときな粉を練り込んだアイス、とある。",
-    "address": "埼玉県川越市連雀町32-1",
-    "access": "東武東上線 川越市駅から徒歩15分。西武新宿線 本川越駅東口から徒歩10分。",
-    "hours": "平日 10:30〜16:00（15:00 ラストオーダー）／土日祝 10:30〜18:00（17:30 ラストオーダー）",
-    "closed": "不定休",
-    "phone": "049-227-9133",
-    "links": [
-      {
-        "label": "公式サイト",
-        "href": "https://www.kyounogohan-yururicafe.com/cafe.html"
-      }
-    ],
-    "reservation": "recommended",
-    "reservationNote": "電話。ホームページを見たと伝えるとスムーズ、と公式。",
-    "parking": "",
-    "signature": "",
-    "notes": [
-      "営業時間の見出しは「ただいま」。変わる前提で書かれている。"
-    ],
-    "train": true,
-    "car": false,
-    "seasonal": false,
-    "confidence": "confirm",
-    "sourceLabel": "ゆるりCafe の公式サイト",
-    "sourceUrl": "https://www.kyounogohan-yururicafe.com/cafe.html",
-    "lat": 35.920006,
-    "lng": 139.481918,
-    "pinRough": true,
-    "mapsStars": 4.3,
     "mapsChecked": "2026-10-31"
   },
   {
@@ -3391,6 +3296,634 @@ const CAFES = [
     "lat": 35.659344,
     "lng": 139.69632,
     "mapsStars": 4.5,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "tatsukichi",
+    "checked": "2026-10-31",
+    "name": "珈琲 立吉",
+    "kana": "コーヒータツキチ",
+    "prefecture": "東京",
+    "locality": "吉祥寺",
+    "moods": [
+      "retro",
+      "sweet",
+      "linger",
+      "air"
+    ],
+    "picks": [
+      "ブレンドコーヒー",
+      "グラニーさんのスコーン"
+    ],
+    "lead": "吉祥寺。1979年創業で、ランプを飾る喫茶。",
+    "story": "週刊きちじょうじの2026年1月8日の記事は、1979年創業で、2021年に父から娘が継いだ、と書いている。父がランプを飾れる店をコンセプトにし、テーブルや椅子は古いもの。BGMはなく、豆をひく音がしている、ともある。食事は出さず、おやつを用意している。営業は 12:00〜19:00、ラストオーダー 18:30。火曜と水曜が休み。支払いは現金のみ。",
+    "address": "東京都武蔵野市吉祥寺南町1-15-5",
+    "access": "吉祥寺駅南口から徒歩約5分。",
+    "hours": "12:00〜19:00（18:30 ラストオーダー）",
+    "closed": "火曜、水曜",
+    "phone": "0422-48-4450",
+    "links": [
+      {
+        "label": "週刊きちじょうじ",
+        "href": "https://kj-weekly.jp/2026/01/08/tatukichi/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "支払いは現金のみ、と週刊きちじょうじ。",
+      "Googleマップの星4.2は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "guide",
+    "sourceLabel": "週刊きちじょうじ 2026年1月8日",
+    "sourceUrl": "https://kj-weekly.jp/2026/01/08/tatukichi/",
+    "lat": 35.701176,
+    "lng": 139.578506,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "lawn",
+    "checked": "2026-10-31",
+    "name": "珈琲ロン",
+    "kana": "コーヒーロン",
+    "prefecture": "東京",
+    "locality": "四ツ谷",
+    "moods": [
+      "retro",
+      "linger",
+      "air"
+    ],
+    "lead": "四ツ谷。1968年開店で、吹き抜けの2階席。",
+    "story": "さんたつ by 散歩の達人（2025年7月23日更新）は、1968年開店、真ん中が吹き抜けて桟敷のような2階席から階下が見える、と書いている。営業は 11:00〜18:00。定休日は土・日・祝で、第3日のみ営業、ともある。別の店舗案内は、月〜金 11:00〜18:00、土・日・祝が定休日で、第3日の例外は書いていない。",
+    "address": "東京都新宿区四谷1-2",
+    "access": "東京メトロ丸ノ内線・南北線の四ツ谷駅から徒歩2分。JR中央線の四ツ谷駅から徒歩3分、と店舗案内。さんたつは、JR・地下鉄から徒歩2分。",
+    "hours": "さんたつは 11:00〜18:00、土・日・祝は休みで第3日のみ営業。店舗案内は月〜金 11:00〜18:00、土・日・祝が定休日",
+    "closed": "土・日・祝。第3日に開く、という案内もある",
+    "phone": "03-3341-1091",
+    "links": [
+      {
+        "label": "さんたつ",
+        "href": "https://san-tatsu.jp/spots/97247/"
+      },
+      {
+        "label": "店舗案内",
+        "href": "https://suocca.net/ron/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "喫煙可、とさんたつ。店舗案内は、カード、電子マネー、QRコード決済が不可、と書いている。",
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。店名は珈琲ロン COFFEE LAWN と出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "さんたつ by 散歩の達人（2025年7月23日更新）と店舗案内。休み方が違う",
+    "sourceUrl": "https://san-tatsu.jp/spots/97247/",
+    "lat": 35.68578,
+    "lng": 139.728958,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "shimano",
+    "checked": "2026-10-31",
+    "name": "シマノコーヒー大正館",
+    "kana": "シマノコーヒータイショウカン",
+    "prefecture": "埼玉",
+    "locality": "川越",
+    "moods": [
+      "retro",
+      "morning",
+      "sweet",
+      "meal"
+    ],
+    "picks": [
+      "ヤキサンド",
+      "サイフォンコーヒー"
+    ],
+    "lead": "川越の大正浪漫夢通り。サイフォンとヤキサンド。",
+    "story": "川越商工会議所の案内は、1996年に大正浪漫夢通りへ開いた自家焙煎の喫茶で、サイフォンのコーヒー、自家焙煎のヤキサンド、自家製ケーキが人気、と書いている。姉妹店は紅茶浪漫館シマ乃。営業は 8:00〜19:00、不定休。",
+    "address": "埼玉県川越市連雀町13-7",
+    "access": "大正浪漫夢通り。駅からの分数は、この案内にない。",
+    "hours": "8:00〜19:00",
+    "closed": "不定休",
+    "phone": "049-225-7680",
+    "links": [
+      {
+        "label": "川越商工会議所",
+        "href": "https://www.kawagoe.or.jp/shimano-coffee-taiseikan/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "2026年10月31日（土）のGoogleマップは、営業終了を 18:00 と出していた。商工会議所の案内は 19:00 まで。出かける前に店で見る。",
+      "姉妹店の紅茶浪漫館シマ乃を含めて2店舗。公式サイトのURLは、その日には開かなかった。",
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": false,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "川越商工会議所の店舗案内。その土曜のGoogleマップとは終了時刻が違う",
+    "sourceUrl": "https://www.kawagoe.or.jp/shimano-coffee-taiseikan/",
+    "lat": 35.919849,
+    "lng": 139.483322,
+    "pinRough": true,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "petitmoi",
+    "checked": "2026-10-31",
+    "name": "喫茶プチモア",
+    "kana": "キッサプチモア",
+    "prefecture": "埼玉",
+    "locality": "川越",
+    "moods": [
+      "sweet",
+      "morning",
+      "meal"
+    ],
+    "picks": [
+      "チーズケーキ",
+      "米粉ショートケーキ"
+    ],
+    "lead": "川越。手作りケーキと、日替わりのランチ。",
+    "story": "公式は、家庭料理と手作りケーキの喫茶で、日替わりランチがある、と書いている。ケーキの名前に、チーズケーキと米粉ショートケーキがある。営業は 9:00〜16:30。定休日は火・土・日で、臨時営業と臨時休業がある。",
+    "address": "埼玉県川越市脇田新町14-1",
+    "access": "駅からの分数は、公式にない。",
+    "hours": "9:00〜16:30",
+    "closed": "火・土・日（臨時営業・臨時休業あり）",
+    "phone": "049-242-6550",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://www.petit-moi.net/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "キッズスペースは予約制で、2時間、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "2026年10月31日は土曜で、定休日の案内にあたる。同じ日のGoogleマップは営業中で、終了 16:30 と出ていた。臨時営業がある、と公式。",
+      "Googleマップの星4.6は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": false,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "喫茶プチモアの公式サイト。臨時営業がある",
+    "sourceUrl": "https://www.petit-moi.net/",
+    "lat": 35.907166,
+    "lng": 139.473358,
+    "pinRough": true,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "ichijou",
+    "checked": "2026-10-31",
+    "name": "音喫茶一乗",
+    "kana": "オトキッサイチジョウ",
+    "prefecture": "埼玉",
+    "locality": "川越",
+    "moods": [
+      "late",
+      "meal"
+    ],
+    "lead": "川越の端。ライブのある小さい音喫茶。",
+    "story": "公式は、川越市の端、ふじみ野市との境にある喫茶で、食べる飲む、心が震える音楽との出会い、ライブやワークショップ、展示がある、と書いている。営業は水〜金 11:00〜20:00、土曜は 11:00〜14:00 と夜のイベント 18:00頃〜22:00、日曜はイベント営業のみ。定休は月・火で、貸切はある。イベントやライブで時間が変わる、ともある。",
+    "address": "埼玉県川越市熊野町22-1",
+    "access": "駅からの分数は、公式にない。",
+    "hours": "水〜金 11:00〜20:00／土 11:00〜14:00、夜のイベントは 18:00頃〜22:00／日はイベント営業のみ",
+    "closed": "月・火（貸切のみ）。イベントやライブで変わる",
+    "phone": "049-246-7822",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://ichijou-live.com/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "2026年10月31日（土）のGoogleマップは、14:00 に一度終わり、18:00 に再開、と出ていた。公式の土曜と同じ並び。",
+      "Googleマップの星4.4は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": false,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "音喫茶一乗の公式サイト。イベントで時間が変わる",
+    "sourceUrl": "https://ichijou-live.com/",
+    "lat": 35.875786,
+    "lng": 139.504974,
+    "pinRough": true,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "kado",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "神楽坂カド",
+    "kana": "カグラザカカド",
+    "prefecture": "東京",
+    "locality": "神楽坂",
+    "moods": [
+      "house",
+      "late",
+      "meal",
+      "air"
+    ],
+    "lead": "神楽坂の路地。昭和24年の古民家を再生した店。",
+    "story": "公式は、昭和24年（一部は昭和30年代後半の増築）の古民家を再生した隠れ家で、座敷は昭和の趣、勝手口側は組板を再利用した立ち呑み、と書いている。旬の食材の和食をコースで出す、ともある。営業時間は、店の地図ページとグループの案内で開始が違う。",
+    "address": "東京都新宿区赤城元町1-32",
+    "access": "東西線神楽坂駅1番出口から徒歩3分。有楽町線・南北線飯田橋駅B3出口から徒歩10分。JR飯田橋駅西口から徒歩10分。都営大江戸線牛込神楽坂駅A3出口から徒歩5分。店の地図ページ。",
+    "hours": "店の地図ページは、平日の立呑 15:00〜23:00（22:30 LO）、お座敷 17:00〜23:00。土曜の立呑 14:00〜23:00（22:00 LO）、お座敷 16:00〜23:00。日・祝の立呑 14:00〜21:30（21:00 LO）、お座敷 16:00〜21:30。グループの案内は、平日の立呑が 16:00、土曜のお座敷が 17:00 から",
+    "closed": "夏季休暇・年末年始を除き毎日営業。日祝は閉店が早まる場合あり",
+    "phone": "03-3268-2410",
+    "links": [
+      {
+        "label": "地図と営業時間",
+        "href": "https://kagurazaka-kado.com/map/"
+      },
+      {
+        "label": "店の案内",
+        "href": "https://kaguramura.jp/restaurant/kado/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "立ち呑みは予約しない。お座敷は当日を除きコース、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "時期で時間が変わるので、公式は Twitter と Instagram で最新の営業日を見るよう書いている。",
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "神楽坂カドの地図ページと、グループの店案内。開始時刻が違う",
+    "sourceUrl": "https://kagurazaka-kado.com/map/",
+    "lat": 35.703896,
+    "lng": 139.736618,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "kimuraya",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "酒房きむら屋",
+    "kana": "シュボウキムラヤ",
+    "prefecture": "東京",
+    "locality": "業平",
+    "moods": [
+      "retro",
+      "late",
+      "linger",
+      "meal",
+      "air"
+    ],
+    "lead": "スカイツリーの麓。ママが一人で切る、おかめの暖簾。",
+    "story": "公式は、ママが一人で切り盛りする小さな居酒屋で、入口のおかめを抜けて暖簾をくぐると昭和、亡きマスター手作りのテーブルとカウンター、と書いている。営業は水・木・金・土・日の 17:00〜23:00。定休は月曜と火曜。土日は予約があれば昼間も、ともある。",
+    "address": "東京都墨田区業平1-10-4",
+    "access": "東京スカイツリーの麓、と公式。駅からの分数はページにない。",
+    "hours": "水・木・金・土・日 17:00〜23:00",
+    "closed": "月曜、火曜。土日は予約があれば昼間も",
+    "phone": "03-3623-7437",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://syuboukimuraya.wixsite.com/okame"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "一人で店をやっているので、電話は火曜〜日曜の 17:00〜23:00頃。出ないことがある、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "ページには 2026年8月10日〜18日の夏季休暇が残っている。8月19日から平常、とも書いてある。",
+      "Googleマップの星4.6は、2026年10月31日に店名の横へ出ていた数字。店名は酒房キムラヤ と出ていた。"
+    ],
+    "train": false,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "酒房きむら屋の公式サイト",
+    "sourceUrl": "https://syuboukimuraya.wixsite.com/okame",
+    "lat": 35.708771,
+    "lng": 139.810349,
+    "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "hokuhan",
+    "kind": "izakaya",
+    "checked": "2026-10-31",
+    "name": "北畔",
+    "kana": "ホクハン",
+    "prefecture": "東京",
+    "locality": "上野",
+    "moods": [
+      "retro",
+      "late",
+      "linger",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "田酒",
+      "自家製の梅酒"
+    ],
+    "lead": "上野。昭和34年創業で、カウンターと座敷。",
+    "story": "店舗ページは、昭和34年（1959年）創業で、創業当時から変わらない和の空間、カウンターと昭和の香りの座敷、と書いている。最初の一杯に生ビール、酒肴には田酒、桃川、じょっぱり、焼酎は芋と米、果実酒は自家製の梅酒、ともある。営業は 17:00〜22:30、ラストオーダー 22:00。日曜が休みで、月曜は不定休。",
+    "address": "東京都台東区上野6-7-10",
+    "access": "都営大江戸線 上野御徒町駅から徒歩4分。京成上野駅から徒歩4分。JR御徒町駅から徒歩5分。ページ上部は、上野駅から徒歩3分程、ともある。",
+    "hours": "17:00〜22:30（22:00 ラストオーダー）",
+    "closed": "日曜。月曜は不定休",
+    "phone": "050-5461-3221",
+    "links": [
+      {
+        "label": "店舗ページ",
+        "href": "https://hokuhan.foodre.jp/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "席は40。個室はない、と店舗ページ。",
+      "Googleマップの星4.0は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "guide",
+    "sourceLabel": "北畔の店舗ページ",
+    "sourceUrl": "https://hokuhan.foodre.jp/",
+    "lat": 35.709953,
+    "lng": 139.775909,
+    "mapsStars": 4,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "futaba",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "BAR双葉",
+    "kana": "バーフタバ",
+    "prefecture": "東京",
+    "locality": "ゴールデン街",
+    "moods": [
+      "retro",
+      "late",
+      "linger",
+      "air"
+    ],
+    "picks": [
+      "角瓶"
+    ],
+    "lead": "新宿ゴールデン街。昭和23年創業で、席は12。",
+    "story": "公式は、昭和23年（1948年）創業でゴールデン街の最も古い店、建物が古く昭和のまま、黒電話が象徴、と書いている。会話とお酒の店で、マナーを守る人は会員、ともある。営業は 18:00〜23:00。定休は祭日、日曜、月曜、火曜。席は12。チャージはなし。ボトルキープに角瓶と焼酎の名前がある。支払いは現金とつけ。",
+    "address": "東京都新宿区歌舞伎町1-1-9",
+    "access": "新宿ゴールデン街。駅からの分数は、公式にない。",
+    "hours": "18:00〜23:00",
+    "closed": "祭日、日曜、月曜、火曜",
+    "phone": "03-3200-0279",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://bar-futaba.com/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "会員制だが、マナーを守る方は皆会員、と公式。",
+      "Googleマップの星4.8は、2026年10月31日に店名の横へ出ていた数字。店名は Bar双葉 と出ていた。"
+    ],
+    "train": false,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "BAR双葉の公式サイト",
+    "sourceUrl": "https://bar-futaba.com/",
+    "lat": 35.693695,
+    "lng": 139.704895,
+    "mapsStars": 4.8,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "taru",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "Bar TARU",
+    "kana": "バータル",
+    "prefecture": "東京",
+    "locality": "銀座",
+    "moods": [
+      "retro",
+      "late",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "竹鶴",
+      "ナポリタン"
+    ],
+    "lead": "銀座。昭和28年創業で、カウンターを移したバー。",
+    "story": "公式は、昭和28年創業で、サラリーマンのポケットマネーで飲めるパブリックバーとして始め、銀座6丁目の再開発でギンザシックス裏の銀緑館へ移った、と書いている。カウンターなど当時の内装を再利用した、ともある。飲み物に竹鶴、余市、生ビール。食事にナポリタン、ビーフカレー。営業は月〜金 17:00〜翌1:00、土曜 17:00〜24:00。日曜と祝日が休み。",
+    "address": "東京都中央区銀座6-12-14 松岡銀緑館4F",
+    "access": "銀座6丁目、ギンザシックス裏。駅からの分数は、公式にない。",
+    "hours": "月〜金 17:00〜翌1:00／土 17:00〜24:00",
+    "closed": "日曜、祝日",
+    "phone": "03-3573-1890",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://www.bar-taru.com/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "電話のほか、ぐるなびとホットペッパー、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "一人から10人くらい。20〜30人の貸切は相談、と公式。",
+      "Googleマップの星4.2は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": false,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "Bar TARU の公式サイト",
+    "sourceUrl": "https://www.bar-taru.com/",
+    "lat": 35.66917,
+    "lng": 139.764511,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "fujiyama",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "BAR藤山",
+    "kana": "バーフジヤマ",
+    "prefecture": "東京",
+    "locality": "銀座",
+    "moods": [
+      "night",
+      "late",
+      "air"
+    ],
+    "picks": [
+      "アイリッシュコーヒー"
+    ],
+    "lead": "銀座。2009年から店主が一人のバー。食事はない。",
+    "story": "公式は、2009年から店主が一人でやっていて、食事はなく、季節のフルーツのカクテルとノンアルコール、アイリッシュコーヒーは客が豆を挽く、と書いている。ウイスキーはボトラーズが中心で、メニューはない、ともある。営業は月〜金 17:00〜翌0:30、土・祝 17:00〜24:00。日曜が休み。",
+    "address": "東京都中央区銀座6-3-5",
+    "access": "駅からの分数は、公式にない。",
+    "hours": "月〜金 17:00〜翌0:30／土・祝 17:00〜24:00",
+    "closed": "日曜",
+    "phone": "03-3573-0352",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://barfujiyama.com/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星5.0は、2026年10月31日に店名の横へ出ていた数字。件数は、その画面に出ていなかった。"
+    ],
+    "train": false,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "BAR藤山の公式サイト",
+    "sourceUrl": "https://barfujiyama.com/",
+    "lat": 35.671589,
+    "lng": 139.761459,
+    "mapsStars": 5,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "slow",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "bar SLOW",
+    "kana": "バースロー",
+    "prefecture": "神奈川",
+    "locality": "中華街",
+    "moods": [
+      "night",
+      "late",
+      "linger",
+      "air"
+    ],
+    "picks": [
+      "フルーツのカクテル"
+    ],
+    "lead": "横浜中華街。2009年に店主が開いたバー。",
+    "story": "公式は、店主の廣瀬泰明が2009年に開いたバーで、玄武門の近く、路地の奥に青いネオン、と書いている。自慢はフルーツのカクテル。営業は火〜木 19:00〜25:00、金・土 19:00〜27:00、日・祝 19:00〜24:00。入店は閉店の1時間前まで。休業日は不定休。時間表に月曜はない。",
+    "address": "神奈川県横浜市中区山下町201-4",
+    "access": "JR石川町駅北口から徒歩約5分。JR関内駅南口から徒歩約5分。元町・中華街駅2番出口から徒歩約5分。日本大通り駅3番出口から徒歩約5分。",
+    "hours": "火〜木 19:00〜25:00／金・土 19:00〜27:00／日・祝 19:00〜24:00",
+    "closed": "時間表に月曜はなく、休業日は不定休",
+    "phone": "045-263-9263",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://www.yokohama-bar-slow.com/bar"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "8名以上は電話予約がスムーズ。当日も可、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "席は29。カウンターの一部は禁煙、と公式。",
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "bar SLOW の公式サイト",
+    "sourceUrl": "https://www.yokohama-bar-slow.com/bar",
+    "lat": 35.443989,
+    "lng": 139.642761,
+    "pinRough": true,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "matsumoto",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "Bar Matsumoto",
+    "kana": "バーマツモト",
+    "prefecture": "神奈川",
+    "locality": "馬車道",
+    "moods": [
+      "night",
+      "late"
+    ],
+    "lead": "横浜の馬車道。手狭で、来店は4人まで。",
+    "story": "公式は、営業 18:00〜翌1:00、ラストオーダー 0:30、定休は日曜、連休の最終日、年末年始、と書いている。店内が手狭なため、来店は4人まで、ともある。月ごとの店休日をページに出している。",
+    "address": "神奈川県横浜市中区住吉町5-61 住五ビル1F",
+    "access": "JR関内駅から徒歩約5分。JR桜木町駅から徒歩約5分。桜木町の新南口は 22:30 まで、と公式。",
+    "hours": "18:00〜翌1:00（0:30 ラストオーダー）",
+    "closed": "日曜、連休の最終日、年末年始",
+    "phone": "045-641-9200",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://www.bar-matsumoto.com/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.6は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "Bar Matsumoto の公式サイト",
+    "sourceUrl": "https://www.bar-matsumoto.com/",
+    "lat": 35.44791,
+    "lng": 139.635086,
+    "mapsStars": 4.6,
     "mapsChecked": "2026-10-31"
   }
 ];
