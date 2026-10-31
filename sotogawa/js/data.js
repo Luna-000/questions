@@ -1,4 +1,4 @@
-/* ソトガワの手帳。建物や内装、店が自分で書いている来歴がある店を選んでいる。営業時間は 2026-10-31 までに見た公開情報。出発前に各店で確認する。 */
+/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるものを選んでいる。営業時間は 2026-10-31 までに見た公開情報。出発前に各店で確認する。 */
 const MOODS = [
   { id: "forest", label: "森", group: "scene" },
   { id: "water", label: "水辺", group: "scene" },
@@ -285,48 +285,6 @@ const CAFES = [
     "sourceUrl": "https://www.kawagoe.or.jp/kuracafe/",
     "lat": 35.916283,
     "lng": 139.48378
-  },
-  {
-    "id": "saza",
-    "name": "サザコーヒー 水戸芸術館店",
-    "kana": "サザコーヒー ミトゲイジュツカンテン",
-    "prefecture": "茨城",
-    "locality": "水戸",
-    "moods": [
-      "abroad",
-      "height",
-      "sweet",
-      "roomy",
-      "air"
-    ],
-    "lead": "磯崎新の塔の下で、ネルドリップを飲む。",
-    "story": "水戸芸術館は磯崎新の建築で、シンボルタワーと広場そのものが日常の街角ではない。1階ラウンジのサザコーヒーは、その建物の中で誰でも入れる席。サザは産地で選んだ豆を自家焙煎し、ネルで淹れる店として茨城では知られる。ここは美術館のカフェであると同時に、建築を見るための席。",
-    "address": "茨城県水戸市五軒町1-6-8 水戸芸術館1F",
-    "access": "水戸駅北口から芸術館方面へ歩くか、バス。車は近隣の駐車場、と公式。",
-    "hours": "火〜日 10:00〜18:00（17:30 ラストオーダー）",
-    "closed": "月曜（月曜が祝日なら火曜）。年末年始",
-    "phone": "029-350-8080",
-    "links": [
-      {
-        "label": "サザコーヒーの店舗一覧",
-        "href": "https://saza.coffee/Page/shop.aspx"
-      }
-    ],
-    "reservation": "none",
-    "reservationNote": "",
-    "parking": "近隣の駐車場",
-    "signature": "ネルドリップのコーヒーと自家製ケーキ",
-    "notes": [
-      "館の広場と塔を見てから席に着くと、店の意味がわかる。"
-    ],
-    "train": true,
-    "car": true,
-    "seasonal": false,
-    "confidence": "official",
-    "sourceLabel": "サザコーヒー公式の店舗一覧",
-    "sourceUrl": "https://saza.coffee/Page/shop.aspx",
-    "lat": 36.379601,
-    "lng": 140.465317
   },
   {
     "id": "hagiso",
