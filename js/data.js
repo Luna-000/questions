@@ -1,4 +1,4 @@
-/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるもの。駅から徒歩10分以上の店は入れていない。いずれかの駅から9分以内の店だけ。2026-10-31 に Googleマップで閉業と出ていた店も入れていない。星はその日に見た数字。営業時間は同じ日までに見た公開情報。出発前に各店で確認する。 */
+/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるもの。東京・神奈川・千葉・埼玉。駅から徒歩10分以上の店は入れていない。いずれかの駅から9分以内の店だけ。2026-10-31 に Googleマップで閉業と出ていた店も入れていない。星はその日に見た数字。営業時間は同じ日までに見た公開情報。出発前に各店で確認する。 */
 const MOODS = [
   { id: "forest", label: "森", group: "scene" },
   { id: "water", label: "水辺", group: "scene" },
@@ -21,7 +21,7 @@ const MOODS = [
   { id: "late", label: "夜まで", group: "visit" },
 ];
 
-const PREFS = ["東京", "神奈川", "千葉", "埼玉", "茨城", "栃木", "群馬"];
+const PREFS = ["東京", "神奈川", "千葉", "埼玉"];
 
 const CONFIDENCE = {
   official: "公式の時間",
@@ -437,49 +437,6 @@ const CAFES = [
     "lng": 139.578644,
     "mapsStars": 4,
     "mapsChecked": "2026-10-31"
-  },
-  {
-    "id": "chakichi",
-    "checked": "2026-10-31",
-    "name": "茶フェ ちゃきち 富岡店",
-    "kana": "チャキチ",
-    "prefecture": "群馬",
-    "locality": "富岡",
-    "moods": [
-      "house",
-      "air"
-    ],
-    "lead": "富岡の、お茶の店が開く築60年の家。席は40。",
-    "story": "日本茶の吉田園が営む茶カフェ。富岡店は築60年の古民家、と公式が書いている。席は40。駐車場は10台と、第二駐車場が14台。高崎モントレーにも別の店があり、そちらはホテルの中で 10:00〜20:00。こちらは家のほう。",
-    "address": "群馬県富岡市一ノ宮264",
-    "access": "富岡市一ノ宮。駅からの分数は公式の案内にない。車は駐車場を使う。地図で測ると、上州一ノ宮駅から道のり約360m、徒歩約4分（分速80m）。",
-    "hours": "11:00〜18:00（L.O. 17:45）",
-    "closed": "月曜。月曜が祝日のときは営業し、翌火曜が休み",
-    "phone": "0274-63-4017",
-    "links": [
-      {
-        "label": "公式の店舗案内",
-        "href": "https://chakichi.jp/access/"
-      }
-    ],
-    "reservation": "none",
-    "reservationNote": "",
-    "parking": "10台。第二駐車場 14台、と公式。",
-    "signature": "日本茶の店の茶カフェ",
-    "notes": [
-      "高崎モントレー店は別住所で、休みはホテルに準ずる、と公式にある。"
-    ],
-    "train": true,
-    "car": true,
-    "seasonal": false,
-    "confidence": "official",
-    "sourceLabel": "茶フェちゃきちの店舗案内",
-    "sourceUrl": "https://chakichi.jp/access/",
-    "lat": 36.253761,
-    "lng": 138.863968,
-    "mapsStars": 4.4,
-    "mapsChecked": "2026-10-31",
-    "walk": "上州一ノ宮駅から徒歩約4分"
   },
   {
     "id": "hachisanroku",
@@ -2463,6 +2420,405 @@ const CAFES = [
     "lat": 35.44791,
     "lng": 139.635086,
     "mapsStars": 4.6,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "troisbagues",
+    "checked": "2026-10-31",
+    "name": "カフェ トロワバグ",
+    "kana": "トロワバグ",
+    "prefecture": "東京",
+    "locality": "神保町",
+    "moods": [
+      "retro",
+      "air",
+      "meal"
+    ],
+    "picks": [
+      "トロワブレンド",
+      "ハイブレンド"
+    ],
+    "lead": "神保町駅から1分。枕木の梁が残る、1976年の喫茶。",
+    "story": "公式は、昭和51年（1976年）に開いた小さな喫茶で、寝かせた豆をネルドリップする、と書いている。代表のブレンドはトロワブレンドとハイブレンド。DEEP TOKYO magazineの2025年4月14日の記事は、線路の枕木を使った梁、大理石と天然木枠の床、先代からの絵画と現代アートが、創業のときから残る、と書いている。同じ記事は、2024年にクレープの2号店が開いた、とも書いている。こちらは神保町の店。",
+    "address": "東京都千代田区神田神保町1-12-1 富田ビルB1",
+    "access": "神保町駅A5出口より徒歩1分。",
+    "walk": "神保町駅A5出口から徒歩1分",
+    "hours": "月〜金 10:00〜20:00（19:30 ラストオーダー）／土・祝 12:00〜19:00（18:30 ラストオーダー）",
+    "closed": "日曜",
+    "phone": "03-3294-8597",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://troisbagues.com/"
+      },
+      {
+        "label": "DEEP TOKYO magazine",
+        "href": "https://deeptokyo.jp/spot/food_gourmet/2958/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "公式は、予約を電話で受けている。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "国土地理院の住所は神田神保町一丁目12番までで、末尾の1は落ちている。",
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。店名はトロワバグと出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "トロワバグの公式サイト。部屋の描写はDEEP TOKYO magazine（2025年4月14日）",
+    "sourceUrl": "https://troisbagues.com/",
+    "lat": 35.696396,
+    "lng": 139.758362,
+    "pinRough": true,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "roju",
+    "checked": "2026-10-31",
+    "name": "Roju Cafe",
+    "kana": "ロジュカフェ",
+    "prefecture": "東京",
+    "locality": "中目黒",
+    "moods": [
+      "air",
+      "linger",
+      "roomy"
+    ],
+    "lead": "中目黒駅から6分。元倉庫を、設計の会社が直した店。",
+    "story": "公式は、築33年の元倉庫を設計会社HOUSETRADがリノベーションし、内装から運営まで手がけている、と書いている。オリジナル家具を置き、ミッドセンチュリーのソファがある。テラス席は風が通り、ペットも一緒に座れる。同じフロアは天井高4.2mのレンタルスペースにもなる。営業は 10:00〜20:00 と書いてあり、その日の営業はInstagramのストーリーズで確認する、ともある。定休日の記載はない。",
+    "address": "東京都目黒区中目黒1-9-3",
+    "access": "東急東横線・東京メトロ中目黒駅から徒歩6分。",
+    "walk": "中目黒駅から徒歩6分",
+    "hours": "10:00〜20:00",
+    "closed": "公式に定休日の記載はない。当日はInstagramのストーリーズで確認、と公式",
+    "phone": "03-6303-0770",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://housetrad.com/rojucafe/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "店舗前に5台。ロケバスも可、と公式。",
+    "signature": "",
+    "notes": [
+      "Googleマップの星3.9は、2026年10月31日に店名の横へ出ていた数字。店名はROJU CAFEと出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "Roju Cafe の公式サイト。当日の営業はInstagramで確認、と書いてある",
+    "sourceUrl": "https://housetrad.com/rojucafe/",
+    "lat": 35.643906,
+    "lng": 139.701782,
+    "mapsStars": 3.9,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "cozy",
+    "checked": "2026-10-31",
+    "name": "Cozy Style COFFEE",
+    "kana": "コージースタイルコーヒー",
+    "prefecture": "東京",
+    "locality": "落合",
+    "moods": [
+      "air",
+      "linger",
+      "sweet"
+    ],
+    "picks": [
+      "Cozy TIRAMISU"
+    ],
+    "lead": "落合駅から1分。店主が自分で設計して作った店。",
+    "story": "公式は、無農薬で無化学肥料の豆と、瓶入りの Cozy TIRAMISU を出している、と書いている。店主は小島一朗。ぐるっと東京は、インテリアの仕事もしている店主が、自分でデザインして施工した空間、と書いている。落合駅の2a出口から徒歩1分。中井駅のA1出口から徒歩7分。営業は 10:00〜18:00、ラストオーダー 17:30。月曜が休みで、祝日は開き、翌日が振り替え。席は1階23、2階14、とぐるっと東京。",
+    "address": "東京都新宿区上落合3-10-3 丸山ビル1F",
+    "access": "東京メトロ東西線 落合駅2a出口から徒歩1分。都営大江戸線 中井駅A1出口から徒歩7分。",
+    "walk": "落合駅から徒歩1分",
+    "hours": "10:00〜18:00（17:30 ラストオーダー）",
+    "closed": "月曜。祝日は営業し、翌平日が休み",
+    "phone": "03-6304-0451",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://cozystylecoffee.com/"
+      },
+      {
+        "label": "ぐるっと東京",
+        "href": "https://www.gurutto-tokyo.com/gourmet/cozy-style-coffee/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "ぐるっと東京は、予約優先と書いている。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "営業時間と行き方は、ぐるっと東京の案内。公式サイトの時刻表は、開いたページには出ていなかった。",
+      "Googleマップの星4.1は、2026年10月31日に店名の横へ出ていた数字。店名はCozyStyleCOFFEEと出ていた。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "guide",
+    "sourceLabel": "ぐるっと東京の店舗案内。豆と Cozy TIRAMISU は公式サイト",
+    "sourceUrl": "https://www.gurutto-tokyo.com/gourmet/cozy-style-coffee/",
+    "lat": 35.710175,
+    "lng": 139.683334,
+    "mapsStars": 4.1,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "createa",
+    "checked": "2026-10-31",
+    "name": "カフェ CREATEA",
+    "kana": "クリエイティア",
+    "prefecture": "東京",
+    "locality": "御徒町",
+    "moods": [
+      "air"
+    ],
+    "lead": "新御徒町駅から5分。席も棚も、自分たちで作った店。",
+    "story": "公式の店舗ページは、席とテーブルを一つずつ手作りし、大きなオブジェや棚、電気も手作り、と書いている。下の階は、道具を扱う店。月〜金 10:00〜19:00。料理のラストオーダーは 18:00、ドリンクは 18:30。土・日・祝は休み。御徒町駅から徒歩約7分、新御徒町駅A2出口から徒歩約5分、上野駅の正面から徒歩約10分。",
+    "address": "東京都台東区台東4-18-12",
+    "access": "新御徒町駅A2出口から徒歩約5分。御徒町駅から徒歩約7分。上野駅の正面から徒歩約10分。",
+    "walk": "新御徒町駅A2出口から徒歩約5分",
+    "hours": "月〜金 10:00〜19:00（料理 18:00、ドリンク 18:30 ラストオーダー）",
+    "closed": "土、日、祝",
+    "phone": "03-6803-2501",
+    "links": [
+      {
+        "label": "公式の店舗ページ",
+        "href": "https://createa.owst.jp/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.4は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "カフェ CREATEA の公式店舗ページ",
+    "sourceUrl": "https://createa.owst.jp/",
+    "lat": 35.706585,
+    "lng": 139.778641,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "kage",
+    "kind": "bar",
+    "checked": "2026-10-31",
+    "name": "BAR KAGE",
+    "kana": "バーカゲ",
+    "prefecture": "東京",
+    "locality": "銀座",
+    "moods": [
+      "night",
+      "late",
+      "air"
+    ],
+    "lead": "銀座の地下。5mを超える、欅の一枚板。",
+    "story": "公式は、扉の先の地下が別の場所のように落ち着く、と書いている。席は13。照明を落とし、5m強の欅の一枚板がカウンター。席の間隔を空け、隣を気にせず座れるようにしている。銘柄はバーテンダーが選ぶ。営業は 18:00〜26:00、ラストオーダー 25:00。日曜が休み。",
+    "address": "東京都中央区銀座6-3-6 B1F",
+    "access": "駅からの分数は公式にない。地図で測ると、銀座駅から道のり約500m、徒歩約6分（分速80m）。",
+    "walk": "銀座駅から徒歩約6分",
+    "hours": "18:00〜翌2:00（翌1:00 ラストオーダー）",
+    "closed": "日曜",
+    "phone": "03-6252-5044",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://www.barkage.com/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "公式の表記は 18:00〜26:00、LO 25:00。26:00 は翌日の2:00。",
+      "Googleマップの星4.7は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "BAR KAGE の公式サイト",
+    "sourceUrl": "https://www.barkage.com/",
+    "lat": 35.67149,
+    "lng": 139.761353,
+    "mapsStars": 4.7,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "lehavre",
+    "checked": "2026-10-31",
+    "name": "cafe Le Havre",
+    "kana": "カフェルアーヴル",
+    "prefecture": "神奈川",
+    "locality": "元町",
+    "moods": [
+      "abroad",
+      "air",
+      "sweet",
+      "meal",
+      "roomy"
+    ],
+    "picks": [
+      "コンテナシュークリーム",
+      "元町クリームプリン",
+      "バスクチーズケーキ"
+    ],
+    "lead": "元町・中華街駅から3分。黒いコンテナのビルの4階。",
+    "story": "公式の店舗ページは、コンテナの鉄骨が混ざるビル「ル・ノワール横濱元町」の4階、と書いている。店の名は、フランスの港ルアーヴルから。港町をモチーフにした落ち着いた部屋で、カウンターとテーブルがある。テラスはペットも一緒に座れる。月・木・金は 11:00〜18:00、土・日・祝は 11:00〜19:00。どちらもラストオーダーは30分前。火と水が休み。メニューに名前があるのは、コンテナシュークリーム、元町クリームプリン、バスクチーズケーキ。",
+    "address": "神奈川県横浜市中区元町1-38-2 Le Noir横浜元町4階",
+    "access": "みなとみらい線 元町・中華街駅から徒歩3分。",
+    "walk": "元町・中華街駅から徒歩3分",
+    "hours": "月・木・金 11:00〜18:00（17:30 ラストオーダー）／土・日・祝 11:00〜19:00（18:30 ラストオーダー）",
+    "closed": "火、水",
+    "phone": "045-884-1263",
+    "links": [
+      {
+        "label": "公式の店舗ページ",
+        "href": "https://cafelehavre.owst.jp/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "公式ページから予約できる。テラスのペットは、電話か予約がよい、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "国土地理院の住所は元町一丁目38番地までで、2は落ちている。",
+      "Googleマップの星4.2は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "cafe Le Havre の公式店舗ページ",
+    "sourceUrl": "https://cafelehavre.owst.jp/",
+    "lat": 35.440632,
+    "lng": 139.65007,
+    "pinRough": true,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "polaris",
+    "checked": "2026-10-31",
+    "name": "Polaris coffee",
+    "kana": "ポラリスコーヒー",
+    "prefecture": "神奈川",
+    "locality": "元町",
+    "moods": [
+      "air",
+      "quiet",
+      "linger",
+      "sweet",
+      "morning"
+    ],
+    "picks": [
+      "オリジナルブレンド"
+    ],
+    "lead": "石川町駅から5分。青を基調にした、静かなコーヒーの店。",
+    "story": "公式は、シンプルでおしゃれな内装、ブルーを基調にした落ち着いた色、ゆったりしたソファ、静かな雰囲気、と書いている。代表は吉田健人。初めての人にはオリジナルブレンドをすすめている。ケーキやプリンは店で作る。石川町駅から徒歩5分、元町・中華街駅から徒歩6分。平日は 10:00〜18:30、休日は 9:00〜19:00。月と火が休みで、祝日は開く。最新はInstagramで確認、と公式。",
+    "address": "神奈川県横浜市中区元町4-179 ウィスタリア元町2階",
+    "access": "JR石川町駅から徒歩5分。みなとみらい線 元町・中華街駅から徒歩6分。",
+    "walk": "石川町駅から徒歩5分",
+    "hours": "平日 10:00〜18:30／休日 9:00〜19:00",
+    "closed": "月、火。祝日は営業。最新はInstagram、と公式",
+    "phone": "045-319-4229",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://polaris-coffee.jp/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.7は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "Polaris coffee の公式サイト。最新の休みはInstagram、と書いてある",
+    "sourceUrl": "https://polaris-coffee.jp/",
+    "lat": 35.439945,
+    "lng": 139.647034,
+    "mapsStars": 4.7,
+    "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "koma",
+    "checked": "2026-10-31",
+    "name": "茶房コマ",
+    "kana": "サボウコマ",
+    "prefecture": "埼玉",
+    "locality": "浦和",
+    "moods": [
+      "retro",
+      "air",
+      "sweet",
+      "meal"
+    ],
+    "picks": [
+      "コマブレンド",
+      "フランボワーズムース",
+      "シフォンケーキ"
+    ],
+    "lead": "浦和駅から2〜3分。昭和47年から続く喫茶。",
+    "story": "茶房コマの案内は、昭和47年から変わらない雰囲気、落ち着いた店内、初代マスターから受け継ぐコーヒーと特製ケーキ、と書いている。メニューに名前があるのは、コマブレンド、フランボワーズムース、シフォンケーキ。埼玉日和の2023年4月5日更新の記事は、木のテーブルや椅子、ステンドガラス、温かい色の間接照明、と書いている。営業の案内は二つある。案内ページは 10:00〜18:30（ラストオーダー 18:00）、月曜と第2・第4日曜が休み、浦和駅西口から徒歩3分。食べログの店舗情報は 10:00〜18:00（ラストオーダー 17:45）、月曜と日曜が休み、浦和駅から徒歩2分。食べログは、その営業情報を店舗関係者が公開している、と書いている。",
+    "address": "埼玉県さいたま市浦和区高砂2-1-2",
+    "access": "案内ページは、JR浦和駅西口から徒歩3分。食べログの店舗情報は、浦和駅から徒歩2分。",
+    "walk": "浦和駅から徒歩2〜3分",
+    "hours": "案内ページは 10:00〜18:30（18:00 ラストオーダー）。食べログの店舗情報は 10:00〜18:00（17:45 ラストオーダー）",
+    "closed": "案内ページは月曜と第2・第4日曜。食べログは月曜と日曜",
+    "phone": "048-824-7734",
+    "links": [
+      {
+        "label": "案内ページ",
+        "href": "https://sabou-koma.jp/"
+      },
+      {
+        "label": "食べログ",
+        "href": "https://tabelog.com/saitama/A1101/A110102/11013846/"
+      },
+      {
+        "label": "埼玉日和",
+        "href": "https://saitamabiyori.com/21212/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "案内ページも食べログも、予約できると書いている。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "ステンドガラスの描写は、埼玉日和の2023年4月5日更新の記事。記事は、執筆当時の情報、と断っている。",
+      "Googleマップの星4.2は、2026年10月31日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "茶房コマの案内ページと食べログの店舗情報。営業時間が違う",
+    "sourceUrl": "https://sabou-koma.jp/",
+    "lat": 35.857449,
+    "lng": 139.655365,
+    "mapsStars": 4.2,
     "mapsChecked": "2026-10-31"
   }
 ];
