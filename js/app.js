@@ -307,7 +307,7 @@ function renderToday() {
   const today = tokyoDate();
   if (!today.cafe) {
     const label = kindOf({ kind: state.kind }).label;
-    el.innerHTML = `<p class="today-kicker">今日の一軒 · ${esc(today.label)}（日本時間）</p><strong>この種類は、いま手帳にありません。</strong><span>内装のことが公開文に書いてある${esc(label)}は、今回は載せていません。</span>`;
+    el.innerHTML = `<p class="today-kicker">今日の一軒 · ${esc(today.label)}（日本時間）</p><strong>この種類は、いま手帳にありません。</strong><span>公開文で部屋や来歴が辿れた${esc(label)}は、今回は載せていません。</span>`;
     return;
   }
   el.innerHTML = `<p class="today-kicker">今日の一軒 · ${esc(today.label)}（日本時間）</p>
