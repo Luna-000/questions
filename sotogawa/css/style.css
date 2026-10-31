@@ -247,6 +247,10 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 600; line-height: 1.35; }
   box-shadow: var(--shadow);
 }
 
+@media (max-width: 959px) {
+  .card { scroll-margin-bottom: calc(96px + env(safe-area-inset-bottom)); }
+}
+
 .card-link {
   display: block;
   text-decoration: none;
