@@ -276,6 +276,17 @@ function heartButton(cafe) {
   return `<button class="heart" type="button" data-save="${esc(cafe.id)}" aria-pressed="${on}" aria-label="${esc(label)}">${bookmarkSvg()}</button>`;
 }
 
+function walkLine(cafe) {
+  if (cafe.walk) return cafe.walk;
+  const parts = (cafe.access || "").split("。").map((part) => part.trim()).filter(Boolean);
+  const hit = parts.find((part) => /徒歩約?\d+|徒歩\d+|すぐ|直結/.test(part));
+  if (!hit) return "";
+  const timed = hit.match(/^.*?徒歩約?\d+分/);
+  if (timed) return timed[0];
+  const near = hit.match(/^.{0,42}?(すぐ|直結)/);
+  return near ? near[0] : hit;
+}
+
 function card(cafe) {
   const mood = moodOf(cafe.moods[0]);
   const tags = [];
@@ -294,6 +305,7 @@ function card(cafe) {
         <p class="kicker">${esc(mood.label)} · ${esc(cafe.prefecture)} · ${esc(cafe.locality)}</p>
         <h2>${esc(cafe.name)}</h2>
         <p class="lead">${esc(cafe.lead)}</p>
+        ${walkLine(cafe) ? `<p class="walk">${esc(walkLine(cafe))}</p>` : ""}
         ${typeof cafe.mapsStars === "number" ? `<p class="stars">Googleマップ ★${esc(cafe.mapsStars.toFixed(1))}</p>` : ""}
         ${recommendations(cafe)[0] ? `<p class="pick">おすすめ ${esc(recommendations(cafe)[0])}</p>` : ""}
         <div class="tags">${tags.map((tag) => `<span class="tagchip">${esc(tag)}</span>`).join("")}</div>
