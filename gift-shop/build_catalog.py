@@ -227,7 +227,7 @@ def image_row(paths, max_width, max_height):
     return table
 
 
-def build(skip=(), out=None, star_note=True):
+def build(skip=(), out=None, star_note=True, returns_note=True, closing_note=True):
     pdfmetrics.registerFont(TTFont("JP", FONT_PATH, subfontIndex=0))
     products = load_sections(MD.read_text())
     if len(products) != 21:
@@ -262,10 +262,9 @@ def build(skip=(), out=None, star_note=True):
     ]
     if star_note:
         lines.append("★は確定ですいちゃん用です。")
-    lines += [
-        "返品・辞退については店主と要相談。",
-        "ほか、お心にかなう品をご随意にお選びください。",
-    ]
+    if returns_note:
+        lines.append("返品・辞退については店主と要相談。")
+    lines.append("ほか、お心にかなう品をご随意にお選びください。")
     for line in lines:
         story.append(Paragraph(line, note))
     story.append(Spacer(1, 4 * mm))
@@ -309,7 +308,8 @@ def build(skip=(), out=None, star_note=True):
         Paragraph("良いものを見つけるたびに仕入れた結果、在庫過多となりました。", body),
         Paragraph("初回のお客様につきましては遠慮なくご所望ください。", body),
     ]
-    story.append(KeepTogether(closing))
+    if closing_note:
+        story.append(KeepTogether(closing))
 
     doc.build(story, onFirstPage=paint_page, onLaterPages=paint_page)
     print(f"wrote {out} ({out.stat().st_size} bytes, {len(products)} products)")
@@ -319,7 +319,9 @@ if __name__ == "__main__":
     build()
     (ROOT / "2026年10月　東海出張カタログ.pdf").write_bytes(OUT.read_bytes())
     build(
-        skip=("01", "05", "06", "07", "13", "21"),
+        skip=("01", "05", "06", "07", "13", "14", "21"),
         out=ROOT / "2026年10月　東海出張カタログ（すいちゃん以外）.pdf",
         star_note=False,
+        returns_note=False,
+        closing_note=False,
     )
