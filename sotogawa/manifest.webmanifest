@@ -1,0 +1,19 @@
+{
+  "name": "ソトガワ",
+  "short_name": "ソトガワ",
+  "description": "東京・神奈川・千葉・埼玉で、部屋や来歴のあるカフェ、居酒屋、バーを調べる手帳。おすすめは店の公開文にあるものだけ。",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3ecdf",
+  "theme_color": "#f3ecdf",
+  "lang": "ja",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
