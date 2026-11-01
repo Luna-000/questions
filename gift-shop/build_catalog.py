@@ -227,14 +227,17 @@ def image_row(paths, max_width, max_height):
     return table
 
 
-def build():
+def build(skip=(), out=None):
     pdfmetrics.registerFont(TTFont("JP", FONT_PATH, subfontIndex=0))
     products = load_sections(MD.read_text())
     if len(products) != 21:
         raise SystemExit(f"expected 21 products, got {len(products)}")
+    skip = {str(n).zfill(2) for n in skip}
+    products = [p for p in products if p["number"] not in skip]
+    out = Path(out) if out else OUT
 
     doc = SimpleDocTemplate(
-        str(OUT),
+        str(out),
         pagesize=A4,
         leftMargin=16 * mm,
         rightMargin=16 * mm,
@@ -305,8 +308,10 @@ def build():
     story.append(KeepTogether(closing))
 
     doc.build(story, onFirstPage=paint_page, onLaterPages=paint_page)
-    print(f"wrote {OUT} ({OUT.stat().st_size} bytes, {len(products)} products)")
+    print(f"wrote {out} ({out.stat().st_size} bytes, {len(products)} products)")
 
 
 if __name__ == "__main__":
     build()
+    (ROOT / "2026年10月　東海出張カタログ.pdf").write_bytes(OUT.read_bytes())
+    build(skip=("01",), out=ROOT / "2026年10月　東海出張カタログ（すいちゃん以外）.pdf")
