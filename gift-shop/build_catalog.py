@@ -1,0 +1,328 @@
+#!/usr/bin/env python3
+"""商品台帳 Markdown から、番号・説明・写真の PDF を作る。"""
+
+import random
+import re
+from io import BytesIO
+from pathlib import Path
+
+from PIL import Image as PILImage
+from reportlab.lib.colors import Color, HexColor
+from reportlab.lib.enums import TA_LEFT
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import ParagraphStyle
+from reportlab.lib.units import mm
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+from reportlab.platypus import (
+    SimpleDocTemplate,
+    Paragraph,
+    Spacer,
+    Image,
+    Table,
+    TableStyle,
+    HRFlowable,
+    KeepTogether,
+)
+
+ROOT = Path(__file__).resolve().parent
+MD = ROOT / "products.md"
+OUT = ROOT / "catalog.pdf"
+FONT_PATH = "/usr/share/fonts/truetype/wqy/wqy-microhei.ttc"
+INK = HexColor("#1a2226")
+WELCOME = HexColor("#111111")
+RULE = HexColor("#4a5c64")
+FRAME = HexColor("#243034")
+PAPER_TOP = (0.34, 0.42, 0.47)
+PAPER_MID = (0.48, 0.56, 0.60)
+PAPER_BOTTOM = (0.30, 0.38, 0.43)
+
+
+def mix(a, b, t):
+    return Color(
+        a[0] + (b[0] - a[0]) * t,
+        a[1] + (b[1] - a[1]) * t,
+        a[2] + (b[2] - a[2]) * t,
+    )
+
+
+def soft_disc(canvas, cx, cy, radius, rgb, alpha):
+    steps = 16
+    for i in range(steps, 0, -1):
+        t = i / steps
+        canvas.setFillColor(Color(rgb[0], rgb[1], rgb[2], alpha=alpha * t * t))
+        canvas.circle(cx, cy, radius * (0.35 + 0.65 * t), stroke=0, fill=1)
+
+
+def corner_marks(canvas, x, y, w, h, arm, color):
+    canvas.setStrokeColor(color)
+    canvas.setLineWidth(0.7)
+    canvas.setLineCap(1)
+    for cx, cy, sx, sy in (
+        (x, y + h, 1, -1),
+        (x + w, y + h, -1, -1),
+        (x, y, 1, 1),
+        (x + w, y, -1, 1),
+    ):
+        canvas.line(cx, cy, cx + sx * arm, cy)
+        canvas.line(cx, cy, cx, cy + sy * arm)
+
+
+def paint_page(canvas, doc):
+    canvas.saveState()
+    w, h = A4
+    bands = 110
+    band_h = h / bands
+    for i in range(bands):
+        t = i / (bands - 1)
+        if t < 0.62:
+            color = mix(PAPER_TOP, PAPER_MID, t / 0.62)
+        else:
+            color = mix(PAPER_MID, PAPER_BOTTOM, (t - 0.62) / 0.38)
+        canvas.setFillColor(color)
+        canvas.rect(0, h - (i + 1) * band_h, w, band_h + 0.6, stroke=0, fill=1)
+
+    soft_disc(canvas, w * 0.78, h * 0.90, 70 * mm, (0.62, 0.70, 0.74), 0.42)
+    soft_disc(canvas, w * 0.08, h * 0.12, 58 * mm, (0.22, 0.29, 0.33), 0.45)
+    soft_disc(canvas, w * 0.96, h * 0.42, 36 * mm, (0.58, 0.66, 0.70), 0.22)
+
+    rng = random.Random(18)
+    for _ in range(22):
+        x = rng.uniform(0, w)
+        y = rng.uniform(0, h)
+        if min(x, y, w - x, h - y) > 12 * mm:
+            continue
+        radius = rng.uniform(0.7, 1.8)
+        canvas.setFillColor(Color(0.84, 0.89, 0.91, alpha=0.45))
+        canvas.circle(x, y, radius, stroke=0, fill=1)
+
+    inset = 7.5 * mm
+    canvas.setStrokeColor(HexColor("#d7e1e6"))
+    canvas.setLineWidth(0.8)
+    canvas.rect(inset, inset, w - 2 * inset, h - 2 * inset, stroke=1, fill=0)
+    canvas.setStrokeColor(HexColor("#3e4c54"))
+    canvas.setLineWidth(0.35)
+    inner = 9.2 * mm
+    canvas.rect(inner, inner, w - 2 * inner, h - 2 * inner, stroke=1, fill=0)
+    corner_marks(canvas, inner, inner, w - 2 * inner, h - 2 * inner, 4.2 * mm, HexColor("#d7e1e6"))
+    canvas.restoreState()
+
+
+def load_sections(text: str):
+    chunks = re.split(r"\n## ", text)
+    products = []
+    for chunk in chunks[1:]:
+        title, _, body = chunk.partition("\n")
+        title = title.strip()
+        if title in ("画像", "一覧"):
+            continue
+        if not re.match(r"★?\d{2} ", title):
+            continue
+        star = title.startswith("★")
+        number = title[1:3] if star else title[:2]
+        name = title.split(" ", 1)[1]
+        desc = ""
+        notes = []
+        images = []
+        decided = False
+        for line in body.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            if line.startswith("**商品説明**"):
+                desc = line.removeprefix("**商品説明**").strip()
+                continue
+            if desc and not line.startswith("- "):
+                desc = f"{desc}\n{line}"
+                continue
+            if line.startswith("- 画像:"):
+                images = re.findall(r"\d{2}", line)
+                continue
+            if line.startswith("- あげる相手"):
+                decided = True
+                continue
+            if line.startswith("- "):
+                notes.append(line[2:].strip())
+                continue
+            notes.append(line)
+        products.append(
+            {
+                "number": number,
+                "star": star or decided,
+                "name": name,
+                "desc": desc,
+                "notes": notes,
+                "images": images,
+            }
+        )
+    return products
+
+
+def jpeg_bytes(path: Path, max_edge: int) -> BytesIO:
+    im = PILImage.open(path).convert("RGB")
+    im.thumbnail((max_edge, max_edge))
+    buf = BytesIO()
+    im.save(buf, format="JPEG", quality=82, optimize=True)
+    buf.seek(0)
+    return buf
+
+
+def framed_image(path, box_w, box_h):
+    pad = 1.1 * mm
+    stroke = 1.8
+    im = PILImage.open(path)
+    w, h = im.size
+    scale = min((box_w - 2 * pad - stroke) / w, (box_h - 2 * pad - stroke) / h)
+    img = Image(jpeg_bytes(path, 1400), width=w * scale, height=h * scale)
+    table = Table(
+        [[img]],
+        colWidths=[img.drawWidth + 2 * pad + stroke],
+        rowHeights=[img.drawHeight + 2 * pad + stroke],
+    )
+    table.setStyle(
+        TableStyle(
+            [
+                ("BOX", (0, 0), (-1, -1), stroke, FRAME),
+                ("LEFTPADDING", (0, 0), (-1, -1), pad),
+                ("RIGHTPADDING", (0, 0), (-1, -1), pad),
+                ("TOPPADDING", (0, 0), (-1, -1), pad),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), pad),
+                ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+            ]
+        )
+    )
+    table.hAlign = "CENTER"
+    return table
+
+
+def image_row(paths, max_width, max_height):
+    gap = 3.5 * mm
+    n = len(paths)
+    cell_w = (max_width - gap * (n - 1)) / n
+    frames = [framed_image(path, cell_w, max_height) for path in paths]
+    if n == 1:
+        return frames[0]
+    row = []
+    cols = []
+    for i, frame in enumerate(frames):
+        row.append(frame)
+        cols.append(cell_w)
+        if i != n - 1:
+            row.append("")
+            cols.append(gap)
+    table = Table([row], colWidths=cols, hAlign="CENTER")
+    table.setStyle(
+        TableStyle(
+            [
+                ("VALIGN", (0, 0), (-1, -1), "TOP"),
+                ("ALIGN", (0, 0), (-1, -1), "CENTER"),
+                ("LEFTPADDING", (0, 0), (-1, -1), 0),
+                ("RIGHTPADDING", (0, 0), (-1, -1), 0),
+                ("TOPPADDING", (0, 0), (-1, -1), 0),
+                ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
+            ]
+        )
+    )
+    return table
+
+
+def build(skip=(), out=None, star_note=True, returns_note=True, closing_note=True, show_stars=True):
+    pdfmetrics.registerFont(TTFont("JP", FONT_PATH, subfontIndex=0))
+    products = load_sections(MD.read_text())
+    if len(products) != 21:
+        raise SystemExit(f"expected 21 products, got {len(products)}")
+    skip = {str(n).zfill(2) for n in skip}
+    products = [p for p in products if p["number"] not in skip]
+    out = Path(out) if out else OUT
+
+    doc = SimpleDocTemplate(
+        str(out),
+        pagesize=A4,
+        leftMargin=16 * mm,
+        rightMargin=16 * mm,
+        topMargin=14 * mm,
+        bottomMargin=14 * mm,
+        title="商品台帳",
+        author="ギフトショップ",
+    )
+    width = A4[0] - 32 * mm
+    title = ParagraphStyle("title", fontName="JP", fontSize=26, leading=34, textColor=INK, alignment=TA_LEFT, spaceAfter=6)
+    note = ParagraphStyle("note", fontName="JP", fontSize=16, leading=26, textColor=WELCOME, spaceAfter=2)
+    idx = ParagraphStyle("idx", fontName="JP", fontSize=15, leading=22, textColor=INK)
+    head = ParagraphStyle("head", fontName="JP", fontSize=20, leading=28, textColor=INK, spaceBefore=2, spaceAfter=4)
+    body = ParagraphStyle("body", fontName="JP", fontSize=14, leading=22, textColor=INK, spaceAfter=4)
+
+    story = []
+    story.append(Paragraph("商品台帳", title))
+    lines = [
+        "当店へようこそお運びくださいました。",
+        "ご所望の品の番号をお申し付けください。",
+        "※2つなどのセット物でもバラ依頼受け付けます。",
+    ]
+    if star_note:
+        lines.append("★は確定ですいちゃん用です。")
+    if returns_note:
+        lines.append("返品・辞退については店主と要相談。")
+    lines.append("ほか、お心にかなう品をご随意にお選びください。")
+    for line in lines:
+        story.append(Paragraph(line, note))
+    story.append(Spacer(1, 4 * mm))
+    for p in products:
+        mark = "★" if p["star"] and show_stars else "　"
+        story.append(Paragraph(f"{mark}{p['number']}　{p['name']}", idx))
+    story.append(Spacer(1, 6 * mm))
+
+    frame_h = A4[1] - 28 * mm
+
+    def packed(flowables):
+        total = 0
+        for flow in flowables:
+            _, h = flow.wrap(width, frame_h)
+            total += h + getattr(flow, "spaceBefore", 0) + getattr(flow, "spaceAfter", 0)
+        return total
+
+    for p in products:
+        label = f"★{p['number']}" if p["star"] and show_stars else p["number"]
+        paths = [ROOT / "images" / f"{n}.jpg" for n in p["images"]]
+        missing = [str(path) for path in paths if not path.exists()]
+        if missing:
+            raise SystemExit("missing images: " + ", ".join(missing))
+        n = len(paths)
+        text = [
+            HRFlowable(width="100%", thickness=0.4, color=RULE, spaceBefore=2, spaceAfter=6),
+            Paragraph(f"{label}　{p['name']}", head),
+        ]
+        text.append(Paragraph(p["desc"].replace("\n", "<br/>"), body))
+        room = frame_h - packed(text) - 4 * mm
+        preferred = 95 * mm if n == 1 else 78 * mm if n == 2 else 62 * mm
+        image_h = min(preferred, max(36 * mm, room))
+        block = text + [image_row(paths, width, image_h)]
+        if packed(block) > frame_h:
+            raise SystemExit(f"{label} does not fit on one page")
+        story.append(KeepTogether(block))
+
+    closing = [
+        HRFlowable(width="100%", thickness=0.4, color=RULE, spaceBefore=8, spaceAfter=8),
+        Paragraph("店主より", head),
+        Paragraph("良いものを見つけるたびに仕入れた結果、在庫過多となりました。", body),
+        Paragraph("初回のお客様につきましては遠慮なくご所望ください。", body),
+    ]
+    if closing_note:
+        story.append(KeepTogether(closing))
+
+    doc.build(story, onFirstPage=paint_page, onLaterPages=paint_page)
+    print(f"wrote {out} ({out.stat().st_size} bytes, {len(products)} products)")
+
+
+if __name__ == "__main__":
+    build()
+    (ROOT / "2026年10月　東海出張カタログ.pdf").write_bytes(OUT.read_bytes())
+    build(
+        skip=("01", "06", "07", "13", "14", "21"),
+        out=ROOT / "2026年10月　東海出張カタログ（すいちゃん以外）.pdf",
+        star_note=False,
+        returns_note=False,
+        closing_note=False,
+        show_stars=False,
+    )
