@@ -1,4 +1,4 @@
-/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるもの。東京・神奈川・千葉・埼玉。駅から徒歩10分以上の店は入れていない。いずれかの駅から9分以内の店だけ。2026-10-31 に Googleマップで閉業と出ていた店も入れていない。星はその日に見た数字。営業時間は同じ日までに見た公開情報。出発前に各店で確認する。 */
+/* ソトガワの手帳。個人の店と、2店舗くらいまでの店で、建物や内装、店が自分で書いている来歴があるもの。東京・神奈川・千葉・埼玉。駅から徒歩10分以上の店は入れていない。いずれかの駅から9分以内の店だけ。2026-10-31 に Googleマップで閉業と出ていた店も入れていない。星は2026-10-31、浦和と川口のあいだの4軒は2026-11-01に見た数字。営業時間は2026-11-01までに見た公開情報。出発前に各店で確認する。 */
 const MOODS = [
   { id: "forest", label: "森", group: "scene" },
   { id: "water", label: "水辺", group: "scene" },
@@ -3551,5 +3551,214 @@ const CAFES = [
     "lng": 139.650146,
     "mapsStars": 4.9,
     "mapsChecked": "2026-10-31"
+  },
+  {
+    "id": "sandfact",
+    "kind": "cafe",
+    "checked": "2026-11-01",
+    "name": "サンドイッチ・ファクトリー",
+    "kana": "サンドイッチファクトリー",
+    "prefecture": "埼玉",
+    "locality": "西川口",
+    "moods": [
+      "late",
+      "linger",
+      "roomy",
+      "meal",
+      "air"
+    ],
+    "lead": "西川口駅から5分。電源のあるカフェ。",
+    "story": "公式は、川口市西川口のアットホームなカフェで、リラックスできる空間、新鮮な食材の料理と温かい空間、と書いている。テーブル席に電源があり、長時間の作業も、ともある。店内は終日禁煙で、外のテラスだけ喫煙。一品の名前はこのページにない。",
+    "address": "埼玉県川口市並木3-3-18 1F",
+    "access": "JR京浜東北線 西川口駅から徒歩5分。東口を出て新オートレース場通り、と公式。",
+    "walk": "西川口駅から徒歩5分",
+    "hours": "ランチ 11:00〜16:00。ディナーは火〜土 18:00〜23:00",
+    "closed": "第1・第3月曜。第2・第4・第5月曜はランチのみ。ページは、時間が変わる場合がある、とも書いている",
+    "phone": "048-299-4154",
+    "links": [
+      {
+        "label": "店舗情報",
+        "href": "https://sandwich-factory.cafe/shop/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "一般席もパーティーも予約サイト、と公式。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "1,500円以上で、契約駐車場の1時間無料券、と公式。",
+      "Googleマップの星4.2は、2026年11月1日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "サンドイッチ・ファクトリーの店舗情報",
+    "sourceUrl": "https://sandwich-factory.cafe/shop/",
+    "lat": 35.817764,
+    "lng": 139.707199,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-11-01"
+  },
+  {
+    "id": "locopico",
+    "kind": "cafe",
+    "checked": "2026-11-01",
+    "name": "ロコピコ珈琲",
+    "kana": "ロコピココーヒー",
+    "prefecture": "埼玉",
+    "locality": "川口",
+    "moods": [
+      "morning",
+      "late",
+      "roomy",
+      "sweet",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "渋皮栗のモンブラン"
+    ],
+    "lead": "川口駅西口から2分。公園のふもとのカフェ。",
+    "story": "公式は、川口駅西口、公園のふもと、毎日に寄り添うカフェ、と書いている。テラス席はペット可。電源席もある。2026年10月12日の案内に、秋の期間限定スイーツ「渋皮栗のモンブラン」がある。営業の書き方は、ページの中で二つある。",
+    "address": "埼玉県川口市川口3-2-1 1F",
+    "access": "川口駅西口から徒歩2分。公式。川口総合文化センターリリアからも近い、ともある。",
+    "walk": "川口駅西口から徒歩2分",
+    "hours": "2026年11月1日からのお知らせは、月〜金 7:30〜20:30（食事19:15、ドリンクとデザート20:00 ラストオーダー）、土 8:00〜20:00（食事19:15、ドリンクとデザート19:30）、日 8:00〜20:00（同じ）。別の欄は、月〜金 9:00〜20:30、土日祝 8:00〜20:00",
+    "closed": "定休日の記載はない",
+    "phone": "048-229-3977",
+    "links": [
+      {
+        "label": "公式サイト",
+        "href": "https://locopico.jp/"
+      },
+      {
+        "label": "営業時間の変更",
+        "href": "https://locopico.jp/shop/info20261030/"
+      }
+    ],
+    "reservation": "none",
+    "reservationNote": "",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "11月1日からの時間と、ページの別の欄が違う。出かける前に店で確認する。",
+      "Googleマップの星4.2は、2026年11月1日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "confirm",
+    "sourceLabel": "ロコピコ珈琲の公式サイト。11月1日からの時間と、別の欄が違う",
+    "sourceUrl": "https://locopico.jp/shop/info20261030/",
+    "lat": 35.802452,
+    "lng": 139.715195,
+    "pinRough": true,
+    "mapsStars": 4.2,
+    "mapsChecked": "2026-11-01"
+  },
+  {
+    "id": "kobin",
+    "kind": "cafe",
+    "checked": "2026-11-01",
+    "name": "茶色の小びん",
+    "kana": "チャイロノコビン",
+    "prefecture": "埼玉",
+    "locality": "川口",
+    "moods": [
+      "air",
+      "sweet",
+      "meal"
+    ],
+    "picks": [
+      "まぐろ漬丼",
+      "手作りのチーズケーキ"
+    ],
+    "lead": "川口駅西口から5分。壁に絵のあるカフェ。",
+    "story": "公式は、人と文化とピュアな自分に出会う場所、壁面ギャラリーと手作り作品を見ながら、築地直送の丼とコーヒー、あたたかい雰囲気、と書いている。案内のページは25周年を迎えた、とも書いている。メニューに名前があるのは、まぐろ漬丼、海の幸丼、特製カレー、手作りのチーズケーキ。",
+    "address": "埼玉県川口市飯塚2-4-1",
+    "access": "JR川口駅西口より徒歩5分。公式。",
+    "walk": "川口駅西口から徒歩5分",
+    "hours": "11:00〜18:00",
+    "closed": "日曜、月曜、祝日",
+    "phone": "048-252-0500",
+    "links": [
+      {
+        "label": "案内",
+        "href": "http://chairo-kobin.cafe.coocan.jp/top.html"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "電話かFAX、と公式。番号はどちらも 048-252-0500。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "Googleマップの星4.4は、2026年11月1日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "茶色の小びんの案内ページ",
+    "sourceUrl": "http://chairo-kobin.cafe.coocan.jp/top.html",
+    "lat": 35.80212,
+    "lng": 139.712433,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-11-01"
+  },
+  {
+    "id": "kisui",
+    "kind": "izakaya",
+    "checked": "2026-11-01",
+    "name": "おばんざい酒場 喜酔",
+    "kana": "オバンザイサカバキスイ",
+    "prefecture": "埼玉",
+    "locality": "蕨",
+    "moods": [
+      "late",
+      "linger",
+      "meal",
+      "air"
+    ],
+    "picks": [
+      "おばんざいの盛り合わせ",
+      "煮込み串"
+    ],
+    "lead": "蕨駅東口から5分。木の温もりの居酒屋。",
+    "story": "店舗ページは、店内は木の温もりを感じる落ち着いた雰囲気、カウンターでのんびり、と書いている。おすすめに名前があるのは、おばんざいの盛り合わせと煮込み串。煮込み串は豚角煮や手羽先を、コチュジャンと味噌の出汁で煮込む、ともある。蕨駅東口から徒歩5分。",
+    "address": "埼玉県川口市芝5-1-17 第1堀代マンション101",
+    "access": "JR蕨駅東口より徒歩5分。店舗ページ。ホットペッパーも、蕨駅から徒歩5分。",
+    "walk": "蕨駅東口から徒歩5分",
+    "hours": "月〜木 15:00〜翌1:00（食事 翌0:00、ドリンク 翌0:30 ラストオーダー）。金・土 15:00〜翌3:00（食事 翌2:00、ドリンク 翌2:30）。日 15:00〜24:00（食事 23:00、ドリンク 23:30）",
+    "closed": "定休日なし",
+    "phone": "070-1525-8446",
+    "links": [
+      {
+        "label": "店舗ページ",
+        "href": "https://trico-kawaguchi.jp/shop/00000383172/"
+      },
+      {
+        "label": "ホットペッパー",
+        "href": "https://www.hotpepper.jp/strJ003984734/"
+      }
+    ],
+    "reservation": "recommended",
+    "reservationNote": "ウェブで予約を受ける、と店舗ページ。",
+    "parking": "",
+    "signature": "",
+    "notes": [
+      "喫煙、と店舗ページ。貸切は10名から。",
+      "Googleマップの星4.4は、2026年11月1日に店名の横へ出ていた数字。"
+    ],
+    "train": true,
+    "car": false,
+    "seasonal": false,
+    "confidence": "official",
+    "sourceLabel": "喜酔の店舗ページとホットペッパー。開店と閉店は同じ",
+    "sourceUrl": "https://trico-kawaguchi.jp/shop/00000383172/",
+    "lat": 35.829773,
+    "lng": 139.691574,
+    "mapsStars": 4.4,
+    "mapsChecked": "2026-11-01"
   }
 ];
