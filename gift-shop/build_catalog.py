@@ -227,7 +227,7 @@ def image_row(paths, max_width, max_height):
     return table
 
 
-def build(skip=(), out=None):
+def build(skip=(), out=None, star_note=True):
     pdfmetrics.registerFont(TTFont("JP", FONT_PATH, subfontIndex=0))
     products = load_sections(MD.read_text())
     if len(products) != 21:
@@ -255,14 +255,18 @@ def build(skip=(), out=None):
 
     story = []
     story.append(Paragraph("商品台帳", title))
-    for line in (
+    lines = [
         "当店へようこそお運びくださいました。",
         "ご所望の品の番号をお申し付けください。",
         "※2つなどのセット物でもバラ依頼受け付けます。",
-        "★は確定ですいちゃん用です。",
+    ]
+    if star_note:
+        lines.append("★は確定ですいちゃん用です。")
+    lines += [
         "返品・辞退については店主と要相談。",
         "ほか、お心にかなう品をご随意にお選びください。",
-    ):
+    ]
+    for line in lines:
         story.append(Paragraph(line, note))
     story.append(Spacer(1, 4 * mm))
     for p in products:
@@ -314,4 +318,8 @@ def build(skip=(), out=None):
 if __name__ == "__main__":
     build()
     (ROOT / "2026年10月　東海出張カタログ.pdf").write_bytes(OUT.read_bytes())
-    build(skip=("01",), out=ROOT / "2026年10月　東海出張カタログ（すいちゃん以外）.pdf")
+    build(
+        skip=("01", "05", "06", "07", "13", "21"),
+        out=ROOT / "2026年10月　東海出張カタログ（すいちゃん以外）.pdf",
+        star_note=False,
+    )
