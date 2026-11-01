@@ -227,7 +227,7 @@ def image_row(paths, max_width, max_height):
     return table
 
 
-def build(skip=(), out=None, star_note=True, returns_note=True, closing_note=True):
+def build(skip=(), out=None, star_note=True, returns_note=True, closing_note=True, show_stars=True):
     pdfmetrics.registerFont(TTFont("JP", FONT_PATH, subfontIndex=0))
     products = load_sections(MD.read_text())
     if len(products) != 21:
@@ -269,7 +269,7 @@ def build(skip=(), out=None, star_note=True, returns_note=True, closing_note=Tru
         story.append(Paragraph(line, note))
     story.append(Spacer(1, 4 * mm))
     for p in products:
-        mark = "★" if p["star"] else "　"
+        mark = "★" if p["star"] and show_stars else "　"
         story.append(Paragraph(f"{mark}{p['number']}　{p['name']}", idx))
     story.append(Spacer(1, 6 * mm))
 
@@ -283,7 +283,7 @@ def build(skip=(), out=None, star_note=True, returns_note=True, closing_note=Tru
         return total
 
     for p in products:
-        label = f"★{p['number']}" if p["star"] else p["number"]
+        label = f"★{p['number']}" if p["star"] and show_stars else p["number"]
         paths = [ROOT / "images" / f"{n}.jpg" for n in p["images"]]
         missing = [str(path) for path in paths if not path.exists()]
         if missing:
@@ -319,9 +319,10 @@ if __name__ == "__main__":
     build()
     (ROOT / "2026年10月　東海出張カタログ.pdf").write_bytes(OUT.read_bytes())
     build(
-        skip=("01", "05", "06", "07", "13", "14", "21"),
+        skip=("01", "06", "07", "13", "14", "21"),
         out=ROOT / "2026年10月　東海出張カタログ（すいちゃん以外）.pdf",
         star_note=False,
         returns_note=False,
         closing_note=False,
+        show_stars=False,
     )
