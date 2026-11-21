@@ -524,6 +524,10 @@ PAGES = [
     dict(id="18", slug="18_一行_ビジネス", name="一行（ビジネス）", use="ビジネス", orient="横", photo=False, distance="13番と同じ割付", w=W_L, h=H_L, build=page_18),
 ]
 
+from illustrations import ILLUSTRATION_PAGES
+
+PAGES.extend(ILLUSTRATION_PAGES)
+
 
 FONT_FACE = {
     ("latin", 300): ("Cormorant Garamond", "CormorantGaramond-Light.ttf"),
@@ -592,6 +596,12 @@ body {{ position:relative; }}
             border = f"{sw}px solid {stroke}" if stroke else "0"
             chunks.append(
                 f"<div style='position:absolute;left:{x}px;top:{y}px;width:{rw}px;height:{rh}px;background:{bg};border:{border};box-sizing:border-box'></div>"
+            )
+        elif kind == "S":
+            _, x, y, sw, sh, viewbox, inner = item
+            chunks.append(
+                f"<svg style='position:absolute;left:{x}px;top:{y}px' width='{sw}' height='{sh}' viewBox='{viewbox}'>"
+                f"{inner}</svg>"
             )
         elif kind == "T":
             _, x, y, tw, th, text, font, size, color, align, weight, tracking, lh, valign = item
@@ -744,9 +754,66 @@ def group_shapes(slide, shapes, name):
     sp_tree.append(grp)
 
 
-def build_pptx(pages, dest: Path):
+def _svg_key(viewbox, inner, w, h):
+    return f"{w}x{h}:{viewbox}:{inner}"
+
+
+def rasterize_svgs(pages):
+    """Transparent PNGs of each illustration, so PPTX can place them in Canva."""
+    import hashlib
+
+    needed = []
+    seen = set()
+    for page in pages:
+        flat, _ = flatten(page["build"]())
+        for item in flat:
+            if item[0] != "S":
+                continue
+            _, x, y, w, h, viewbox, inner = item
+            key = _svg_key(viewbox, inner, w, h)
+            if key in seen:
+                continue
+            seen.add(key)
+            digest = hashlib.sha1(key.encode("utf-8")).hexdigest()[:12]
+            needed.append((key, digest, int(w), int(h), viewbox, inner))
+    if not needed:
+        return {}
+    from playwright.sync_api import sync_playwright
+
+    HTML_DIR.mkdir(parents=True, exist_ok=True)
+    out = {}
+    with sync_playwright() as p:
+        browser = p.chromium.launch(channel="chrome", headless=True)
+        for key, digest, w, h, viewbox, inner in needed:
+            path = HTML_DIR / f"illu-{digest}.png"
+            doc = HTML_DIR / f"illu-{digest}.html"
+            doc.write_text(
+                "<!DOCTYPE html><html><body style='margin:0;background:transparent'>"
+                f"<svg width='{w}' height='{h}' viewBox='{viewbox}'>{inner}</svg>"
+                "</body></html>",
+                encoding="utf-8",
+            )
+            pg = browser.new_page(viewport={"width": w, "height": h}, device_scale_factor=2)
+            pg.goto(doc.as_uri(), wait_until="load")
+            pg.screenshot(path=str(path), omit_background=True)
+            pg.close()
+            out[key] = path
+        browser.close()
+    return out
+
+
+def add_svg(slide, item, pngs):
+    _, x, y, w, h, viewbox, inner = item
+    path = pngs[_svg_key(viewbox, inner, w, h)]
+    pic = slide.shapes.add_picture(str(path), emu(x), emu(y), emu(w), emu(h))
+    pic._element.nvPicPr.cNvPr.set("name", "イラスト")
+    return pic
+
+
+def build_pptx(pages, dest: Path, pngs=None):
     if not pages:
         return
+    pngs = pngs or {}
     prs = Presentation()
     prs.slide_width = emu(pages[0]["w"])
     prs.slide_height = emu(pages[0]["h"])
@@ -761,6 +828,8 @@ def build_pptx(pages, dest: Path):
                 shapes.append(add_rect(slide, item))
             elif item[0] == "T":
                 shapes.append(add_textbox(slide, item))
+            elif item[0] == "S":
+                shapes.append(add_svg(slide, item, pngs))
         for name, start, end in groups:
             group_shapes(slide, shapes[start:end], name)
         notes = slide.notes_slide.notes_text_frame
@@ -815,7 +884,12 @@ def render_contact(pages):
             im = im.resize((tw, th), Image.Resampling.LANCZOS)
             board.paste(im, (x, y))
             draw.rectangle([x, y, x + tw - 1, y + th - 1], outline=LINE)
-            photo = "写真枠あり" if page["photo"] else "写真なし"
+            if page.get("illus"):
+                photo = "イラスト"
+            elif page["photo"]:
+                photo = "写真枠あり"
+            else:
+                photo = "写真なし"
             draw.text((x, y + th + 12), f"{page['id']}  {page['name']}", font=sans, fill=INK)
             draw.text((x, y + th + 38), f"{page['orient']}  {page['w']}×{page['h']}    {page['use']}", font=sans_s, fill=STONE)
             draw.text((x, y + th + 60), f"{page['distance']}    {photo}", font=sans_s, fill=STONE_SOFT)
@@ -830,7 +904,7 @@ def render_contact(pages):
     return out
 
 
-def render_with_playwright(pages):
+def render_with_playwright(pages, combined=True):
     from playwright.sync_api import sync_playwright
 
     HTML_DIR.mkdir(parents=True, exist_ok=True)
@@ -861,6 +935,8 @@ def render_with_playwright(pages):
             pdf_paths[page["orient"]].append(pdf)
             print(f"rendered {page['id']} {png.name}")
         browser.close()
+    if not combined:
+        return
     for orient, paths in pdf_paths.items():
         writer = PdfWriter()
         for path in paths:
@@ -885,11 +961,12 @@ def main():
                 FONT_FACE[(item[6], item[10])]
     if not only:
         render_with_playwright(PAGES)
-        build_pptx([p for p in PAGES if p["orient"] == "縦"], PPTX_DIR / "クラウドモニタ_縦_Canva用.pptx")
-        build_pptx([p for p in PAGES if p["orient"] == "横"], PPTX_DIR / "クラウドモニタ_横_Canva用.pptx")
+        pngs = rasterize_svgs(PAGES)
+        build_pptx([p for p in PAGES if p["orient"] == "縦"], PPTX_DIR / "クラウドモニタ_縦_Canva用.pptx", pngs)
+        build_pptx([p for p in PAGES if p["orient"] == "横"], PPTX_DIR / "クラウドモニタ_横_Canva用.pptx", pngs)
         render_contact(PAGES)
     else:
-        render_with_playwright(pages)
+        render_with_playwright(pages, combined=False)
     print("done")
 
 
