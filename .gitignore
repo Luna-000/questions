@@ -1,3 +1,6 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+__pycache__/
+designs/self-cafe-cloud-monitor/fonts/
+designs/self-cafe-cloud-monitor/html/
