@@ -56,42 +56,45 @@ def grad_cup(gid):
         <stop offset="1" stop-color="#E6D9CC" stop-opacity="0"/>
       </radialGradient>
     </defs>
-    <circle cx="200" cy="300" r="176" fill="url(#{gid}d)"/>
-    <ellipse cx="200" cy="430" rx="128" ry="18" fill="#DDD2C6"/>
-    <ellipse cx="200" cy="422" rx="96" ry="9" fill="#F4EFE8"/>
-    <path d="M112 196 C100 310 118 390 156 418 H244 C282 390 300 310 288 196 Z" fill="url(#{gid}b)"/>
-    <path d="M286 236
-             C346 236 362 268 362 312
-             C362 356 342 386 286 386
-             L286 362
-             C322 360 334 340 334 312
-             C334 284 322 264 286 260 Z" fill="#D9CFC4"/>
-    <ellipse cx="200" cy="198" rx="88" ry="24" fill="url(#{gid}c)"/>
-    <ellipse cx="178" cy="190" rx="36" ry="9" fill="#C6A36E" opacity="0.9"/>
-    <path d="M150 150 C138 112 168 96 154 58" fill="none" stroke="#C6A36E" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
-    <path d="M200 142 C184 96 220 78 202 40" fill="none" stroke="#C6A36E" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
-    <path d="M248 152 C266 114 236 92 256 56" fill="none" stroke="#C6A36E" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+    <polygon points="70,300 330,300 300,340 100,340" fill="url(#{gid}d)"/>
+    <polygon points="72,430 328,430 300,456 100,456" fill="#DDD2C6"/>
+    <polygon points="104,422 296,422 276,436 124,436" fill="#F4EFE8"/>
+    <path d="M124 196 L158 418 H242 L276 196 Z" fill="url(#{gid}b)"/>
+    <path d="M276 236 L348 250 L338 368 L276 354 L276 330 L314 336 L318 268 L276 260 Z" fill="#D9CFC4"/>
+    <polygon points="108,176 292,176 276,216 124,216" fill="url(#{gid}c)"/>
+    <polygon points="148,186 220,186 212,204 156,204" fill="#C6A36E" opacity="0.9"/>
+    <path d="M156 148 L146 62" fill="none" stroke="#C6A36E" stroke-width="3" stroke-linecap="square" opacity="0.7"/>
+    <path d="M200 140 L200 40" fill="none" stroke="#C6A36E" stroke-width="3" stroke-linecap="square" opacity="0.55"/>
+    <path d="M244 148 L256 58" fill="none" stroke="#C6A36E" stroke-width="3" stroke-linecap="square" opacity="0.7"/>
     """
 
 
 def line_figure():
-    """Fashion contour. One weight, no face."""
+    """Angular contour. One weight, no face, no circles."""
     return """
-    <g fill="none" stroke="#1A1714" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="210" cy="92" r="46"/>
-      <path d="M196 136 C188 168 186 196 196 214"/>
-      <path d="M168 176 C210 168 250 186 262 230 C274 274 236 300 196 292"/>
-      <path d="M176 214 C130 236 108 286 132 318"/>
-      <path d="M196 292 C176 360 160 450 176 548"/>
-      <path d="M230 300 C268 360 300 450 268 548"/>
-      <path d="M150 292 H292"/>
-      <path d="M168 292 V430"/>
-      <path d="M274 292 V430"/>
-      <path d="M108 300 C108 346 164 350 166 308"/>
-      <path d="M166 318 C192 316 194 346 166 348"/>
-      <ellipse cx="137" cy="302" rx="30" ry="9"/>
+    <g fill="none" stroke="#1A1714" stroke-width="2.8" stroke-linecap="square" stroke-linejoin="miter">
+      <polygon points="138,34 202,34 216,92 202,148 138,148 124,92"/>
+      <path d="M152 148 L158 196"/>
+      <path d="M188 148 L182 196"/>
+      <path d="M92 208 L158 196 L182 196 L236 208"/>
+      <path d="M92 208 L80 338"/>
+      <path d="M236 208 L224 338"/>
+      <path d="M80 338 L224 338"/>
+      <path d="M214 214 L268 268"/>
+      <path d="M268 268 L236 338"/>
+      <path d="M112 338 L98 584"/>
+      <path d="M188 338 L206 584"/>
+      <path d="M16 342 H304"/>
+      <path d="M74 342 V488"/>
+      <path d="M250 342 V488"/>
+      <path d="M8 300 L52 286"/>
+      <path d="M8 300 L20 342"/>
+      <path d="M52 286 L40 342"/>
+      <path d="M20 342 L40 342"/>
+      <path d="M52 300 L68 308 L62 338 L40 330"/>
     </g>
-    <ellipse cx="128" cy="302" rx="14" ry="4" fill="#3C2A22"/>
+    <polygon points="16,306 42,296 38,312 18,318" fill="#3C2A22"/>
+    <rect x="164" y="72" width="14" height="3" fill="#8A6B3D"/>
     """
 
 
@@ -102,7 +105,7 @@ def iso_cup():
     <path d="M42 78 V158 A78 20 0 0 0 120 178 V98 A78 20 0 0 1 42 78" fill="#E3D7CB"/>
     <ellipse cx="120" cy="78" rx="78" ry="22" fill="#3C2A22"/>
     <ellipse cx="108" cy="74" rx="34" ry="9" fill="#A68456"/>
-    <path d="M196 96 C236 100 240 150 196 156 C214 150 218 112 196 104 Z" fill="#E3D7CB"/>
+    <path d="M196 100 L232 108 L228 150 L196 142 L196 128 L214 132 L216 116 L196 112 Z" fill="#E3D7CB"/>
     """
 
 
@@ -125,7 +128,7 @@ def iso_bag():
     <polygon points="48,78 168,58 196,196 28,214" fill="#D26A45"/>
     <polygon points="168,58 214,82 206,206 196,196" fill="#B55234"/>
     <polygon points="70,78 160,64 168,86 78,100" fill="#E7B59A"/>
-    <path d="M96 78 C104 28 160 24 172 58" fill="none" stroke="#1A1714" stroke-width="5" stroke-linecap="round"/>
+    <path d="M96 78 L108 34 H160 L176 58" fill="none" stroke="#1A1714" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"/>
     """
 
 
@@ -136,41 +139,42 @@ def window_modern():
     <rect x="326" y="46" width="228" height="286" fill="#E7F0EC"/>
     <rect x="86" y="346" width="228" height="286" fill="#E7F0EC"/>
     <rect x="326" y="346" width="228" height="286" fill="#D5E2DE"/>
-    <circle cx="188" cy="168" r="40" fill="#E2B15A"/>
-    <circle cx="430" cy="150" r="26" fill="#245E48"/>
-    <circle cx="456" cy="168" r="18" fill="#6E9A80"/>
-    <rect x="424" y="172" width="6" height="48" fill="#245E48"/>
+    <rect x="156" y="132" width="56" height="56" fill="#E2B15A"/>
+    <polygon points="430,118 456,164 404,164" fill="#245E48"/>
+    <polygon points="452,136 474,172 430,172" fill="#6E9A80"/>
+    <rect x="424" y="164" width="6" height="56" fill="#245E48"/>
     <rect x="64" y="40" width="512" height="600" fill="none" stroke="#1A1714" stroke-width="6"/>
     <line x1="320" y1="40" x2="320" y2="640" stroke="#1A1714" stroke-width="3"/>
     <line x1="64" y1="340" x2="576" y2="340" stroke="#1A1714" stroke-width="3"/>
     <rect x="40" y="636" width="560" height="12" fill="#1A1714"/>
-    <circle cx="158" cy="600" r="28" fill="#245E48"/>
-    <circle cx="186" cy="614" r="20" fill="#7EAA8C"/>
-    <rect x="168" y="628" width="8" height="20" fill="#5C4634"/>
-    <rect x="400" y="586" width="96" height="50" fill="#F7F3EC"/>
-    <ellipse cx="448" cy="586" rx="48" ry="13" fill="#3C2A22"/>
-    <ellipse cx="436" cy="582" rx="18" ry="5" fill="#C6A36E"/>
-    <ellipse cx="448" cy="640" rx="52" ry="10" fill="#DDD2C6"/>
+    <polygon points="158,560 186,608 130,608" fill="#245E48"/>
+    <polygon points="184,576 208,616 160,616" fill="#7EAA8C"/>
+    <rect x="168" y="608" width="8" height="28" fill="#5C4634"/>
+    <polygon points="404,586 500,586 488,636 416,636" fill="#F7F3EC"/>
+    <polygon points="404,572 500,572 500,596 404,596" fill="#3C2A22"/>
+    <polygon points="428,578 468,578 464,590 432,590" fill="#C6A36E"/>
+    <polygon points="396,636 508,636 496,650 408,650" fill="#DDD2C6"/>
     """
 
 
 def abstract_still():
     """Flat blocks on one baseline: pot, laptop, cup. No outline."""
     return """
-    <ellipse cx="330" cy="358" rx="246" ry="12" fill="#E4D9CC"/>
+    <polygon points="84,352 576,352 540,370 120,370" fill="#E4D9CC"/>
+    <polygon points="70,150 108,250 32,250" fill="#245E48"/>
+    <polygon points="108,168 140,250 76,250" fill="#6E9A80"/>
+    <rect x="86" y="250" width="8" height="18" fill="#5C4634"/>
     <path d="M78 268 H142 L130 340 H90 Z" fill="#E7E1D6"/>
-    <ellipse cx="92" cy="214" rx="30" ry="46" fill="#245E48" transform="rotate(-16 92 214)"/>
-    <ellipse cx="126" cy="206" rx="22" ry="36" fill="#6E9A80" transform="rotate(14 126 206)"/>
-    <ellipse cx="110" cy="268" rx="32" ry="9" fill="#F7F3EC"/>
+    <polygon points="78,258 142,258 142,276 78,276" fill="#F7F3EC"/>
     <rect x="210" y="326" width="214" height="14" fill="#1A1714"/>
-    <rect x="226" y="148" width="182" height="178" rx="4" fill="#243044"/>
+    <rect x="226" y="148" width="182" height="178" fill="#243044"/>
     <rect x="240" y="162" width="154" height="136" fill="#D7E3DF"/>
     <rect x="256" y="190" width="68" height="6" fill="#F7F3EC"/>
     <rect x="256" y="208" width="104" height="5" fill="#7EAA8C"/>
-    <path d="M468 228 C460 270 468 340 492 340 H538 C562 340 570 270 562 228 Z" fill="#F4EFE8"/>
-    <ellipse cx="515" cy="228" rx="48" ry="14" fill="#3C2A22"/>
-    <ellipse cx="500" cy="224" rx="16" ry="5" fill="#C6A36E"/>
-    <path d="M560 248 C600 252 602 302 560 308 C580 302 582 258 560 254 Z" fill="#E4DCD0"/>
+    <polygon points="470,228 560,228 544,340 486,340" fill="#E4D8CC"/>
+    <polygon points="470,214 560,214 560,236 470,236" fill="#3C2A22"/>
+    <polygon points="494,220 534,220 530,230 498,230" fill="#C6A36E"/>
+    <polygon points="540,248 600,258 592,312 532,302" fill="#CDBBA8"/>
     """
 
 
@@ -181,7 +185,7 @@ def glyph_person(fill, seat, obj):
     <rect x="176" y="174" width="5" height="52" fill="{seat}"/>
     <rect x="242" y="174" width="5" height="52" fill="{seat}"/>
     <rect x="242" y="84" width="5" height="90" fill="{seat}"/>
-    <circle cx="204" cy="50" r="22" fill="{fill}"/>
+    <polygon points="204,24 228,42 228,68 204,86 180,68 180,42" fill="{fill}"/>
     <rect x="198" y="70" width="12" height="16" fill="{fill}"/>
     <polygon points="178,88 228,84 234,152 184,158" fill="{fill}"/>
     <polygon points="108,152 234,146 238,164 104,170" fill="{fill}"/>
@@ -196,9 +200,9 @@ def glyph_person(fill, seat, obj):
 def cup_obj():
     return """
     <path d="M34 140 L38 106 H66 L70 140 Z" fill="#FBF8F4"/>
-    <ellipse cx="52" cy="106" rx="16" ry="5" fill="#3C2A22"/>
-    <ellipse cx="48" cy="104" rx="6" ry="2" fill="#C6A36E"/>
-    <path d="M70 116 H78 C88 116 88 134 78 134 H70 C78 132 80 120 70 120 Z" fill="#D2C6B8"/>
+    <polygon points="36,100 68,100 68,112 36,112" fill="#3C2A22"/>
+    <polygon points="42,104 56,104 55,110 43,110" fill="#C6A36E"/>
+    <polygon points="70,116 86,120 84,134 70,130" fill="#D2C6B8"/>
     """
 
 
@@ -240,16 +244,21 @@ def counter_modern():
 
 def mark_cup():
     return """
-    <circle cx="160" cy="150" r="92" fill="none" stroke="#1A1714" stroke-width="10"/>
-    <circle cx="160" cy="150" r="48" fill="#3C2A22"/>
-    <circle cx="148" cy="142" r="12" fill="#C6A36E"/>
+    <polygon points="64,72 256,72 226,230 94,230" fill="none" stroke="#1A1714" stroke-width="10" stroke-linejoin="miter"/>
+    <path d="M256 114 H308 V188 H224" fill="none" stroke="#1A1714" stroke-width="10" stroke-linejoin="miter" stroke-linecap="square"/>
+    <polygon points="108,98 212,98 204,128 116,128" fill="#3C2A22"/>
+    <polygon points="140,106 176,106 172,118 144,118" fill="#C6A36E"/>
     """
 
 
 def mark_arch():
     return """
-    <path d="M70 250 V120 A90 90 0 0 1 250 120 V250" fill="none" stroke="#1A1714" stroke-width="14" stroke-linejoin="round"/>
-    <line x1="48" y1="250" x2="272" y2="250" stroke="#1A1714" stroke-width="14" stroke-linecap="square"/>
+    <path d="M108 36 V248" fill="none" stroke="#1A1714" stroke-width="14" stroke-linecap="square"/>
+    <path d="M108 36 H214" fill="none" stroke="#1A1714" stroke-width="14" stroke-linecap="square"/>
+    <path d="M214 36 V148" fill="none" stroke="#1A1714" stroke-width="14" stroke-linecap="square"/>
+    <path d="M52 148 H268" fill="none" stroke="#1A1714" stroke-width="14" stroke-linecap="square"/>
+    <path d="M78 148 V248" fill="none" stroke="#1A1714" stroke-width="14" stroke-linecap="square"/>
+    <path d="M236 148 V248" fill="none" stroke="#1A1714" stroke-width="14" stroke-linecap="square"/>
     """
 
 
@@ -283,37 +292,38 @@ def night_desk():
       <polygon points="425,284 364,248 429,209 490,246"/>
       <polygon points="364,248 429,209 429,145 364,184"/>
     </g>
-    <g fill="none" stroke="#E7E1D6" stroke-width="2.2" stroke-linecap="square">
-      <ellipse cx="318" cy="276" rx="15" ry="7"/>
-      <ellipse cx="318" cy="244" rx="15" ry="7"/>
-      <line x1="303" y1="244" x2="303" y2="276"/>
-      <line x1="333" y1="244" x2="333" y2="276"/>
-      <path d="M333 252 C346 254 346 270 333 272"/>
+    <g fill="none" stroke="#E7E1D6" stroke-width="2.2" stroke-linejoin="miter" stroke-linecap="square">
+      <polygon points="303,240 318,232 333,240 318,248"/>
+      <path d="M303 240 V274 L318 282 L333 274 V240"/>
+      <line x1="318" y1="248" x2="318" y2="282"/>
+      <path d="M333 250 L348 256 V270 L333 264"/>
     </g>
     """
 
 
 def line_cup():
     return """
-    <g fill="none" stroke="#1A1714" stroke-width="3" stroke-linecap="round">
-      <path d="M70 86 C62 158 78 206 100 220 H150 C172 206 188 158 180 86"/>
-      <ellipse cx="125" cy="86" rx="55" ry="16"/>
-      <path d="M180 114 C214 118 218 172 180 178"/>
-      <ellipse cx="125" cy="232" rx="72" ry="12"/>
-      <path d="M96 70 C88 50 106 40 98 24"/>
-      <path d="M125 66 C116 42 138 32 128 16"/>
-      <path d="M154 70 C166 48 152 38 164 20"/>
+    <g fill="none" stroke="#1A1714" stroke-width="3" stroke-linecap="square" stroke-linejoin="miter">
+      <path d="M90 48 L80 12"/>
+      <path d="M125 52 L125 10"/>
+      <path d="M160 48 L172 12"/>
+      <polygon points="52,82 198,72 210,100 198,122 52,132 40,104"/>
+      <path d="M40 104 L68 214 H182 L210 100"/>
+      <path d="M68 214 H182"/>
+      <path d="M210 122 L244 132 V180 L182 168"/>
+      <polygon points="36,228 214,218 224,242 26,252"/>
     </g>
-    <ellipse cx="116" cy="82" rx="22" ry="6" fill="#3C2A22"/>
+    <polygon points="72,96 168,90 178,114 62,120" fill="#3C2A22"/>
     """
 
 
 def solid_cup():
     return """
-    <ellipse cx="120" cy="210" rx="86" ry="16" fill="#C9BBAE"/>
-    <path d="M48 70 C40 150 56 196 84 210 H156 C184 196 200 150 192 70 Z" fill="#1A1714"/>
-    <ellipse cx="120" cy="70" rx="72" ry="20" fill="#3C2A22"/>
-    <path d="M192 100 C230 104 234 158 192 164 C214 156 216 114 192 108 Z" fill="#1A1714"/>
+    <polygon points="28,214 212,214 228,236 12,236" fill="#C9BBAE"/>
+    <polygon points="48,72 192,72 166,210 74,210" fill="#1A1714"/>
+    <polygon points="48,56 192,56 192,88 48,88" fill="#3C2A22"/>
+    <polygon points="78,64 132,64 128,78 82,78" fill="#C6A36E"/>
+    <polygon points="192,104 232,116 222,164 192,150" fill="#1A1714"/>
     """
 
 
